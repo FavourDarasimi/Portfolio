@@ -117,4 +117,23 @@
   body {
     @apply bg-background text-foreground;
   }
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  .name {
+    font-family: "Outfit", sans-serif;
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s infinite;
+  }
 }
