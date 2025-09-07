@@ -7,12 +7,23 @@ import reactLogo from "../assets/react.svg";
 import pythonLogo from "../assets/python.png";
 import djangoLogo from "../assets/icons8-django-96.png";
 import gitLogo from "../assets/git.png";
+import SkillCard from "./SkillCard";
 
 interface SkillsProps {
   skillsRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
+  const skills = [
+    { skillName: "HTML", skillLogo: htmlLogo },
+    { skillName: "CSS", skillLogo: cssLogo },
+    { skillName: "JavaScript", skillLogo: jsLogo },
+    { skillName: "TypeScript", skillLogo: tsLogo },
+    { skillName: "React", skillLogo: reactLogo },
+    { skillName: "Python", skillLogo: pythonLogo },
+    { skillName: "Django", skillLogo: djangoLogo },
+    { skillName: "Git", skillLogo: gitLogo },
+  ];
   return (
     <div ref={skillsRef} className="py-20">
       <div>
@@ -33,77 +44,12 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
 
       <div className="grid place-content-center pt-10">
         <div className="inline-grid grid-cols-4  gap-5">
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={htmlLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
+          {skills.map((skill) => (
+            <SkillCard
+              skillName={skill.skillName}
+              skillLogo={skill.skillLogo}
             />
-            <h1 className="text-center text-gray-400">HTML</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={cssLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">CSS</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={jsLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">JavaScript</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={tsLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">TypeScript</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={reactLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">React</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={pythonLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">Python</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={djangoLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">Django</h1>
-          </div>
-
-          <div className="bg-secondary p-5 rounded-2xl flex flex-col items-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 group cursor-pointer">
-            <img
-              src={gitLogo}
-              alt=""
-              className="w-12 pb-5 group-hover:scale-125 transition-transform duration-500"
-            />
-            <h1 className="text-center text-gray-400">Git</h1>
-          </div>
+          ))}
         </div>
       </div>
     </div>

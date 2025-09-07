@@ -59,7 +59,7 @@ const NavBar: React.FC<NavBarProps> = ({
         <a href="https://github.com/FavourDarasimi">
           <Button
             size="lg"
-            className="border-[1px] border-[#a855f7] bg-transparent hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer "
+            className=" bg-transparent hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer "
           >
             <Github size={30} color="white" />
           </Button>
@@ -69,7 +69,7 @@ const NavBar: React.FC<NavBarProps> = ({
           {" "}
           <Button
             size="lg"
-            className="border-[1px] border-[#a855f7] bg-transparent hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer "
+            className=" bg-transparent hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer "
           >
             <Twitter size={30} color="white" />
           </Button>
@@ -79,7 +79,7 @@ const NavBar: React.FC<NavBarProps> = ({
           {" "}
           <Button
             size="lg"
-            className="border-[1px] border-[#a855f7] bg-transparent hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer "
+            className=" bg-transparent hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer "
           >
             <Mail size={40} color="white" />
           </Button>
