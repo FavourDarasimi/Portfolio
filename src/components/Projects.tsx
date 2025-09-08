@@ -6,6 +6,10 @@ import blogmobile from "../assets/blog mobile.png";
 import blog from "../assets/blog.png";
 import taskmobile from "../assets/task mobile.png";
 import task from "../assets/task.png";
+import { Card } from "./ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "./ui/button";
+import { Github } from "lucide-react";
 
 interface ProjectProps {
   projectsRef: React.RefObject<HTMLDivElement | null>;
@@ -20,6 +24,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       imageUrl: [eduverse, eduversemobile],
       projectUrl: "https://github.com/FavourDarasimi/EduVerse.git",
       techStack: ["HTML", "CSS", "JavaScript"],
+      featured: true,
     },
     {
       title: "Blogify Space",
@@ -27,7 +32,16 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         "A modern blogging platform with a clean UI, seamless content management, and user-friendly design. Built with JavaScript and Python, featuring a structured frontend and backend for scalability and flexibility.",
       imageUrl: [blog, blogmobile],
       projectUrl: "https://github.com/FavourDarasimi/Blogify-Space.git",
-      techStack: ["React", "Tailwind CSS", "Django", "Django Rest Framework"],
+      techStack: [
+        "JavaScript",
+        "React",
+        "Axios",
+        "Tailwind CSS",
+        "Python",
+        "Django",
+        "Django Rest Framework",
+      ],
+      featured: true,
     },
     {
       title: "Task Hive",
@@ -36,7 +50,47 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       imageUrl: [task, taskmobile],
       backendUrl: "https://github.com/FavourDarasimi/Task-Hive-Backend.git",
       frontendUrl: "https://github.com/FavourDarasimi/Task-Hive-Backend.git",
-      techStack: ["React", "Tailwind CSS", "Django", "Django Rest Framework"],
+      techStack: [
+        "JavaScript",
+        "React",
+        "Axios",
+        "Tailwind CSS",
+        "Python",
+        "Django",
+        "Django Rest Framework",
+      ],
+      featured: true,
+    },
+    {
+      title: "Anime Hub",
+      description:
+        "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
+      projectUrl: "https://github.com/FavourDarasimi/Anime-Hub.git",
+      techStack: [
+        "TypeScript",
+        "React",
+        "Tailwind CSS",
+        "React Query",
+        "Axios",
+        "Jikan API ",
+      ],
+      featured: false,
+    },
+    {
+      title: "Food Delivery",
+      description:
+        "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
+      projectUrl: "https://github.com/FavourDarasimi/Anime-Hub.git",
+      techStack: ["JavaScript", "React", "Tailwind CSS"],
+      featured: false,
+    },
+    {
+      title: "Clothing E-Commerce Platform",
+      description:
+        "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
+      projectUrl: "https://github.com/FavourDarasimi/Anime-Hub.git",
+      techStack: ["HTML", "CSS", "Python", "Django"],
+      featured: false,
     },
   ];
   return (
@@ -55,19 +109,99 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         </h1>
       </div>
       <div className="mx-auto  w-[60%] space-y-10">
-        {projectData.map((project, index) => (
-          <ProjectCard
-            key={index}
-            index={index}
-            title={project.title}
-            description={project.description}
-            imageUrl={project.imageUrl}
-            projectUrl={project.projectUrl}
-            frontendUrl={project.frontendUrl}
-            backendUrl={project.backendUrl}
-            techStack={project.techStack}
-          />
-        ))}
+        {projectData.map(
+          (project, index) =>
+            project.featured && (
+              <ProjectCard
+                key={index}
+                index={index}
+                title={project.title}
+                description={project.description}
+                imageUrl={project.imageUrl}
+                projectUrl={project.projectUrl}
+                frontendUrl={project.frontendUrl}
+                backendUrl={project.backendUrl}
+                techStack={project.techStack}
+              />
+            )
+        )}
+      </div>
+
+      <div className="mt-10">
+        <h1 className="text-center text-3xl font-bold">More Projects</h1>
+        <div className="grid grid-cols-3 mx-20 gap-10 mt-10">
+          {projectData.map(
+            (project) =>
+              !project.featured && (
+                <Card className="hover:scale-110 transition-all duration-500  p-5">
+                  <div className=" px-5 my-auto">
+                    <h1 className="text-xl font-bold text-foreground mb-4">
+                      {project.title}
+                    </h1>
+                    <h1 className="text-muted-foreground mb-6 leading-relaxed text-[14px]">
+                      {project.description}
+                    </h1>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.techStack.map((tech, techIndex) => (
+                        <Badge
+                          key={techIndex}
+                          variant="outline"
+                          className="bg-secondary text-foreground hover:bg-accent/10 transition-smooth text-[12px]"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    <div>
+                      {project.frontendUrl && project.backendUrl ? (
+                        <div className="flex gap-4">
+                          <Button
+                            variant="secondary"
+                            className="text-white hover:scale-110 transition-all duration-500 p-5 text-[12px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"
+                          >
+                            <a
+                              href={project.frontendUrl}
+                              className="flex items-center gap-2"
+                            >
+                              <Github size={18} color="white" />
+                              Frontend Source Code
+                            </a>
+                          </Button>
+                          <Button
+                            variant="secondary"
+                            className="text-white hover:scale-110 transition-all duration-500 p-5 text-[12px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"
+                          >
+                            <a
+                              href={project.backendUrl}
+                              className="flex items-center gap-2"
+                            >
+                              <Github size={18} color="white" />
+                              Backend Source Code
+                            </a>
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button
+                          variant="secondary"
+                          className="text-white hover:scale-110 transition-all duration-500 p-5 text-[12px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"
+                        >
+                          {" "}
+                          <a
+                            href={project.projectUrl}
+                            className="flex items-center gap-2"
+                          >
+                            <Github size={18} color="white" />
+                            Source Code{" "}
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              )
+          )}
+        </div>
       </div>
     </div>
   );

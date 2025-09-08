@@ -7,7 +7,7 @@ import { Github } from "lucide-react";
 interface ProjectProps {
   title: string;
   description: string;
-  imageUrl: string[];
+  imageUrl: string[] | undefined;
   projectUrl: string | undefined;
   frontendUrl: string | undefined;
   backendUrl: string | undefined;
@@ -36,23 +36,23 @@ const ProjectCard: React.FC<ProjectProps> = ({
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
-        {" "}
         <div className="flex items-center relative p-10 w-1/2 overflow-hidden bg-neutral-700">
-          {imageUrl.map((url, index) =>
-            index == 1 ? (
-              <img
-                src={url}
-                alt=""
-                className="w-40 h-72 absolute right-0 -translate-x-0  transition-smooth group-hover:scale-105 duration-500"
-              />
-            ) : (
-              <img
-                src={url}
-                alt=""
-                className="w-[85%] h-[300px] transition-smooth  group-hover:scale-105 duration-500"
-              />
-            )
-          )}
+          {imageUrl &&
+            imageUrl.map((url, index) =>
+              index == 1 ? (
+                <img
+                  src={url}
+                  alt=""
+                  className="w-40 h-72 absolute right-0 -translate-x-0  transition-smooth group-hover:scale-105 duration-500"
+                />
+              ) : (
+                <img
+                  src={url}
+                  alt=""
+                  className="w-[85%] h-[300px] transition-smooth  group-hover:scale-105 duration-500"
+                />
+              )
+            )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-smooth hover:duration-500" />
         </div>
         <div className="w-1/2 px-5 my-auto">
