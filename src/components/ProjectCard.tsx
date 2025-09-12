@@ -27,7 +27,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
 }) => {
   return (
     <Card
-      className={`overflow-hidden -py-6 card-gradient border-border hover:shadow-card transition-smooth group ${
+      className={`overflow-hidden -py-6   card-gradient border-border hover:shadow-card transition-smooth group ${
         index % 2 === 1 ? "lg:flex-row-reverse" : ""
       }`}
     >
@@ -36,28 +36,30 @@ const ProjectCard: React.FC<ProjectProps> = ({
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
-        <div className="flex items-center relative p-10 md:w-1/2 overflow-hidden bg-neutral-700">
+        <div className="flex items-center relative md:p-10 p-3 md:w-1/2  overflow-hidden bg-neutral-700">
           {imageUrl &&
             imageUrl.map((url, index) =>
               index == 1 ? (
                 <img
                   src={url}
                   alt=""
-                  className="w-40 md:h-72 object-cover absolute right-0 -translate-x-0  transition-smooth group-hover:scale-105 duration-500"
+                  className="w-40 md:h-72 h-[270px] absolute right-0 -translate-x-0  transition-smooth group-hover:scale-105 duration-500"
                 />
               ) : (
                 <img
                   src={url}
                   alt=""
-                  className="w-[85%] h-[300px] transition-smooth  group-hover:scale-105 duration-500"
+                  className="md:w-[85%] w-[100%] md:h-[300px] h-[275px] transition-smooth  group-hover:scale-105 duration-500"
                 />
               )
             )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-smooth hover:duration-500" />
         </div>
-        <div className="w-1/2 px-5 my-auto">
-          <h1 className="text-2xl font-bold text-foreground mb-4">{title}</h1>
-          <h1 className="text-muted-foreground mb-6 leading-relaxed">
+        <div className="md:w-1/2  px-5 my-auto md:py-0 py-5">
+          <h1 className="md:text-2xl text-xl font-bold text-foreground mb-4">
+            {title}
+          </h1>
+          <h1 className="text-muted-foreground mb-6 leading-relaxed md:text-[16px] text-[15px]">
             {description}
           </h1>
           <div className="flex flex-wrap gap-2 mb-6">
@@ -74,7 +76,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
 
           <div>
             {frontendUrl && backendUrl ? (
-              <div className="flex gap-4">
+              <div className="flex md:flex-row flex-col gap-4">
                 <Button
                   variant="secondary"
                   className="text-white hover:scale-110 transition-all duration-500 p-5 text-[14px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"

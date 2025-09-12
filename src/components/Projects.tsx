@@ -102,13 +102,13 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
             Projects
           </span>
         </h1>
-        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center pb-20">
+        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center md:pb-20 pb-10">
           A showcase of my recent work, demonstrating expertise in modern web
           technologies, a variety of technical skills, and creative
           problem-solving approaches.
         </h1>
       </div>
-      <div className="md:mx-auto mx-2 md:w-[60%] w-full space-y-10">
+      <div className="md:mx-auto mx-2 md:w-[60%]  space-y-10">
         {projectData.map(
           (project, index) =>
             project.featured && (
@@ -128,14 +128,16 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       </div>
 
       <div className="mt-10">
-        <h1 className="text-center text-3xl font-bold">More Projects</h1>
-        <div className="grid md:grid-cols-3 md:mx-20 mx-2 gap-10 mt-10">
+        <h1 className="text-center md:text-3xl text-xl font-bold">
+          More Projects
+        </h1>
+        <div className="grid md:grid-cols-3 md:mx-20 mx-2 gap-10 md:mt-10 mt-5">
           {projectData.map(
             (project) =>
               !project.featured && (
                 <Card className="hover:scale-110 transition-all duration-500  p-5">
                   <div className=" px-5 my-auto">
-                    <h1 className="text-xl font-bold text-foreground mb-4">
+                    <h1 className="md:text-xl text-[18px] font-bold text-foreground mb-4">
                       {project.title}
                     </h1>
                     <h1 className="text-muted-foreground mb-6 leading-relaxed text-[14px]">
