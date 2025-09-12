@@ -31,15 +31,15 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
     },
   ];
   return (
-    <div className="bg-secondary py-20" ref={aboutRef}>
+    <div className="bg-secondary md:py-20 py-10" ref={aboutRef}>
       <div>
-        <h1 className="text-5xl font-bold text-center pb-5">
+        <h1 className="md:text-5xl text-3xl font-bold text-center md:pb-5 pb-4">
           Who I{" "}
           <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
             Am
           </span>
         </h1>
-        <h1 className="text-[20px] mx-80 text-gray-400 text-center pb-20">
+        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center md:pb-20 pb-10">
           I’m a full-stack web developer who enjoys building applications that
           are practical, scalable, and user-friendly. For me, coding is more
           than just writing functions — it’s about designing solutions that make
@@ -47,8 +47,10 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
         </h1>
       </div>
       <div>
-        <h1 className="font-semibold text-3xl text-center mb-5">My Journey</h1>
-        <h1 className="text-[20px] mx-80 text-gray-400 text-center pb-20">
+        <h1 className="font-semibold md:text-3xl text-2xl text-center md:pb-5 pb-4">
+          My Journey
+        </h1>
+        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center pb-20">
           My Path in Development I started learning software development out of
           curiosity about how digital products work beneath the surface. Over
           time, that curiosity grew into a passion for creating software of my
@@ -58,19 +60,21 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
         </h1>
       </div>
       <div>
-        <h1 className="font-semibold text-3xl text-center mb-5">
+        <h1 className="font-semibold md:text-3xl text-2xl text-center mb-5">
           What I Focus On
         </h1>
-        <div className="grid grid-cols-4 gap-6 mx-20">
+        <div className="grid md:grid-cols-4 grid-cols-2 md:gap-6 md:mx-20 gap-2 mx-5">
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-card hover:scale-110 cursor-pointer transition-all duration-300"
+              className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-card hover:scale-110 cursor-pointer transition-all duration-300 "
             >
               <CardContent className=" text-center">
                 <feature.icon className="h-8 w-8 text-primary mx-auto mb-4" />
-                <h4 className="font-semibold mb-2">{feature.title}</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-2 md:text-[16px] text-[15px]">
+                  {feature.title}
+                </h4>
+                <p className="md:text-sm text-[13px] text-muted-foreground">
                   {feature.description}
                 </p>
               </CardContent>
