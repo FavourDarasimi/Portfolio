@@ -27,13 +27,13 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
   return (
     <div ref={skillsRef} className="py-20">
       <div>
-        <h1 className="text-5xl font-bold text-center pb-5">
+        <h1 className="md:text-5xl text-3xl font-bold text-center pb-5">
           Skills &{" "}
           <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
             Expertise
           </span>
         </h1>
-        <h1 className="text-[20px] mx-80 text-gray-400 text-center pb-10">
+        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center pb-10">
           With a balnace of technical expertise and creative problem-solving, I
           enjoy turning complex challenges into clean, scalale and user-
           friendly solutions
@@ -43,7 +43,7 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
       <div className="h-[3px] w-52 mx-auto rounded-full bg-gradient-to-r from-[#a855f7] to-blue-500"></div>
 
       <div className="grid place-content-center pt-10">
-        <div className="inline-grid grid-cols-4  gap-5">
+        <div className="inline-grid md:grid-cols-4 grid-cols-3 md:gap-5 gap-2">
           {skills.map((skill) => (
             <SkillCard
               skillName={skill.skillName}

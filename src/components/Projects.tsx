@@ -94,21 +94,21 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
     },
   ];
   return (
-    <div className="bg-secondary py-20" ref={projectsRef}>
+    <div className="bg-secondary md:py-20 py-10" ref={projectsRef}>
       <div>
-        <h1 className="text-5xl font-bold text-center pb-5">
+        <h1 className="md:text-5xl text-3xl font-bold text-center pb-5">
           Featured{" "}
           <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
             Projects
           </span>
         </h1>
-        <h1 className="text-[20px] mx-80 text-gray-400 text-center pb-20">
+        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center pb-20">
           A showcase of my recent work, demonstrating expertise in modern web
           technologies, a variety of technical skills, and creative
           problem-solving approaches.
         </h1>
       </div>
-      <div className="mx-auto  w-[60%] space-y-10">
+      <div className="md:mx-auto mx-2 md:w-[60%] w-full space-y-10">
         {projectData.map(
           (project, index) =>
             project.featured && (
@@ -129,7 +129,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
 
       <div className="mt-10">
         <h1 className="text-center text-3xl font-bold">More Projects</h1>
-        <div className="grid grid-cols-3 mx-20 gap-10 mt-10">
+        <div className="grid md:grid-cols-3 md:mx-20 mx-2 gap-10 mt-10">
           {projectData.map(
             (project) =>
               !project.featured && (

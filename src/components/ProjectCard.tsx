@@ -36,14 +36,14 @@ const ProjectCard: React.FC<ProjectProps> = ({
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
-        <div className="flex items-center relative p-10 w-1/2 overflow-hidden bg-neutral-700">
+        <div className="flex items-center relative p-10 md:w-1/2 overflow-hidden bg-neutral-700">
           {imageUrl &&
             imageUrl.map((url, index) =>
               index == 1 ? (
                 <img
                   src={url}
                   alt=""
-                  className="w-40 h-72 absolute right-0 -translate-x-0  transition-smooth group-hover:scale-105 duration-500"
+                  className="w-40 md:h-72 object-cover absolute right-0 -translate-x-0  transition-smooth group-hover:scale-105 duration-500"
                 />
               ) : (
                 <img
