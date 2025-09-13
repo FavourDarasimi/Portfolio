@@ -7,7 +7,7 @@ import reactLogo from "../assets/react.svg";
 import pythonLogo from "../assets/python.png";
 import djangoLogo from "../assets/icons8-django-96.png";
 import gitLogo from "../assets/git.png";
-import SkillCard from "./SkillCard";
+import SkillCard from "../components/SkillCard";
 
 interface SkillsProps {
   skillsRef: React.RefObject<HTMLDivElement | null>;
@@ -25,10 +25,10 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
     { skillName: "Git", skillLogo: gitLogo },
   ];
   return (
-    <div ref={skillsRef} className="py-20">
+    <div ref={skillsRef} className="md:py-20 py-10">
       <div>
         <h1 className="md:text-5xl text-3xl font-bold text-center pb-5">
-          Skills &{" "}
+          Skills &
           <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
             Expertise
           </span>

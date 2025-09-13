@@ -59,7 +59,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
           <h1 className="md:text-2xl text-xl font-bold text-foreground mb-4">
             {title}
           </h1>
-          <h1 className="text-muted-foreground mb-6 leading-relaxed md:text-[16px] text-[15px]">
+          <h1 className="text-muted-foreground mb-6 leading-relaxed md:text-[16px] text-[14px]">
             {description}
           </h1>
           <div className="flex flex-wrap gap-2 mb-6">

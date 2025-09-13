@@ -2,12 +2,12 @@ import { useRef } from "react";
 
 import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./components/theme-provider";
-import Home from "./components/Home";
-import About from "./components/About";
+import Home from "./pages/Home";
+import About from "./pages/About";
 import StarsBackground from "./components/StarsBackground";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 function App() {
   const homeRef = useRef<HTMLDivElement>(null);

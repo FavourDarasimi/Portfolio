@@ -126,7 +126,7 @@ const NavBar: React.FC<NavBarProps> = ({
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="absolute top-[70px] left-0 w-full bg-black bg-opacity-90 flex flex-col items-center py-6 space-y-6 md:hidden">
+        <div className="absolute top-[50px] left-0 w-full bg-black bg-opacity-90 flex flex-col items-center py-6 space-y-6 md:hidden">
           <NavLinks />
           <SocialLinks />
         </div>

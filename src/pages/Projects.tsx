@@ -1,14 +1,14 @@
 import React from "react";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "../components/ProjectCard";
 import eduverse from "../assets/eduverse.png";
 import eduversemobile from "../assets/screenshot-1757183157804-portrait.png";
 import blogmobile from "../assets/blog mobile.png";
 import blog from "../assets/blog.png";
 import taskmobile from "../assets/task mobile.png";
 import task from "../assets/task.png";
-import { Card } from "./ui/card";
+import { Card } from "../components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 import { Github } from "lucide-react";
 
 interface ProjectProps {
