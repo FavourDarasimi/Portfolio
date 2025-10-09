@@ -17,10 +17,10 @@ const Home: React.FC<HomeProps> = ({ homeRef }) => {
     >
       <div className="flex flex-col gap-5 sm:gap-6 w-full lg:w-[60%] lg:text-left text-center lg:items-start items-center">
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
             Darasimi Olaniran
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-7xl font-bold mt-1 sm:mt-2 leading-tight">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-7xl font-bold mt-1 sm:mt-2 leading-tight">
             Full-Stack Developer
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto lg:mx-0 px-2 sm:px-0 leading-relaxed">
@@ -41,14 +41,14 @@ const Home: React.FC<HomeProps> = ({ homeRef }) => {
         </div>
       </div>
 
-      <div className="lg:w-[30%] w-48 sm:w-56 md:w-72  xl:w-[30%] flex-shrink-0 mx-4 lg:mx-0 mt-8 sm:mt-10 lg:mt-0">
+      <div className="lg:w-[30%] w-72 sm:w-56 md:w-[400px]  xl:w-[30%] flex-shrink-0 mx-4 lg:mx-0 mt-8 sm:mt-10 lg:mt-0">
         <picture>
           <source media="(max-width: 480px)" srcSet={photo_mobile} />
           <source media="(max-width: 768px)" srcSet={photo_tablet} />
           <img
             src={photo}
             alt="Portrait of Darasimi Olaniran"
-            className="rounded-full w-full h-full object-cover shadow-lg"
+            className="lg:rounded-full rounded-2xl w-full h-full object-cover shadow-lg"
           />
         </picture>
       </div>

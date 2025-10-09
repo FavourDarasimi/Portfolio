@@ -107,7 +107,7 @@ const NavBar: React.FC<NavBarProps> = ({
     <div className="flex justify-between items-center py-3 sm:py-4 md:py-6 lg:py-7 px-4 sm:px-6 md:px-10 lg:px-20 backdrop-blur-lg fixed w-full top-0 z-50">
       {/* Logo */}
       <h1
-        className="cursor-pointer text-xl sm:text-2xl md:text-[28px] lg:text-[34px] font-bold"
+        className="cursor-pointer text-2xl sm:text-2xl md:text-[28px] lg:text-[34px] font-bold"
         onClick={() => scrollToSection(homeRef)}
       >
         CodeWithDara
