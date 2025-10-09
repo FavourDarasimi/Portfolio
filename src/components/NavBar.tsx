@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Github, Mail, Twitter, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+
+import { FiGithub, FiMail } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface NavBarProps {
   homeRef: React.RefObject<HTMLDivElement | null>;
@@ -22,9 +24,9 @@ const NavBar: React.FC<NavBarProps> = ({
   const [menuOpen, setMenuOpen] = useState(false);
 
   const NavLinks = () => (
-    <div className="flex md:flex-row flex-col md:gap-8 gap-5">
+    <div className="flex md:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
       <h1
-        className="text-gray-400 hover:text-white cursor-pointer text-[17px] transition-all duration-500"
+        className="text-muted-foreground hover:text-white hover:border-b-2 hover:border-white cursor-pointer text-base md:text-[16px] lg:text-[18px] transition-all duration-500"
         onClick={() => {
           scrollToSection(aboutRef);
           setMenuOpen(false);
@@ -33,7 +35,7 @@ const NavBar: React.FC<NavBarProps> = ({
         About
       </h1>
       <h1
-        className="text-gray-400 hover:text-white cursor-pointer text-[17px] transition-all duration-500"
+        className="text-muted-foreground hover:text-white hover:border-b-2 hover:border-white cursor-pointer text-base md:text-[16px] lg:text-[18px] transition-all duration-500"
         onClick={() => {
           scrollToSection(skillsRef);
           setMenuOpen(false);
@@ -42,7 +44,7 @@ const NavBar: React.FC<NavBarProps> = ({
         Skills
       </h1>
       <h1
-        className="text-gray-400 hover:text-white cursor-pointer text-[17px] transition-all duration-500"
+        className="text-muted-foreground hover:text-white hover:border-b-2 hover:border-white cursor-pointer text-base md:text-[16px] lg:text-[18px] transition-all duration-500"
         onClick={() => {
           scrollToSection(projectsRef);
           setMenuOpen(false);
@@ -51,7 +53,7 @@ const NavBar: React.FC<NavBarProps> = ({
         Project
       </h1>
       <h1
-        className="text-gray-400 hover:text-white cursor-pointer text-[17px] transition-all duration-500"
+        className="text-muted-foreground hover:text-white hover:border-b-2 hover:border-white cursor-pointer text-base md:text-[16px] lg:text-[18px] transition-all duration-500"
         onClick={() => {
           scrollToSection(contactRef);
           setMenuOpen(false);
@@ -63,49 +65,55 @@ const NavBar: React.FC<NavBarProps> = ({
   );
 
   const SocialLinks = () => (
-    <div className="flex gap-6">
-      <a href="https://github.com/FavourDarasimi" target="_blank">
-        <Button
-          size="lg"
-          className="bg-transparent hover:bg-gradient-to-r from-[#a855f7] to-blue-500 hover:border-transparent"
-        >
-          <Github size={26} color="white" />
-        </Button>
+    <div className="flex gap-5 md:gap-6 lg:gap-8">
+      <a
+        href="https://github.com/FavourDarasimi"
+        className="bg-transparent hover:bg-[#3b3d49] cursor-pointer p-2.5 md:p-2.5 lg:p-3 rounded-xl transition-all duration-300"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FiGithub
+          size={20}
+          className="md:w-[21px] md:h-[21px] lg:w-[23px] lg:h-[23px]"
+          color="white"
+        />
       </a>
       <a
         href="https://x.com/CodeWithDara?t=8fnrTaTdZ5jeNAZkom-X1w&s=09"
+        className="bg-transparent hover:bg-[#3b3d49] cursor-pointer p-2.5 md:p-2.5 lg:p-3 rounded-xl transition-all duration-300"
         target="_blank"
+        rel="noopener noreferrer"
       >
-        <Button
-          size="lg"
-          className="bg-transparent hover:bg-gradient-to-r from-[#a855f7] to-blue-500 hover:border-transparent"
-        >
-          <Twitter size={26} color="white" />
-        </Button>
+        <FaXTwitter
+          size={20}
+          className="md:w-[21px] md:h-[21px] lg:w-[23px] lg:h-[23px]"
+          color="white"
+        />
       </a>
-      <a href="mailto:darasimi0603@gmail.com">
-        <Button
-          size="lg"
-          className="bg-transparent hover:bg-gradient-to-r from-[#a855f7] to-blue-500 hover:border-transparent"
-        >
-          <Mail size={30} color="white" />
-        </Button>
+      <a
+        href="mailto:darasimi0603@gmail.com"
+        className="bg-transparent hover:bg-[#3b3d49] cursor-pointer p-2.5 md:p-2.5 lg:p-3 rounded-xl transition-all duration-300"
+      >
+        <FiMail
+          size={20}
+          className="md:w-[21px] md:h-[21px] lg:w-[23px] lg:h-[23px]"
+          color="white"
+        />
       </a>
     </div>
   );
 
   return (
-    <div className="flex justify-between items-center md:py-3 py-[6px] px-6 md:px-20 backdrop-blur-lg fixed w-full top-0 z-50">
+    <div className="flex justify-between items-center py-3 sm:py-4 md:py-6 lg:py-7 px-4 sm:px-6 md:px-10 lg:px-20 backdrop-blur-lg fixed w-full top-0 z-50">
       {/* Logo */}
       <h1
-        className="cursor-pointer text-[26px] md:text-[34px] font-bold bg-gradient-to-r from-[#a855f7] to-blue-500 bg-clip-text text-transparent"
+        className="cursor-pointer text-xl sm:text-2xl md:text-[28px] lg:text-[34px] font-bold"
         onClick={() => scrollToSection(homeRef)}
       >
         CodeWithDara
       </h1>
 
       {/* Desktop Menu */}
-      <div></div>
       <div className="hidden md:flex">
         <NavLinks />
       </div>
@@ -115,18 +123,18 @@ const NavBar: React.FC<NavBarProps> = ({
 
       {/* Mobile Hamburger */}
       <div className="md:hidden">
-        <button onClick={() => setMenuOpen(!menuOpen)}>
+        <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
           {menuOpen ? (
-            <X size={28} color="white" />
+            <X size={26} className="sm:w-7 sm:h-7" color="white" />
           ) : (
-            <Menu size={28} color="white" />
+            <Menu size={26} className="sm:w-7 sm:h-7" color="white" />
           )}
         </button>
       </div>
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="absolute top-[50px] left-0 w-full bg-black bg-opacity-90 flex flex-col items-center py-6 space-y-6 md:hidden">
+        <div className="absolute top-[52px] sm:top-[60px] left-0 w-full bg-black/95 backdrop-blur-md flex flex-col items-center py-6 sm:py-8 space-y-6 sm:space-y-7 md:hidden shadow-lg">
           <NavLinks />
           <SocialLinks />
         </div>

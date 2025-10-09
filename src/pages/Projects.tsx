@@ -9,7 +9,8 @@ import task from "../assets/task.png";
 import { Card } from "../components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../components/ui/button";
-import { Github } from "lucide-react";
+
+import { FiGithub } from "react-icons/fi";
 
 interface ProjectProps {
   projectsRef: React.RefObject<HTMLDivElement | null>;
@@ -94,21 +95,18 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
     },
   ];
   return (
-    <div className="bg-secondary md:py-20 py-10" ref={projectsRef}>
-      <div>
-        <h1 className="md:text-5xl text-3xl font-bold text-center pb-5">
-          Featured{" "}
-          <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
-            Projects
-          </span>
+    <div className="bg-secondary lg:py-20 py-10" ref={projectsRef}>
+      <div className="px-4 sm:px-6 md:px-8">
+        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-5">
+          Featured Projects
         </h1>
-        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center md:pb-20 pb-10">
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] text-muted-foreground text-center md:pb-20 pb-8 mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] ">
           A showcase of my recent work, demonstrating expertise in modern web
           technologies, a variety of technical skills, and creative
           problem-solving approaches.
-        </h1>
+        </p>
       </div>
-      <div className="md:mx-auto mx-2 md:w-[60%]  space-y-10">
+      <div className="mx-auto w-[95%] sm:w-[90%] md:w-[85%] lg:w-[70%] space-y-8 sm:space-y-10 px-2 sm:px-4">
         {projectData.map(
           (project, index) =>
             project.featured && (
@@ -127,28 +125,31 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         )}
       </div>
 
-      <div className="mt-10">
-        <h1 className="text-center md:text-3xl text-xl font-bold">
+      <div className="mt-12 sm:mt-14 px-4 sm:px-6 md:px-8">
+        <h1 className="text-center text-2xl sm:text-3xl font-bold">
           More Projects
         </h1>
-        <div className="grid md:grid-cols-3 md:mx-20 mx-2 gap-10 md:mt-10 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[90%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
           {projectData.map(
-            (project) =>
+            (project, idx) =>
               !project.featured && (
-                <Card className="hover:scale-110 transition-all duration-500  p-5">
-                  <div className=" px-5 my-auto">
-                    <h1 className="md:text-xl text-[18px] font-bold text-foreground mb-4">
+                <Card
+                  key={project.title + idx}
+                  className="hover:scale-105 transition-all duration-500 p-4 sm:p-5 lg:p-5"
+                >
+                  <div className="px-2 sm:px-3 lg:px-5 my-auto">
+                    <h2 className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-2 sm:mb-5">
                       {project.title}
-                    </h1>
-                    <h1 className="text-muted-foreground mb-6 leading-relaxed text-[14px]">
+                    </h2>
+                    <p className="text-muted-foreground mb-3 sm:mb-8 leading-relaxed text-xs sm:text-sm lg:text-[18px]">
                       {project.description}
-                    </h1>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-8">
                       {project.techStack.map((tech, techIndex) => (
                         <Badge
                           key={techIndex}
                           variant="outline"
-                          className="bg-secondary text-foreground hover:bg-accent/10 transition-smooth text-[12px]"
+                          className="bg-secondary text-foreground hover:bg-accent/10 transition-smooth text-xs sm:text-sm lg:text-[16px] px-2 py-0.5"
                         >
                           {tech}
                         </Badge>
@@ -157,44 +158,64 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
 
                     <div>
                       {project.frontendUrl && project.backendUrl ? (
-                        <div className="flex gap-4">
+                        <div className="flex flex-col gap-2 sm:gap-3 lg:flex-row lg:gap-4">
                           <Button
                             variant="secondary"
-                            className="text-white hover:scale-110 transition-all duration-500 p-5 text-[12px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"
+                            className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
                           >
                             <a
                               href={project.frontendUrl}
-                              className="flex items-center gap-2"
+                              className="flex items-center justify-center gap-2 w-full"
                             >
-                              <Github size={18} color="white" />
-                              Frontend Source Code
+                              <FiGithub
+                                size={14}
+                                className="sm:w-4 sm:h-4"
+                                color="white"
+                              />
+                              <span className="hidden sm:inline lg:inline">
+                                Frontend Source Code
+                              </span>
+                              <span className="sm:hidden">Frontend</span>
                             </a>
                           </Button>
                           <Button
                             variant="secondary"
-                            className="text-white hover:scale-110 transition-all duration-500 p-5 text-[12px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"
+                            className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
                           >
                             <a
                               href={project.backendUrl}
-                              className="flex items-center gap-2"
+                              className="flex items-center justify-center gap-2 w-full"
                             >
-                              <Github size={18} color="white" />
-                              Backend Source Code
+                              <FiGithub
+                                size={14}
+                                className="sm:w-4 sm:h-4"
+                                color="white"
+                              />
+                              <span className="hidden sm:inline lg:inline">
+                                Backend Source Code
+                              </span>
+                              <span className="sm:hidden">Backend</span>
                             </a>
                           </Button>
                         </div>
                       ) : (
                         <Button
                           variant="secondary"
-                          className="text-white hover:scale-110 transition-all duration-500 p-5 text-[12px]  bg-secondary hover:bg-gradient-to-r from-[#a855f7]  to-blue-500 hover:border-transparent cursor-pointer"
+                          className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
                         >
-                          {" "}
                           <a
                             href={project.projectUrl}
-                            className="flex items-center gap-2"
+                            className="flex items-center justify-center gap-2 w-full"
                           >
-                            <Github size={18} color="white" />
-                            Source Code{" "}
+                            <FiGithub
+                              size={14}
+                              className="sm:w-4 sm:h-4"
+                              color="white"
+                            />
+                            <span className="hidden sm:inline lg:inline">
+                              Source Code
+                            </span>
+                            <span className="sm:hidden">Source</span>
                           </a>
                         </Button>
                       )}

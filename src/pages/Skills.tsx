@@ -25,27 +25,23 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
     { skillName: "Git", skillLogo: gitLogo },
   ];
   return (
-    <div ref={skillsRef} className="md:py-20 py-10">
-      <div>
-        <h1 className="md:text-5xl text-3xl font-bold text-center pb-5">
-          Skills &
-          <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
-            Expertise
-          </span>
+    <div ref={skillsRef} className="py-10 sm:py-12 md:py-16 lg:py-20">
+      <div className="px-4 sm:px-6 md:px-8">
+        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-4 sm:pb-5">
+          Skills & Expertise
         </h1>
-        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center pb-10">
-          With a balnace of technical expertise and creative problem-solving, I
-          enjoy turning complex challenges into clean, scalale and user-
-          friendly solutions
-        </h1>
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10">
+          With a balance of technical expertise and creative problem-solving, I
+          enjoy turning complex challenges into clean, scalable and user-
+          friendly solutions.
+        </p>
       </div>
 
-      <div className="h-[3px] w-52 mx-auto rounded-full bg-gradient-to-r from-[#a855f7] to-blue-500"></div>
-
-      <div className="grid place-content-center pt-10">
-        <div className="inline-grid md:grid-cols-4 grid-cols-3 md:gap-5 gap-2">
-          {skills.map((skill) => (
+      <div className="grid place-content-center pt-6 sm:pt-8 md:pt-10 px-4 sm:px-6 md:px-8">
+        <div className="inline-grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-5">
+          {skills.map((skill, index) => (
             <SkillCard
+              key={index}
               skillName={skill.skillName}
               skillLogo={skill.skillLogo}
             />

@@ -31,50 +31,50 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
     },
   ];
   return (
-    <div className="bg-secondary md:py-20 py-10" ref={aboutRef}>
-      <div>
-        <h1 className="md:text-5xl text-3xl font-bold text-center md:pb-5 pb-4">
-          Who I{" "}
-          <span className="bg-gradient-to-r from-[#a855f7]  to-blue-500    bg-clip-text text-transparent">
-            Am
-          </span>
+    <div
+      className="bg-secondary py-10 sm:py-12 md:py-16 lg:py-20"
+      ref={aboutRef}
+    >
+      <div className="px-4 sm:px-6 md:px-8">
+        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-3 sm:pb-4 lg:pb-5">
+          Who I Am
         </h1>
-        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center md:pb-20 pb-10">
-          I’m a full-stack web developer who enjoys building applications that
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10 md:pb-14 lg:pb-20">
+          I'm a full-stack web developer who enjoys building applications that
           are practical, scalable, and user-friendly. For me, coding is more
-          than just writing functions — it’s about designing solutions that make
+          than just writing functions — it's about designing solutions that make
           life easier for people.
-        </h1>
+        </p>
       </div>
-      <div>
-        <h1 className="font-semibold md:text-3xl text-2xl text-center md:pb-5 pb-4">
+      <div className="px-4 sm:px-6 md:px-8">
+        <h2 className="font-semibold text-2xl sm:text-3xl md:text-3xl lg:text-3xl text-center pb-3 sm:pb-4 lg:pb-5">
           My Journey
-        </h1>
-        <h1 className="md:text-[20px] text-[15px] md:mx-80 mx-2 text-gray-400 text-center pb-20">
+        </h2>
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10 md:pb-14 lg:pb-20">
           My Path in Development I started learning software development out of
           curiosity about how digital products work beneath the surface. Over
           time, that curiosity grew into a passion for creating software of my
           own. Today, I work mainly with React and Django REST Framework,
           crafting projects that connect clean back-end logic with smooth
           front-end experiences.
-        </h1>
+        </p>
       </div>
-      <div>
-        <h1 className="font-semibold md:text-3xl text-2xl text-center mb-5">
+      <div className="px-4 sm:px-6 md:px-8">
+        <h3 className="font-semibold text-2xl sm:text-3xl md:text-3xl lg:text-3xl text-center mb-4 sm:mb-5">
           What I Focus On
-        </h1>
-        <div className="grid md:grid-cols-4 grid-cols-2 md:gap-6 md:mx-20 gap-2 mx-5">
+        </h3>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:mx-20">
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-card hover:scale-110 cursor-pointer transition-all duration-300 "
+              className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-card hover:scale-105 lg:hover:scale-110 cursor-pointer transition-all duration-300"
             >
-              <CardContent className=" text-center">
-                <feature.icon className="h-8 w-8 text-primary mx-auto mb-4" />
-                <h4 className="font-semibold mb-2 md:text-[16px] text-[15px]">
+              <CardContent className="text-center p-4 sm:p-5 md:p-5 lg:p-6">
+                <feature.icon className="h-7 w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 text-primary mx-auto mb-3 sm:mb-4" />
+                <h4 className="font-semibold mb-2 text-xs sm:text-sm md:text-base lg:text-[18px]">
                   {feature.title}
                 </h4>
-                <p className="md:text-sm text-[13px] text-muted-foreground">
+                <p className="text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </CardContent>
