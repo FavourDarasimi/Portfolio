@@ -39,7 +39,7 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-3 sm:pb-4 lg:pb-5">
           Who I Am
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[90%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10 md:pb-14 lg:pb-20">
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[90%] 2xl:mx-72 text-muted-foreground text-center pb-8 sm:pb-10 md:pb-14 lg:pb-20">
           I'm a full-stack web developer who enjoys building applications that
           are practical, scalable, and user-friendly. For me, coding is more
           than just writing functions — it's about designing solutions that make
@@ -50,7 +50,7 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
         <h2 className="font-semibold text-2xl sm:text-3xl md:text-3xl lg:text-3xl text-center pb-3 sm:pb-4 lg:pb-5">
           My Journey
         </h2>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[90%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10 md:pb-14 lg:pb-20">
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[90%] 2xl:mx-72 text-muted-foreground text-center pb-8 sm:pb-10 md:pb-14 lg:pb-20">
           My Path in Development I started learning software development out of
           curiosity about how digital products work beneath the surface. Over
           time, that curiosity grew into a passion for creating software of my

@@ -12,6 +12,7 @@ interface ProjectProps {
   projectUrl: string | undefined;
   frontendUrl: string | undefined;
   backendUrl: string | undefined;
+  liveUrl: string | undefined;
   index: number;
   techStack: string[];
 }
@@ -25,10 +26,11 @@ const ProjectCard: React.FC<ProjectProps> = ({
   techStack,
   frontendUrl,
   backendUrl,
+  liveUrl,
 }) => {
   return (
     <Card
-      className={`overflow-hidden -py-6 card-gradient border-border hover:shadow-card transition-smooth group ${
+      className={`overflow-hidden  card-gradient border-border hover:shadow-card transition-smooth group ${
         index % 2 === 1 ? "lg:flex-row-reverse" : ""
       }`}
     >
@@ -37,7 +39,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
-        <div className="flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-10 lg:w-1/2 overflow-hidden bg-neutral-700">
+        <div className="flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-2 xl:p-5 lg:w-1/2 overflow-hidden bg-neutral-700 -pl-5 -my-6">
           {imageUrl &&
             imageUrl.map((url, imgIndex) =>
               imgIndex == 1 ? (
@@ -45,7 +47,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
                   key={imgIndex}
                   src={url}
                   alt={`${title} mobile preview`}
-                  className="w-28 sm:w-32 md:w-36 lg:w-40 h-[200px] sm:h-[200px] md:h-56 lg:h-[330px] absolute right-10 transition-smooth group-hover:scale-105 duration-500 "
+                  className="w-28 sm:w-32 md:w-36 lg:w-40 h-[200px] sm:h-[200px] md:h-56 lg:h-[330px] absolute lg:right-10 right-5 transition-smooth group-hover:scale-105 duration-500 "
                 />
               ) : (
                 <img
@@ -58,7 +60,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
             )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-smooth hover:duration-500" />
         </div>
-        <div className="lg:w-1/2 px-4 sm:px-5 md:px-6 lg:px-4 my-auto py-6 sm:py-5 md:py-6 lg:py-0">
+        <div className="lg:w-1/2 h-fit px-4 sm:px-5 md:px-6 lg:px-4 my-auto py-6 sm:py-5 md:py-6 lg:py-0">
           <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3">
             {title}
           </h1>
@@ -78,8 +80,24 @@ const ProjectCard: React.FC<ProjectProps> = ({
           </div>
 
           <div>
-            {frontendUrl && backendUrl ? (
-              <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row gap-3 sm:gap-3 md:gap-4">
+            {liveUrl ? (
+              <Button
+                variant="secondary"
+                className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
+              >
+                <a
+                  href={liveUrl}
+                  className="flex items-center justify-center gap-2 w-full"
+                >
+                  <FiGithub size={14} className="sm:w-4 sm:h-4" color="white" />
+                  <span className="hidden sm:inline lg:inline">
+                    Live Preview
+                  </span>
+                  <span className="sm:hidden">Live Preview</span>
+                </a>
+              </Button>
+            ) : frontendUrl && backendUrl ? (
+              <div className="flex flex-col sm:flex-col md:flex-col lg:flex-col gap-3 sm:gap-3 md:gap-4">
                 <Button
                   variant="secondary"
                   className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-3 text-xs sm:text-sm md:text-[15px] lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"

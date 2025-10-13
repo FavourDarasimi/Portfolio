@@ -23,7 +23,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       description:
         "A modern, responsive school website with a clean UI, interactive features, and mobile-first design. Built with HTML, CSS, and JavaScript to showcase academic programs, student life, and core values.",
       imageUrl: [eduverse, eduversemobile],
-      projectUrl: "https://github.com/FavourDarasimi/EduVerse.git",
+      liveUrl: "http://edu-verse-gamma.vercel.app",
       techStack: ["HTML", "CSS", "JavaScript"],
       featured: true,
     },
@@ -66,7 +66,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Anime Hub",
       description:
         "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
-      projectUrl: "https://github.com/FavourDarasimi/Anime-Hub.git",
+      liveUrl: "https://anime-hub.pxxl.click/",
       techStack: [
         "TypeScript",
         "React",
@@ -81,7 +81,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Food Delivery",
       description:
         "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
-      projectUrl: "https://github.com/FavourDarasimi/Anime-Hub.git",
+      liveUrl: "https://food-delivery-website-frontend.pxxl.click/",
       techStack: ["JavaScript", "React", "Tailwind CSS"],
       featured: false,
     },
@@ -106,7 +106,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
           problem-solving approaches.
         </p>
       </div>
-      <div className="mx-auto w-[95%] sm:w-[90%] md:w-[85%] lg:w-[70%] space-y-8 sm:space-y-10 px-2 sm:px-4">
+      <div className="mx-auto w-[95%] sm:w-[90%] md:w-[70%] lg:w-[95%] 2xl:w-[75%]  space-y-8 sm:space-y-10 px-2 sm:px-4">
         {projectData.map(
           (project, index) =>
             project.featured && (
@@ -119,6 +119,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                 projectUrl={project.projectUrl}
                 frontendUrl={project.frontendUrl}
                 backendUrl={project.backendUrl}
+                liveUrl={project.liveUrl}
                 techStack={project.techStack}
               />
             )
@@ -129,7 +130,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         <h1 className="text-center text-2xl sm:text-3xl font-bold">
           More Projects
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[95%] lg:max-w-[90%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[95%] lg:w-[95%] 2xl:w-[75%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
           {projectData.map(
             (project, idx) =>
               !project.featured && (
@@ -157,7 +158,27 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                     </div>
 
                     <div>
-                      {project.frontendUrl && project.backendUrl ? (
+                      {project.liveUrl ? (
+                        <Button
+                          variant="secondary"
+                          className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
+                        >
+                          <a
+                            href={project.liveUrl}
+                            className="flex items-center justify-center gap-2 w-full"
+                          >
+                            <FiGithub
+                              size={14}
+                              className="sm:w-4 sm:h-4"
+                              color="white"
+                            />
+                            <span className="hidden sm:inline lg:inline">
+                              Live Preview
+                            </span>
+                            <span className="sm:hidden">Live Preview</span>
+                          </a>
+                        </Button>
+                      ) : project.frontendUrl && project.backendUrl ? (
                         <div className="flex flex-col gap-2 sm:gap-3 lg:flex-row lg:gap-4">
                           <Button
                             variant="secondary"
@@ -175,7 +196,9 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                               <span className="hidden sm:inline lg:inline">
                                 Frontend Source Code
                               </span>
-                              <span className="sm:hidden">Frontend</span>
+                              <span className="sm:hidden">
+                                Frontend Source Code
+                              </span>
                             </a>
                           </Button>
                           <Button
@@ -194,7 +217,9 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                               <span className="hidden sm:inline lg:inline">
                                 Backend Source Code
                               </span>
-                              <span className="sm:hidden">Backend</span>
+                              <span className="sm:hidden">
+                                Backend Source Code
+                              </span>
                             </a>
                           </Button>
                         </div>
@@ -215,7 +240,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                             <span className="hidden sm:inline lg:inline">
                               Source Code
                             </span>
-                            <span className="sm:hidden">Source</span>
+                            <span className="sm:hidden">Source Code</span>
                           </a>
                         </Button>
                       )}

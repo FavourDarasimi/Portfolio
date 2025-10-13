@@ -30,7 +30,7 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-4 sm:pb-5">
           Skills & Expertise
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10">
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] 2xl:mx-80 text-muted-foreground text-center pb-8 sm:pb-10">
           With a balance of technical expertise and creative problem-solving, I
           enjoy turning complex challenges into clean, scalable and user-
           friendly solutions.
