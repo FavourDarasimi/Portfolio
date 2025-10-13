@@ -37,7 +37,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
-        <div className="flex items-center relative p-4 sm:p-6 md:p-8 lg:p-10 lg:w-1/2 overflow-hidden bg-neutral-700">
+        <div className="flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-10 lg:w-1/2 overflow-hidden bg-neutral-700">
           {imageUrl &&
             imageUrl.map((url, imgIndex) =>
               imgIndex == 1 ? (
@@ -45,14 +45,14 @@ const ProjectCard: React.FC<ProjectProps> = ({
                   key={imgIndex}
                   src={url}
                   alt={`${title} mobile preview`}
-                  className="w-28 sm:w-32 md:w-36 lg:w-40 h-[180px] sm:h-[200px] md:h-56 lg:h-72 absolute right-0 transition-smooth group-hover:scale-105 duration-500 object-cover"
+                  className="w-28 sm:w-32 md:w-36 lg:w-40 h-[200px] sm:h-[200px] md:h-56 lg:h-[330px] absolute right-10 transition-smooth group-hover:scale-105 duration-500 "
                 />
               ) : (
                 <img
                   key={imgIndex}
                   src={url}
                   alt={`${title} desktop preview`}
-                  className="w-full sm:w-[90%] md:w-[87%] lg:w-[85%] h-[160px] sm:h-[180px] md:h-56 lg:h-[300px] object-cover transition-smooth group-hover:scale-105 duration-500"
+                  className="lg:w-full  h-[200px] sm:h-[180px] md:h-56 lg:h-[330px]  transition-smooth group-hover:scale-105 duration-500"
                 />
               )
             )}

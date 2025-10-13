@@ -38,7 +38,7 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
       </div>
 
       <div className="grid place-content-center pt-6 sm:pt-8 md:pt-10 px-4 sm:px-6 md:px-8">
-        <div className="inline-grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-5">
+        <div className="inline-grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-5">
           {skills.map((skill, index) => (
             <SkillCard
               key={index}

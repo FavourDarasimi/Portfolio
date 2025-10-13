@@ -24,7 +24,7 @@ const NavBar: React.FC<NavBarProps> = ({
   const [menuOpen, setMenuOpen] = useState(false);
 
   const NavLinks = () => (
-    <div className="flex md:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
+    <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
       <h1
         className="text-muted-foreground hover:text-white hover:border-b-2 hover:border-white cursor-pointer text-base md:text-[16px] lg:text-[18px] transition-all duration-500"
         onClick={() => {
@@ -114,15 +114,15 @@ const NavBar: React.FC<NavBarProps> = ({
       </h1>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <NavLinks />
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <SocialLinks />
       </div>
 
       {/* Mobile Hamburger */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
           {menuOpen ? (
             <X size={26} className="sm:w-7 sm:h-7" color="white" />
@@ -134,7 +134,7 @@ const NavBar: React.FC<NavBarProps> = ({
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="absolute top-[52px] sm:top-[60px] left-0 w-full bg-black/95 backdrop-blur-md flex flex-col items-center py-6 sm:py-8 space-y-6 sm:space-y-7 md:hidden shadow-lg">
+        <div className="absolute top-[52px] sm:top-[60px] left-0 w-full bg-black/95 backdrop-blur-md flex flex-col items-center py-6 sm:py-8 space-y-6 sm:space-y-7 lg:hidden shadow-lg">
           <NavLinks />
           <SocialLinks />
         </div>

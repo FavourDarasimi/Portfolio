@@ -1,9 +1,9 @@
 import React from "react";
 import ProjectCard from "../components/ProjectCard";
-import eduverse from "../assets/eduverse.png";
-import eduversemobile from "../assets/screenshot-1757183157804-portrait.png";
-import blogmobile from "../assets/blog mobile.png";
-import blog from "../assets/blog.png";
+import eduverse from "../assets/School Website Desktop.png";
+import eduversemobile from "../assets/School Website Mobile.png";
+import blogmobile from "../assets/Blogify Mobile.png";
+import blog from "../assets/Blogify Desktop.png";
 import taskmobile from "../assets/task mobile.png";
 import task from "../assets/task.png";
 import { Card } from "../components/ui/card";
@@ -129,7 +129,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         <h1 className="text-center text-2xl sm:text-3xl font-bold">
           More Projects
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[90%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[95%] lg:max-w-[90%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
           {projectData.map(
             (project, idx) =>
               !project.featured && (

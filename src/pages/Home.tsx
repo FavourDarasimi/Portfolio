@@ -15,9 +15,20 @@ const Home: React.FC<HomeProps> = ({ homeRef }) => {
       className="min-h-screen flex flex-col lg:flex-row justify-center items-center px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 md:py-14 lg:py-10"
       ref={homeRef}
     >
+      <div className="lg:hidden w-72 sm:w-56 md:w-[400px]  xl:w-[30%] flex justify-center  lg:mx-0 mb-8 sm:mb-10 lg:mt-0">
+        <picture>
+          <source media="(max-width: 480px)" srcSet={photo_mobile} />
+          <source media="(max-width: 768px)" srcSet={photo_tablet} />
+          <img
+            src={photo}
+            alt="Portrait of Darasimi Olaniran"
+            className="rounded-full  md:w-[350px] md:h-[350px] w-[200px] h-[200px] object-cover shadow-lg"
+          />
+        </picture>
+      </div>
       <div className="flex flex-col gap-5 sm:gap-6 w-full lg:w-[60%] lg:text-left text-center lg:items-start items-center">
         <div>
-          <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
             Darasimi Olaniran
           </h1>
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-7xl font-bold mt-1 sm:mt-2 leading-tight">
@@ -41,14 +52,14 @@ const Home: React.FC<HomeProps> = ({ homeRef }) => {
         </div>
       </div>
 
-      <div className="lg:w-[30%] w-72 sm:w-56 md:w-[400px]  xl:w-[30%] flex-shrink-0 mx-4 lg:mx-0 mt-8 sm:mt-10 lg:mt-0">
+      <div className="lg:w-[30%] hidden lg:flex xl:w-[30%] flex-shrink-0 mx-4 lg:mx-0 mt-8 sm:mt-10 lg:mt-0">
         <picture>
           <source media="(max-width: 480px)" srcSet={photo_mobile} />
           <source media="(max-width: 768px)" srcSet={photo_tablet} />
           <img
             src={photo}
             alt="Portrait of Darasimi Olaniran"
-            className="lg:rounded-full rounded-2xl w-full h-full object-cover shadow-lg"
+            className="lg:rounded-full rounded-2xl w-[500px] h-[500px] object-cover shadow-lg"
           />
         </picture>
       </div>
