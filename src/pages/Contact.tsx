@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiGithub } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 interface ContactProps {
   contactRef: React.RefObject<HTMLDivElement | null>;
@@ -26,6 +27,24 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
       icon: <MessageCircle />,
     },
   ];
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_dup8s1v",
+        "template_8mdt58c",
+        e.target,
+        "53CabAy4bE6nw2YLm"
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+      })
+      .catch((error) => {
+        alert("Failed to send message");
+      });
+  };
   return (
     <div ref={contactRef} className="py-10 sm:py-12 md:py-16 lg:py-20">
       <div className="px-4 sm:px-6 md:px-8">
@@ -44,7 +63,10 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
             Fill out the form below and I'll get back to you as soon as
             possible.
           </p>
-          <form className="space-y-4 sm:space-y-5 mt-5 sm:mt-7">
+          <form
+            className="space-y-4 sm:space-y-5 mt-5 sm:mt-7"
+            onSubmit={handleSubmit}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5">
               <div className="space-y-2 sm:space-y-3">
                 <Label
@@ -53,7 +75,11 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                 >
                   Name
                 </Label>
-                <Input placeholder="your full name" className="h-10 sm:h-11" />
+                <Input
+                  placeholder="your full name"
+                  className="h-10 sm:h-11"
+                  name="name"
+                />
               </div>
               <div className="space-y-2 sm:space-y-3">
                 <Label
@@ -62,12 +88,16 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                 >
                   Email
                 </Label>
-                <Input placeholder="your@email.com" className="h-10 sm:h-11" />
+                <Input
+                  placeholder="your@email.com"
+                  className="h-10 sm:h-11"
+                  name="email"
+                />
               </div>
             </div>
             <div className="space-y-2 sm:space-y-3">
               <Label
-                htmlFor="subject"
+                htmlFor="title"
                 className="text-sm sm:text-[14px] lg:text-[16px]"
               >
                 Subject
@@ -75,6 +105,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
               <Input
                 placeholder="What's this about?"
                 className="h-10 sm:h-11"
+                name="title"
               />
             </div>
             <div className="space-y-2 sm:space-y-3">
@@ -85,6 +116,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                 Message
               </Label>
               <Textarea
+                name="message"
                 placeholder="Tell me about your project or idea..."
                 className="h-32 sm:h-36 resize-none"
               />

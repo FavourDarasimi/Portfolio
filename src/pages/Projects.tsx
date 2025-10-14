@@ -80,7 +80,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
     {
       title: "Food Delivery",
       description:
-        "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
+        "A responsive food delivery platform with dynamic menu filtering, real-time cart management, and multi-step checkout. Features category browsing, live price calculations, and secure authentication for seamless meal ordering.",
       liveUrl: "https://food-delivery-website-frontend.pxxl.click/",
       techStack: ["JavaScript", "React", "Tailwind CSS"],
       featured: false,
@@ -88,7 +88,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
     {
       title: "Clothing E-Commerce Platform",
       description:
-        "A responsive anime discovery platform with a clean UI and smooth browsing experience. Features real-time search, advanced filtering, infinite scroll, and dark mode. Built with React, TypeScript, Tailwind, and the Jikan API",
+        "A full-stack e-commerce platform with category filtering, shopping cart management, user authentication, and product reviews. Built with Django, featuring persistent carts, real-time calculations, and admin inventory control.",
       projectUrl: "https://github.com/FavourDarasimi/Anime-Hub.git",
       techStack: ["HTML", "CSS", "Python", "Django"],
       featured: false,

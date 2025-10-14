@@ -31,7 +31,11 @@ function App() {
           contactRef={contactRef}
           scrollToSection={scrollToSection}
         />
-        <Home homeRef={homeRef} />
+        <Home
+          homeRef={homeRef}
+          projectsRef={projectsRef}
+          scrollToSection={scrollToSection}
+        />
         <About aboutRef={aboutRef} />
         <Skills skillsRef={skillsRef} />
         <Projects projectsRef={projectsRef} />

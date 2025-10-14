@@ -7,9 +7,23 @@ import photo_tablet from "../assets/photo_tablet.webp";
 
 interface HomeProps {
   homeRef: React.RefObject<HTMLDivElement | null>;
+  projectsRef: React.RefObject<HTMLDivElement | null>;
+  scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ homeRef }) => {
+const Home: React.FC<HomeProps> = ({
+  homeRef,
+  projectsRef,
+  scrollToSection,
+}) => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "./Darasimi_CV.pdf";
+    link.download = "Darasimi_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div
       className="min-h-screen flex flex-col lg:flex-row justify-center items-center px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:gap-10 2xl:gap-0 md:py-14 lg:py-10"
@@ -42,10 +56,16 @@ const Home: React.FC<HomeProps> = ({ homeRef }) => {
           </p>
         </div>
         <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full sm:w-auto">
-          <Button className="bg-white border-[#3b3d49] hover:bg-[#3b3d49] hover:text-white transition-all duration-300 px-5 py-2 sm:px-6 sm:py-2 md:px-8 md:py-8 text-sm sm:text-base md:text-[17px] w-full sm:w-auto">
+          <Button
+            onClick={() => scrollToSection(projectsRef)}
+            className="bg-white border-[#3b3d49] hover:bg-[#3b3d49] hover:text-white transition-all duration-300 px-5 py-2 sm:px-6 sm:py-2 md:px-8 md:py-8 text-sm sm:text-base md:text-[17px] w-full sm:w-auto"
+          >
             View Projects
           </Button>
-          <Button className="bg-transparent border-[1px] border-[#3b3d49] hover:bg-[#3b3d49] text-white transition-all duration-300 px-5 py-2 sm:px-6 sm:py-2 md:px-8 md:py-8 text-sm sm:text-base md:text-[17px] flex items-center justify-center gap-2 w-full sm:w-auto">
+          <Button
+            onClick={() => handleDownload()}
+            className="bg-transparent border-[1px] border-[#3b3d49] hover:bg-[#3b3d49] text-white transition-all duration-300 px-5 py-2 sm:px-6 sm:py-2 md:px-8 md:py-8 text-sm sm:text-base md:text-[17px] flex items-center justify-center gap-2 w-full sm:w-auto"
+          >
             <Download className="w-4 h-4 sm:w-5 sm:h-5" />
             <span>Download CV</span>
           </Button>
