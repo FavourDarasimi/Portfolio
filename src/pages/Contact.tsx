@@ -41,7 +41,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
       .then(() => {
         alert("Message sent successfully!");
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Failed to send message");
       });
   };
