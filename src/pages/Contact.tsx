@@ -30,14 +30,25 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const serviceId = import.meta.env.VITE_SERVICE_ID;
+    const templateId = import.meta.env.VITE_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
+    if (!serviceId) {
+      alert("Email service ID is not configured.");
+      return;
+    }
+    if (!publicKey) {
+      alert("Email Public Key is not configured.");
+      return;
+    }
+    if (!templateId) {
+      alert("Email Template Id is not configured.");
+      return;
+    }
+    alert("Sending message...");
     emailjs
-      .sendForm(
-        "service_dup8s1v",
-        "template_8mdt58c",
-        e.target,
-        "53CabAy4bE6nw2YLm"
-      )
+      .sendForm(serviceId, templateId, e.target, publicKey)
       .then(() => {
         alert("Message sent successfully!");
       })
