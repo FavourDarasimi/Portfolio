@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import eduverse from "../assets/School Website Desktop.png";
 import eduversemobile from "../assets/School Website Mobile.png";
@@ -9,7 +10,6 @@ import task from "../assets/task.png";
 import { Card } from "../components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../components/ui/button";
-
 import { FiGithub } from "react-icons/fi";
 
 interface ProjectProps {
@@ -73,7 +73,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         "Tailwind CSS",
         "React Query",
         "Axios",
-        "Jikan API ",
+        "Jikan API",
       ],
       featured: false,
     },
@@ -94,19 +94,52 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       featured: false,
     },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as const },
+    },
+    hover: {
+      scale: 1.02,
+      transition: { duration: 0.3 },
+    },
+  };
+
   return (
     <div className="bg-secondary lg:py-20 py-10" ref={projectsRef}>
-      <div className="px-4 sm:px-6 md:px-8">
+      <motion.div
+        className="px-4 sm:px-6 md:px-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-5">
           Featured Projects
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] text-muted-foreground text-center md:pb-20 pb-8 mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] ">
+        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] text-muted-foreground text-center md:pb-20 pb-8 mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%]">
           A showcase of my recent work, demonstrating expertise in modern web
           technologies, a variety of technical skills, and creative
           problem-solving approaches.
         </p>
-      </div>
-      <div className="mx-auto w-[95%] sm:w-[90%] md:w-[70%] lg:w-[95%] 2xl:w-[75%]  space-y-8 sm:space-y-10 px-2 sm:px-4">
+      </motion.div>
+
+      <div className="mx-auto w-[95%] sm:w-[90%] md:w-[70%] lg:w-[95%] 2xl:w-[75%] space-y-8 sm:space-y-10 px-2 sm:px-4">
         {projectData.map(
           (project, index) =>
             project.featured && (
@@ -126,131 +159,184 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
         )}
       </div>
 
-      <div className="mt-12 sm:mt-14 px-4 sm:px-6 md:px-8">
+      <motion.div
+        className="mt-12 sm:mt-14 px-4 sm:px-6 md:px-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <h1 className="text-center text-2xl sm:text-3xl font-bold">
           More Projects
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[95%] lg:w-[95%] 2xl:w-[75%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
-          {projectData.map(
-            (project, idx) =>
-              !project.featured && (
-                <Card
-                  key={project.title + idx}
-                  className="hover:scale-105 transition-all duration-500 p-4 sm:p-5 lg:p-5"
-                >
-                  <div className="px-2 sm:px-3 lg:px-5 my-auto">
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[95%] lg:w-[95%] 2xl:w-[75%] gap-6 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {projectData.map((project, idx) =>
+            !project.featured ? (
+              <motion.div
+                key={project.title + idx}
+                variants={cardVariants}
+                whileHover="hover"
+              >
+                <Card className="hover:shadow-lg transition-all duration-500 p-4 sm:p-5 lg:p-5 h-full flex flex-col">
+                  <div className="px-2 sm:px-3 lg:px-5 my-auto flex-1">
                     <h2 className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-2 sm:mb-5">
                       {project.title}
                     </h2>
                     <p className="text-muted-foreground mb-3 sm:mb-8 leading-relaxed text-xs sm:text-sm lg:text-[18px]">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-8">
+                    <motion.div
+                      className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-8"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                          opacity: 1,
+                          transition: { staggerChildren: 0.05 },
+                        },
+                      }}
+                    >
                       {project.techStack.map((tech, techIndex) => (
-                        <Badge
+                        <motion.div
                           key={techIndex}
-                          variant="outline"
-                          className="bg-secondary text-foreground hover:bg-accent/10 transition-smooth text-xs sm:text-sm lg:text-[16px] px-2 py-0.5"
+                          variants={{
+                            hidden: { opacity: 0, scale: 0.8 },
+                            visible: { opacity: 1, scale: 1 },
+                          }}
+                          whileHover={{ scale: 1.1 }}
                         >
-                          {tech}
-                        </Badge>
+                          <Badge
+                            variant="outline"
+                            className="bg-secondary text-foreground hover:bg-accent/10 transition-smooth text-xs sm:text-sm lg:text-[16px] px-2 py-0.5 cursor-pointer"
+                          >
+                            {tech}
+                          </Badge>
+                        </motion.div>
                       ))}
-                    </div>
+                    </motion.div>
 
                     <div>
                       {project.liveUrl ? (
-                        <Button
-                          variant="secondary"
-                          className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          <a
-                            href={project.liveUrl}
-                            className="flex items-center justify-center gap-2 w-full"
+                          <Button
+                            variant="secondary"
+                            className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
                           >
-                            <FiGithub
-                              size={14}
-                              className="sm:w-4 sm:h-4"
-                              color="white"
-                            />
-                            <span className="hidden sm:inline lg:inline">
-                              Live Preview
-                            </span>
-                            <span className="sm:hidden">Live Preview</span>
-                          </a>
-                        </Button>
+                            <a
+                              href={project.liveUrl}
+                              className="flex items-center justify-center gap-2 w-full"
+                            >
+                              <FiGithub
+                                size={14}
+                                className="sm:w-4 sm:h-4"
+                                color="white"
+                              />
+                              <span className="hidden sm:inline lg:inline">
+                                Live Preview
+                              </span>
+                              <span className="sm:hidden">Live Preview</span>
+                            </a>
+                          </Button>
+                        </motion.div>
                       ) : project.frontendUrl && project.backendUrl ? (
                         <div className="flex flex-col gap-2 sm:gap-3 lg:flex-row lg:gap-4">
-                          <Button
-                            variant="secondary"
-                            className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1"
                           >
-                            <a
-                              href={project.frontendUrl}
-                              className="flex items-center justify-center gap-2 w-full"
+                            <Button
+                              variant="secondary"
+                              className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full"
                             >
-                              <FiGithub
-                                size={14}
-                                className="sm:w-4 sm:h-4"
-                                color="white"
-                              />
-                              <span className="hidden sm:inline lg:inline">
-                                Frontend Source Code
-                              </span>
-                              <span className="sm:hidden">
-                                Frontend Source Code
-                              </span>
-                            </a>
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
+                              <a
+                                href={project.frontendUrl}
+                                className="flex items-center justify-center gap-2 w-full"
+                              >
+                                <FiGithub
+                                  size={14}
+                                  className="sm:w-4 sm:h-4"
+                                  color="white"
+                                />
+                                <span className="hidden sm:inline lg:inline">
+                                  Frontend Code
+                                </span>
+                                <span className="sm:hidden">Frontend</span>
+                              </a>
+                            </Button>
+                          </motion.div>
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1"
                           >
-                            <a
-                              href={project.backendUrl}
-                              className="flex items-center justify-center gap-2 w-full"
+                            <Button
+                              variant="secondary"
+                              className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full"
                             >
-                              <FiGithub
-                                size={14}
-                                className="sm:w-4 sm:h-4"
-                                color="white"
-                              />
-                              <span className="hidden sm:inline lg:inline">
-                                Backend Source Code
-                              </span>
-                              <span className="sm:hidden">
-                                Backend Source Code
-                              </span>
-                            </a>
-                          </Button>
+                              <a
+                                href={project.backendUrl}
+                                className="flex items-center justify-center gap-2 w-full"
+                              >
+                                <FiGithub
+                                  size={14}
+                                  className="sm:w-4 sm:h-4"
+                                  color="white"
+                                />
+                                <span className="hidden sm:inline lg:inline">
+                                  Backend Code
+                                </span>
+                                <span className="sm:hidden">Backend</span>
+                              </a>
+                            </Button>
+                          </motion.div>
                         </div>
                       ) : (
-                        <Button
-                          variant="secondary"
-                          className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          <a
-                            href={project.projectUrl}
-                            className="flex items-center justify-center gap-2 w-full"
+                          <Button
+                            variant="secondary"
+                            className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
                           >
-                            <FiGithub
-                              size={14}
-                              className="sm:w-4 sm:h-4"
-                              color="white"
-                            />
-                            <span className="hidden sm:inline lg:inline">
-                              Source Code
-                            </span>
-                            <span className="sm:hidden">Source Code</span>
-                          </a>
-                        </Button>
+                            <a
+                              href={project.projectUrl}
+                              className="flex items-center justify-center gap-2 w-full"
+                            >
+                              <FiGithub
+                                size={14}
+                                className="sm:w-4 sm:h-4"
+                                color="white"
+                              />
+                              <span className="hidden sm:inline lg:inline">
+                                Source Code
+                              </span>
+                              <span className="sm:hidden">Source Code</span>
+                            </a>
+                          </Button>
+                        </motion.div>
                       )}
                     </div>
                   </div>
                 </Card>
-              )
+              </motion.div>
+            ) : null
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

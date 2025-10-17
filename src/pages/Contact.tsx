@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,7 +19,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
   const contactInfo = [
     {
       name: "Email",
-      detail: "darasimi0603@gmai.com",
+      detail: "darasimi0603@gmail.com",
       icon: <Mail />,
     },
     {
@@ -27,6 +28,26 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
       icon: <MessageCircle />,
     },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -56,9 +77,16 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
         alert("Failed to send message");
       });
   };
+
   return (
     <div ref={contactRef} className="py-10 sm:py-12 md:py-16 lg:py-20">
-      <div className="px-4 sm:px-6 md:px-8">
+      <motion.div
+        className="px-4 sm:px-6 md:px-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-4 sm:pb-5">
           Get In Touch
         </h1>
@@ -66,9 +94,16 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
           Have a project in mind or want to collaborate? I'd love to hear from
           you. Let's create something amazing together.
         </p>
-      </div>
+      </motion.div>
+
       <div className="grid gap-6 sm:gap-8 px-4 sm:px-6 md:px-8 lg:grid-cols-2 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:mx-20">
-        <div className="bg-secondary p-4 sm:p-5 md:p-6 lg:p-5 rounded-xl">
+        <motion.div
+          className="bg-secondary p-4 sm:p-5 md:p-6 lg:p-5 rounded-xl"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <h1 className="text-xl sm:text-2xl md:text-2xl">Send a Message</h1>
           <p className="mt-2 text-muted-foreground text-sm sm:text-[15px] md:text-[16px] font-extralight">
             Fill out the form below and I'll get back to you as soon as
@@ -79,7 +114,10 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
             onSubmit={handleSubmit}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5">
-              <div className="space-y-2 sm:space-y-3">
+              <motion.div
+                className="space-y-2 sm:space-y-3"
+                variants={itemVariants}
+              >
                 <Label
                   htmlFor="name"
                   className="text-sm sm:text-[14px] lg:text-[16px]"
@@ -91,8 +129,11 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                   className="h-10 sm:h-11"
                   name="name"
                 />
-              </div>
-              <div className="space-y-2 sm:space-y-3">
+              </motion.div>
+              <motion.div
+                className="space-y-2 sm:space-y-3"
+                variants={itemVariants}
+              >
                 <Label
                   htmlFor="email"
                   className="text-sm sm:text-[14px] lg:text-[16px]"
@@ -104,9 +145,12 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                   className="h-10 sm:h-11"
                   name="email"
                 />
-              </div>
+              </motion.div>
             </div>
-            <div className="space-y-2 sm:space-y-3">
+            <motion.div
+              className="space-y-2 sm:space-y-3"
+              variants={itemVariants}
+            >
               <Label
                 htmlFor="title"
                 className="text-sm sm:text-[14px] lg:text-[16px]"
@@ -118,8 +162,11 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                 className="h-10 sm:h-11"
                 name="title"
               />
-            </div>
-            <div className="space-y-2 sm:space-y-3">
+            </motion.div>
+            <motion.div
+              className="space-y-2 sm:space-y-3"
+              variants={itemVariants}
+            >
               <Label
                 htmlFor="message"
                 className="text-sm sm:text-[14px] lg:text-[16px]"
@@ -131,83 +178,118 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                 placeholder="Tell me about your project or idea..."
                 className="h-32 sm:h-36 resize-none"
               />
-            </div>
-            <Button className="w-full sm:w-auto px-6 sm:px-8">
-              Send Message
-            </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button className="w-full sm:w-auto px-6 sm:px-8">
+                Send Message
+              </Button>
+            </motion.div>
           </form>
-        </div>
-        <div className="flex flex-col justify-between gap-8 sm:gap-10">
-          <div>
-            <h1 className="text-xl sm:text-2xl md:text-2xl">Get in Touch</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5 mt-4 sm:mt-5">
+        </motion.div>
+
+        <motion.div
+          className="flex flex-col justify-between gap-8 sm:gap-10"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <h1 className="text-xl sm:text-2xl md:text-2xl mb-4">
+              Get in Touch
+            </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5">
               {contactInfo.map((info, index) => (
-                <Card
+                <motion.div
                   key={index}
-                  className="bg-secondary flex flex-row gap-4 sm:gap-5 items-start p-4 sm:p-5"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -5 }}
                 >
-                  <div className="mt-0.5">
-                    {React.cloneElement(info.icon, {
-                      className: "w-5 h-5 sm:w-6 sm:h-6",
-                    })}
-                  </div>
-                  <div className="space-y-2 sm:space-y-3">
-                    <h1 className="text-sm sm:text-[16px] lg:text-[18px] font-medium">
-                      {info.name}
-                    </h1>
-                    <h1 className="text-muted-foreground text-xs sm:text-[14px] lg:text-[16px]">
-                      {info.detail}
-                    </h1>
-                  </div>
-                </Card>
+                  <Card className="bg-secondary flex flex-row gap-4 sm:gap-5 items-start p-4 sm:p-5">
+                    <div className="mt-0.5">
+                      {React.cloneElement(info.icon, {
+                        className: "w-5 h-5 sm:w-6 sm:h-6",
+                      })}
+                    </div>
+                    <div className="space-y-2 sm:space-y-3">
+                      <h1 className="text-sm sm:text-[16px] lg:text-[18px] font-medium">
+                        {info.name}
+                      </h1>
+                      <h1 className="text-muted-foreground text-xs sm:text-[14px] lg:text-[16px]">
+                        {info.detail}
+                      </h1>
+                    </div>
+                  </Card>
+                </motion.div>
               ))}
             </div>
-          </div>
-          <div>
-            <h1 className="text-xl sm:text-2xl md:text-2xl">Follow Me</h1>
-            <div className="flex flex-row gap-4 sm:gap-5 mt-4 sm:mt-5">
-              <a
-                href="https://github.com/FavourDarasimi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-[1px] border-gray-600 rounded-full p-3 sm:p-4 w-fit hover:bg-[#3b3d49] transition-all duration-300 cursor-pointer"
-              >
-                <FiGithub
-                  size={20}
-                  className="sm:w-[23px] sm:h-[23px] md:w-[25px] md:h-[25px]"
-                />
-              </a>
-              <a
-                href="https://x.com/CodeWithDara?t=8fnrTaTdZ5jeNAZkom-X1w&s=09"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-[1px] border-gray-600 rounded-full p-3 sm:p-4 w-fit hover:bg-[#3b3d49] transition-all duration-300 cursor-pointer"
-              >
-                <FaXTwitter
-                  size={20}
-                  className="sm:w-[23px] sm:h-[23px] md:w-[25px] md:h-[25px]"
-                />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-[1px] border-gray-600 rounded-full p-3 sm:p-4 w-fit hover:bg-[#3b3d49] transition-all duration-300 cursor-pointer"
-              >
-                <FaLinkedinIn
-                  size={20}
-                  className="sm:w-[23px] sm:h-[23px] md:w-[25px] md:h-[25px]"
-                />
-              </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h1 className="text-xl sm:text-2xl md:text-2xl mb-4">Follow Me</h1>
+            <div className="flex flex-row gap-4 sm:gap-5">
+              {[
+                {
+                  href: "https://github.com/FavourDarasimi",
+                  icon: FiGithub,
+                  label: "GitHub",
+                },
+                {
+                  href: "https://x.com/CodeWithDara?t=8fnrTaTdZ5jeNAZkom-X1w&s=09",
+                  icon: FaXTwitter,
+                  label: "Twitter",
+                },
+                {
+                  href: "https://linkedin.com",
+                  icon: FaLinkedinIn,
+                  label: "LinkedIn",
+                },
+              ].map((social, idx) => (
+                <motion.a
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-[1px] border-gray-600 rounded-full p-3 sm:p-4 w-fit hover:bg-[#3b3d49] transition-all duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon
+                    size={20}
+                    className="sm:w-[23px] sm:h-[23px] md:w-[25px] md:h-[25px]"
+                  />
+                </motion.a>
+              ))}
             </div>
-          </div>
-          <div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+          >
             <Card className="bg-secondary p-4 sm:p-5 md:p-6 lg:p-5">
               <h1 className="text-lg sm:text-xl md:text-[21px] font-semibold mb-2">
                 Current Availability
               </h1>
               <h1 className="flex flex-row items-center gap-2 text-base sm:text-[17px] md:text-[18px] mb-2">
-                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-600 rounded-full flex-shrink-0"></span>
+                <motion.span
+                  className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-600 rounded-full flex-shrink-0"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
                 Available for new projects
               </h1>
               <h1 className="text-muted-foreground text-sm sm:text-[15px] md:text-[16px] leading-relaxed">
@@ -216,8 +298,8 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
                 impactful digital experiences.
               </h1>
             </Card>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
