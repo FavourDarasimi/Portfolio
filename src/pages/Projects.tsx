@@ -23,7 +23,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       description:
         "A modern, responsive school website with a clean UI, interactive features, and mobile-first design. Built with HTML, CSS, and JavaScript to showcase academic programs, student life, and core values.",
       imageUrl: [eduverse, eduversemobile],
-      liveUrl: "http://edu-verse-gamma.vercel.app",
+      liveUrl: "http://eduverse.pxxl.click",
       techStack: ["HTML", "CSS", "JavaScript"],
       featured: true,
     },
