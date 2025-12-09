@@ -1,14 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import htmlLogo from "../assets/html-5.png";
-import cssLogo from "../assets/css-3.png";
-import jsLogo from "../assets/js.png";
-import tsLogo from "../assets/typescript.png";
-import reactLogo from "../assets/react.svg";
-import pythonLogo from "../assets/python.png";
-import djangoLogo from "../assets/icons8-django-96.png";
-import gitLogo from "../assets/git.png";
 import SkillCard from "../components/SkillCard";
+import { FaHtml5 } from "react-icons/fa";
+import { FaCss3Alt } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { SiTypescript } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
+import { FaPython } from "react-icons/fa";
+import { SiDjango } from "react-icons/si";
+import { SiGit } from "react-icons/si";
+import { RiNextjsLine } from "react-icons/ri";
 
 interface SkillsProps {
   skillsRef: React.RefObject<HTMLDivElement | null>;
@@ -16,14 +17,15 @@ interface SkillsProps {
 
 const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
   const skills = [
-    { skillName: "HTML", skillLogo: htmlLogo },
-    { skillName: "CSS", skillLogo: cssLogo },
-    { skillName: "JavaScript", skillLogo: jsLogo },
-    { skillName: "TypeScript", skillLogo: tsLogo },
-    { skillName: "React", skillLogo: reactLogo },
-    { skillName: "Python", skillLogo: pythonLogo },
-    { skillName: "Django", skillLogo: djangoLogo },
-    { skillName: "Git", skillLogo: gitLogo },
+    { skillName: "HTML", skillLogo: FaHtml5 },
+    { skillName: "CSS", skillLogo: FaCss3Alt },
+    { skillName: "JavaScript", skillLogo: IoLogoJavascript },
+    { skillName: "TypeScript", skillLogo: SiTypescript },
+    { skillName: "React", skillLogo: FaReact },
+    { skillName: "Nextjs", skillLogo: RiNextjsLine },
+    { skillName: "Python", skillLogo: FaPython },
+    { skillName: "Django", skillLogo: SiDjango },
+    { skillName: "Git", skillLogo: SiGit },
   ];
 
   const containerVariants = {
@@ -73,18 +75,15 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
 
       <div className="grid place-content-center pt-6 sm:pt-8 md:pt-10 px-4 sm:px-6 md:px-8">
         <motion.div
-          className="inline-grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-5"
+          className="lg:flex grid grid-cols-4  gap-3 sm:gap-4 md:gap-5 lg:gap-5"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           {skills.map((skill, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <SkillCard
-                skillName={skill.skillName}
-                skillLogo={skill.skillLogo}
-              />
+            <motion.div key={index} variants={itemVariants} className="">
+              <SkillCard title={skill.skillName} skillLogo={skill.skillLogo} />
             </motion.div>
           ))}
         </motion.div>

@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { FiGithub, FiMail } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 
-interface NavBarProps {
+type NavBarProps = {
+  navRef: React.RefObject<HTMLDivElement | null>;
   homeRef: React.RefObject<HTMLDivElement | null>;
   aboutRef: React.RefObject<HTMLDivElement | null>;
   skillsRef: React.RefObject<HTMLDivElement | null>;
   projectsRef: React.RefObject<HTMLDivElement | null>;
   contactRef: React.RefObject<HTMLDivElement | null>;
   scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
-}
+};
 
-const NavBar: React.FC<NavBarProps> = ({
+const NavBar = ({
+  navRef,
   homeRef,
   aboutRef,
   skillsRef,
   projectsRef,
   contactRef,
   scrollToSection,
-}) => {
+}: NavBarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const linkVariants = {
@@ -153,11 +155,26 @@ const NavBar: React.FC<NavBarProps> = ({
     },
   };
 
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (!navRef.current) return;
+      const height = navRef.current.offsetHeight;
+      document.documentElement.style.setProperty("--nav-h", `${height}px`);
+    };
+
+    updateNavHeight();
+    window.addEventListener("resize", updateNavHeight);
+    return () => window.removeEventListener("resize", updateNavHeight);
+  }, []);
+
   return (
-    <div className="flex justify-between items-center py-3 sm:py-4 md:py-6 lg:py-7 px-4 sm:px-6 md:px-10 lg:px-20 backdrop-blur-lg fixed w-full top-0 z-50">
+    <div
+      ref={navRef}
+      className="flex justify-between items-center py-3 sm:py-4 md:py-6 lg:py-7 px-4 sm:px-6 md:px-10 lg:px-20 backdrop-blur-lg sticky w-full top-0 z-50"
+    >
       {/* Logo */}
       <motion.h1
-        className="cursor-pointer text-2xl sm:text-2xl md:text-[28px] lg:text-[34px] font-bold"
+        className="cursor-pointer tracking-tight font-serif text-2xl sm:text-2xl md:text-[28px] lg:text-[34px] font-bold"
         variants={logoVariants}
         initial="hidden"
         animate="visible"

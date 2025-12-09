@@ -5,29 +5,28 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "./ui/button";
 import { FiGithub } from "react-icons/fi";
 
-interface ProjectProps {
+type ProjectProps = {
   title: string;
   description: string;
   imageUrl: string[] | undefined;
   projectUrl: string | undefined;
-  frontendUrl: string | undefined;
-  backendUrl: string | undefined;
+  // frontendUrl?: string | undefined;
+  // backendUrl?: string | undefined;
   liveUrl: string | undefined;
   index: number;
   techStack: string[];
-}
+};
 
-const ProjectCard: React.FC<ProjectProps> = ({
+const ProjectCard = ({
   title,
   description,
   imageUrl,
   projectUrl,
   index,
   techStack,
-  frontendUrl,
-  backendUrl,
+
   liveUrl,
-}) => {
+}: ProjectProps) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -55,7 +54,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
           }`}
         >
           <motion.div
-            className="flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-2 xl:p-5 lg:w-1/2 overflow-hidden bg-neutral-700 -pl-5 -my-6"
+            className="flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-2 xl:p-5 lg:w-1/2 overflow-hidden bg-neutral-700 -pl-5 lg:-my-6 -mt-6"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -68,7 +67,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
                     key={imgIndex}
                     src={url}
                     alt={`${title} mobile preview`}
-                    className="w-28 sm:w-32 md:w-36 lg:w-40 h-[200px] sm:h-[200px] md:h-56 lg:h-[330px] absolute lg:right-10 right-5 transition-smooth group-hover:scale-105 duration-500"
+                    className="w-24  sm:w-32 md:w-36 lg:w-40 h-[160px] sm:h-[200px] md:h-56 lg:h-[330px] -ml-5 md:-ml-8 lg:-ml-12 transition-smooth group-hover:scale-105 duration-500"
                     whileHover={{ scale: 1.1 }}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -79,7 +78,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
                     key={imgIndex}
                     src={url}
                     alt={`${title} desktop preview`}
-                    className="lg:w-full h-[200px] sm:h-[180px] md:h-56 lg:h-[330px] transition-smooth group-hover:scale-105 duration-500"
+                    className="lg:w-full h-[160px] sm:h-[180px] md:h-56 lg:h-[330px] transition-smooth group-hover:scale-105 duration-500"
                     whileHover={{ scale: 1.1 }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -91,7 +90,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
           </motion.div>
 
           <motion.div
-            className="lg:w-1/2 h-fit px-4 sm:px-5 md:px-6 lg:px-4 my-auto py-6 sm:py-5 md:py-6 lg:py-0"
+            className="lg:w-1/2 h-fit px-4 sm:px-5 md:px-6 lg:px-4 pt-5  sm:py-5 md:py-6 lg:py-3"
             initial={{ opacity: 0, x: index % 2 === 1 ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -167,57 +166,6 @@ const ProjectCard: React.FC<ProjectProps> = ({
                     </a>
                   </Button>
                 </motion.div>
-              ) : frontendUrl && backendUrl ? (
-                <div className="flex flex-col sm:flex-col md:flex-col lg:flex-col gap-3 sm:gap-3 md:gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      variant="secondary"
-                      className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-3 text-xs sm:text-sm md:text-[15px] lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
-                    >
-                      <a
-                        href={frontendUrl}
-                        className="flex items-center justify-center gap-2 w-full"
-                      >
-                        <FiGithub
-                          size={16}
-                          className="sm:w-[18px] sm:h-[18px] md:w-5 md:h-5"
-                          color="white"
-                        />
-                        <span className="hidden sm:inline">
-                          Frontend Source Code
-                        </span>
-                        <span className="sm:hidden">Frontend Code</span>
-                      </a>
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      variant="secondary"
-                      className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-3 text-xs sm:text-sm md:text-[15px] lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
-                    >
-                      <a
-                        href={backendUrl}
-                        className="flex items-center justify-center gap-2 w-full"
-                      >
-                        <FiGithub
-                          size={16}
-                          className="sm:w-[18px] sm:h-[18px] md:w-5 md:h-5"
-                          color="white"
-                        />
-                        <span className="hidden sm:inline">
-                          Backend Source Code
-                        </span>
-                        <span className="sm:hidden">Backend Code</span>
-                      </a>
-                    </Button>
-                  </motion.div>
-                </div>
               ) : (
                 <motion.div
                   whileHover={{ scale: 1.05 }}

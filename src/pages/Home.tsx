@@ -58,33 +58,20 @@ const Home: React.FC<HomeProps> = ({
 
   return (
     <div
-      className="min-h-screen flex flex-col lg:flex-row justify-center items-center px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:gap-10 2xl:gap-0 md:py-14 lg:py-10"
+      className="lg:h-[calc(100vh-var(--nav-h))] flex flex-col md:flex-row justify-center items-center px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:gap-10 2xl:gap-0 md:py-14 lg:py-10"
       ref={homeRef}
     >
       <motion.div
-        className="lg:hidden w-72 sm:w-56 md:w-[400px] xl:w-[30%] flex justify-center lg:mx-0 mb-8 sm:mb-10 lg:mt-0"
-        variants={imageVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <picture>
-          <source media="(max-width: 480px)" srcSet={photo_mobile} />
-          <source media="(max-width: 768px)" srcSet={photo_tablet} />
-          <img
-            src={photo}
-            alt="Portrait of Darasimi Olaniran"
-            className="rounded-full md:w-[350px] md:h-[350px] w-[200px] h-[200px] object-cover shadow-lg"
-          />
-        </picture>
-      </motion.div>
-
-      <motion.div
-        className="flex flex-col gap-5 sm:gap-6 w-full lg:w-[60%] lg:text-left text-center lg:items-start items-center"
+        className="flex flex-col  gap-5 sm:gap-6 w-full md:w-[60%] md:text-left text-center lg:items-start items-center justify-center h-[calc(100vh-var(--nav-h))] lg:h-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div variants={itemVariants}>
+          <p className="text-green-500 flex gap-2 items-center justify-center md:justify-start">
+            <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            Available for work
+          </p>
           <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight">
             Darasimi Olaniran
           </h1>
@@ -92,15 +79,13 @@ const Home: React.FC<HomeProps> = ({
             Full-Stack Developer
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto lg:mx-0 px-2 sm:px-0 leading-relaxed">
-            Crafting exceptional digital experiences with modern technologies —
-            building responsive, scalable web applications that deliver real
-            impact. Passionate about clean code, innovative solutions, modern
-            frameworks, and continuous learning.
+            Building responsive, scalable web applications that deliver real
+            impact through clean code and modern architecture.
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full sm:w-auto"
+          className="flex   justify-center lg:justify-start gap-3 sm:gap-4 w-full sm:w-auto"
           variants={itemVariants}
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -129,6 +114,22 @@ const Home: React.FC<HomeProps> = ({
       </motion.div>
 
       <motion.div
+        className=" w-72 sm:w-56 md:w-[400px] xl:w-[30%] flex justify-center lg:mx-0  sm:mb-10 "
+        variants={imageVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <picture>
+          <source media="(max-width: 480px)" srcSet={photo_mobile} />
+          <source media="(max-width: 768px)" srcSet={photo_tablet} />
+          <img
+            src={photo}
+            alt="Portrait of Darasimi Olaniran"
+            className="rounded-full md:w-[300px] md:h-[300px] lg:w-[370px] lg:h-[370px] xl:h-[370px] 2xl:w-[420px] 2xl:h-[420px] w-[300px] h-[300px] object-cover shadow-lg"
+          />
+        </picture>
+      </motion.div>
+      {/* <motion.div
         className="lg:w-[30%] hidden lg:flex xl:w-[30%] flex-shrink-0 mx-4 lg:mx-0 mt-8 sm:mt-10 lg:mt-0"
         variants={imageVariants}
         initial="hidden"
@@ -140,10 +141,10 @@ const Home: React.FC<HomeProps> = ({
           <img
             src={photo}
             alt="Portrait of Darasimi Olaniran"
-            className="lg:rounded-full rounded-2xl w-[280px] h-[280px] xl:w-[350px] xl:h-[350px] 2xl:w-[420px] 2xl:h-[420px] object-cover shadow-lg"
+            className="lg:rounded-full rounded-2xl w-[280px] h-[280px] xl:w-[350px]  object-cover shadow-lg"
           />
         </picture>
-      </motion.div>
+      </motion.div>*/}
     </div>
   );
 };

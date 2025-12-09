@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 // Define a type for a single star
-interface Star {
+type Star = {
   id: number;
   x: number; // % position from left
   y: number; // % position from top
   delay: number; // animation delay in seconds
-}
+};
 
-const StarsBackground: React.FC = () => {
+const StarsBackground = () => {
   const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {

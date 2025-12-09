@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
 
-interface SkillCardProps {
-  skillName: string;
-  skillLogo: string;
-}
+type SkillCardProps = {
+  title: string;
+  skillLogo: IconType;
+};
 
-const SkillCard: React.FC<SkillCardProps> = ({ skillName, skillLogo }) => {
+const SkillCard = ({ title, skillLogo: SkillLogo }: SkillCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const containerVariants = {
@@ -103,15 +104,15 @@ const SkillCard: React.FC<SkillCardProps> = ({ skillName, skillLogo }) => {
           animate={isHovered ? "hover" : "rest"}
         />
 
-        <motion.img
-          src={skillLogo}
-          alt={`${skillName} logo`}
-          className="w-7 sm:w-9 md:w-10 lg:w-12 pb-2 sm:pb-3 md:pb-4 lg:pb-5 transition-transform duration-500"
+        <motion.div
           variants={imageVariants}
           initial="initial"
           animate="animate"
           whileHover="hover"
-        />
+          className="w-7 sm:w-9 md:w-10 lg:w-12 pb-2 sm:pb-3 md:pb-4 lg:pb-5 transition-transform duration-500"
+        >
+          <SkillLogo className="w-full h-full text-white" />
+        </motion.div>
 
         <motion.h1
           className="text-center text-xs sm:text-sm md:text-[15px] lg:text-[16px] font-medium relative z-10"
@@ -119,7 +120,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skillName, skillLogo }) => {
           initial="initial"
           animate="animate"
         >
-          {skillName}
+          {title}
         </motion.h1>
       </motion.div>
 
@@ -130,7 +131,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skillName, skillLogo }) => {
         initial="hidden"
         animate={isHovered ? "visible" : "hidden"}
       >
-        <span>{skillName}</span>
+        <span>{title}</span>
         <motion.div
           className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-1 w-0 h-0 border-4 border-transparent border-t-white"
           initial={{ opacity: 0 }}
