@@ -1,7 +1,7 @@
 import { FaXTwitter } from "react-icons/fa6";
 import { FiGithub } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
