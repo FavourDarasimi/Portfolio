@@ -2,12 +2,14 @@ import { useRef } from "react";
 
 import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./components/theme-provider";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import Home from "./sections/Home";
+import About from "./sections/About";
 import StarsBackground from "./components/StarsBackground";
-import Skills from "./pages/Skills";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+import Skills from "./sections/Skills";
+import Projects from "./sections/Projects";
+import Contact from "./sections/Contact";
+import Footer from "./sections/Footer";
+import { Toaster } from "sonner";
 
 function App() {
   const navRef = useRef<HTMLDivElement>(null);
@@ -23,6 +25,7 @@ function App() {
   return (
     <div className="">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <Toaster position="top-center" />
         <StarsBackground />
         <NavBar
           navRef={navRef}
@@ -42,6 +45,7 @@ function App() {
         <Skills skillsRef={skillsRef} />
         <Projects projectsRef={projectsRef} />
         <Contact contactRef={contactRef} />
+        <Footer />
       </ThemeProvider>
     </div>
   );

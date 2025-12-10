@@ -92,7 +92,7 @@ const SkillCard = ({ title, skillLogo: SkillLogo }: SkillCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="bg-secondary p-3 sm:p-4 md:p-4 lg:p-5 text-muted-foreground hover:text-white rounded-xl sm:rounded-2xl flex flex-col items-center transition-all duration-500 group cursor-pointer relative"
+        className="bg-card p-3 sm:p-4 md:p-4 lg:p-5 text-muted-foreground hover:text-white rounded-xl sm:rounded-2xl flex flex-col items-center transition-all duration-500 group cursor-pointer relative"
         variants={containerVariants}
         whileHover="hover"
         whileTap={{ scale: 0.95 }}

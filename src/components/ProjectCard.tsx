@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "./ui/button";
-import { FiGithub } from "react-icons/fi";
+
+import { FaArrowRight } from "react-icons/fa";
 
 type ProjectProps = {
   title: string;
@@ -43,7 +43,7 @@ const ProjectCard = ({
       viewport={{ once: true, margin: "-100px" }}
     >
       <Card
-        className={`overflow-hidden card-gradient border-border hover:shadow-card transition-smooth group ${
+        className={`overflow-hidden card-gradient border-border hover:shadow-card transition-smooth  ${
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
@@ -53,7 +53,7 @@ const ProjectCard = ({
           }`}
         >
           <motion.div
-            className="flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-2 xl:p-5 lg:w-1/2 overflow-hidden bg-neutral-700 -pl-5 lg:-my-6 -mt-6"
+            className="group flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-2 xl:p-5 lg:w-1/2 overflow-hidden bg-neutral-800 -pl-5 lg:-my-6 -mt-6"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -140,54 +140,19 @@ const ProjectCard = ({
             </motion.div>
 
             <div>
-              {liveUrl ? (
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+              <motion.div whileTap={{ scale: 0.95 }}>
+                <a
+                  href={liveUrl ? liveUrl : projectUrl}
+                  className="group flex items-center justify-center gap-2 hover:scale-105 transition duration-300  bg-white  px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-2 rounded-lg text-xs sm:text-sm lg:text-[16px]  text-[#3b3d49]  cursor-pointer w-fit "
                 >
-                  <Button
-                    variant="secondary"
-                    className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-3 text-xs sm:text-sm lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
-                  >
-                    <a
-                      href={liveUrl}
-                      className="flex items-center justify-center gap-2 w-full"
-                    >
-                      <FiGithub
-                        size={14}
-                        className="sm:w-4 sm:h-4"
-                        color="white"
-                      />
-                      <span className="hidden sm:inline lg:inline">
-                        Live Preview
-                      </span>
-                      <span className="sm:hidden">Live Preview</span>
-                    </a>
-                  </Button>
-                </motion.div>
-              ) : (
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button
-                    variant="secondary"
-                    className="text-white hover:scale-105 transition-all duration-300 px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-3 text-xs sm:text-sm md:text-[15px] lg:text-[16px] bg-secondary hover:bg-[#3b3d49] hover:border-transparent cursor-pointer w-full lg:w-auto"
-                  >
-                    <a
-                      href={projectUrl}
-                      className="flex items-center justify-center gap-2 w-full"
-                    >
-                      <FiGithub
-                        size={16}
-                        className="sm:w-[18px] sm:h-[18px] md:w-5 md:h-5"
-                        color="white"
-                      />
-                      Source Code
-                    </a>
-                  </Button>
-                </motion.div>
-              )}
+                  <span className="">View Project</span>
+                  <FaArrowRight
+                    size={12}
+                    className="sm:w-4 sm:h-4 group-hover:ml-2 group-hover:mr-0 mr-2 transition-all duration-300"
+                    color="#3b3d49"
+                  />
+                </a>
+              </motion.div>
             </div>
           </motion.div>
         </div>

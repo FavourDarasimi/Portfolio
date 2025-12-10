@@ -59,10 +59,7 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
   };
 
   return (
-    <div
-      className="bg-secondary py-10 sm:py-12 md:py-16 lg:py-20"
-      ref={aboutRef}
-    >
+    <div className=" py-10 sm:py-12 md:py-16 lg:py-20" ref={aboutRef}>
       <motion.div
         className="px-4 sm:px-6 md:px-8"
         initial={{ opacity: 0, y: 20 }}
@@ -114,7 +111,7 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
         >
           {features.map((feature, index) => (
             <motion.div key={index} variants={cardVariants} whileHover="hover">
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 cursor-pointer transition-all duration-300 h-full">
+              <Card className="bg-card backdrop-blur-sm border-border/50 cursor-pointer transition-all duration-300 h-full">
                 <CardContent className="text-center p-4 sm:p-5 md:p-5 lg:p-6">
                   <motion.div
                     animate={{ y: [0, -5, 0] }}

@@ -108,7 +108,7 @@ const NavBar = ({
           index: 0,
         },
         {
-          href: "https://x.com/CodeWithDara?t=8fnrTaTdZ5jeNAZkom-X1w&s=09",
+          href: "https://x.com/code_with_dara",
           icon: FaXTwitter,
           label: "Twitter",
           index: 1,
@@ -128,7 +128,7 @@ const NavBar = ({
           initial="hidden"
           animate="visible"
           whileHover="hover"
-          className="bg-transparent hover:bg-[#3b3d49] cursor-pointer p-2.5 md:p-2.5 lg:p-3 rounded-xl transition-all duration-300"
+          className="bg-transparent hover:bg-card cursor-pointer p-2.5 md:p-2.5 lg:p-3 rounded-xl transition-all duration-300"
           target="_blank"
           rel="noopener noreferrer"
         >

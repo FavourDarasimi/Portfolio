@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({
       ref={homeRef}
     >
       <motion.div
-        className="flex flex-col  gap-5 sm:gap-6 w-full md:w-[60%] md:text-left text-center lg:items-start items-center justify-center h-[calc(100vh-var(--nav-h))] lg:h-full"
+        className="flex flex-col  gap-5 sm:gap-6 w-full md:w-[60%] md:text-left text-center lg:items-start items-center justify-center mt-20 md:mt-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -114,7 +114,7 @@ const Home: React.FC<HomeProps> = ({
       </motion.div>
 
       <motion.div
-        className=" w-72 sm:w-56 md:w-[400px] xl:w-[30%] flex justify-center lg:mx-0  sm:mb-10 "
+        className=" w-72 sm:w-56 md:w-[400px] xl:w-[30%] flex justify-center lg:mx-0  sm:mb-10 mt-20 md:mt-0"
         variants={imageVariants}
         initial="hidden"
         animate="visible"
@@ -129,22 +129,6 @@ const Home: React.FC<HomeProps> = ({
           />
         </picture>
       </motion.div>
-      {/* <motion.div
-        className="lg:w-[30%] hidden lg:flex xl:w-[30%] flex-shrink-0 mx-4 lg:mx-0 mt-8 sm:mt-10 lg:mt-0"
-        variants={imageVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <picture>
-          <source media="(max-width: 480px)" srcSet={photo_mobile} />
-          <source media="(max-width: 768px)" srcSet={photo_tablet} />
-          <img
-            src={photo}
-            alt="Portrait of Darasimi Olaniran"
-            className="lg:rounded-full rounded-2xl w-[280px] h-[280px] xl:w-[350px]  object-cover shadow-lg"
-          />
-        </picture>
-      </motion.div>*/}
     </div>
   );
 };

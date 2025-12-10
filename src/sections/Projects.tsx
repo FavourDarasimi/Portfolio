@@ -73,7 +73,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       description:
         "A modern blogging platform with a clean UI, seamless content management, and user-friendly design. Built with JavaScript and Python, featuring a structured frontend and backend for scalability and flexibility.",
       imageUrl: [blog, blogmobile],
-      projectUrl: "https://github.com/FavourDarasimi/Blogify-Space.git",
+      projectUrl: "https://github.com/FavourDarasimi/Blogify-Space-v2.git",
       techStack: [
         "JavaScript",
         "React",
@@ -87,7 +87,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
   ];
 
   return (
-    <div className="bg-secondary lg:py-20 py-10" ref={projectsRef}>
+    <div className=" lg:py-20 py-10" ref={projectsRef}>
       <motion.div
         className="px-4 sm:px-6 md:px-8"
         initial={{ opacity: 0, y: 20 }}
