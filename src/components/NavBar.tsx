@@ -9,6 +9,7 @@ type NavBarProps = {
   homeRef: React.RefObject<HTMLDivElement | null>;
   aboutRef: React.RefObject<HTMLDivElement | null>;
   skillsRef: React.RefObject<HTMLDivElement | null>;
+  servicesRef: React.RefObject<HTMLDivElement | null>;
   projectsRef: React.RefObject<HTMLDivElement | null>;
   contactRef: React.RefObject<HTMLDivElement | null>;
   scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
@@ -19,6 +20,7 @@ const NavBar = ({
   homeRef,
   aboutRef,
   skillsRef,
+  servicesRef,
   projectsRef,
   contactRef,
   scrollToSection,
@@ -76,8 +78,9 @@ const NavBar = ({
       {[
         { label: "About", ref: aboutRef, index: 0 },
         { label: "Skills", ref: skillsRef, index: 1 },
-        { label: "Project", ref: projectsRef, index: 2 },
-        { label: "Contact", ref: contactRef, index: 3 },
+        { label: "Services", ref: servicesRef, index: 2 },
+        { label: "Project", ref: projectsRef, index: 3 },
+        { label: "Contact", ref: contactRef, index: 4 },
       ].map(({ label, ref, index }) => (
         <motion.h1
           key={label}
