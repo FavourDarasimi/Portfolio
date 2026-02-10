@@ -55,7 +55,7 @@ const Footer = () => {
             ))}
           </div>
         </motion.div>
-        <h1 className="mt-10">© 2025 Darasimi. All rights reserved.</h1>
+        <h1 className="mt-10">© 2026 Darasimi. All rights reserved.</h1>
       </div>
     </div>
   );

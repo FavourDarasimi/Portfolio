@@ -74,12 +74,13 @@ const NavBar = ({
   };
 
   const NavLinks = () => (
-    <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
+    <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">y
+    
       {[
         { label: "About", ref: aboutRef, index: 0 },
         { label: "Skills", ref: skillsRef, index: 1 },
         { label: "Services", ref: servicesRef, index: 2 },
-        { label: "Project", ref: projectsRef, index: 3 },
+        { label: "Projects", ref: projectsRef, index: 3 },
         { label: "Contact", ref: contactRef, index: 4 },
       ].map(({ label, ref, index }) => (
         <motion.h1

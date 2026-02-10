@@ -93,7 +93,7 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
 
       <motion.div className="px-4 sm:px-6 md:px-8">
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:mx-20"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:mx-20"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
