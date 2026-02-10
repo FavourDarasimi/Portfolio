@@ -74,7 +74,7 @@ const NavBar = ({
   };
 
   const NavLinks = () => (
-    <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">y
+    <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
     
       {[
         { label: "About", ref: aboutRef, index: 0 },
