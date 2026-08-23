@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <div className=" py-10 sm:py-12 md:py-16 lg:py-10 border-t border-t-[#3b3d49] max-w-7xl mx-auto">
+    <footer className="py-12 border-t border-white/10 max-w-7xl mx-auto px-4">
       <div className="text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,8 +14,10 @@ const Footer = () => {
           transition={{ delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-xl sm:text-2xl md:text-2xl mb-4">Follow Me</h1>
-          <div className="flex  justify-center gap-4 sm:gap-5">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-6 tracking-wide">
+            Connect & Follow
+          </h2>
+          <div className="flex justify-center items-center gap-4">
             {[
               {
                 href: "https://github.com/FavourDarasimi",
@@ -43,21 +45,24 @@ const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-[1px] border-gray-600 rounded-full p-3 sm:p-4 w-fit hover:bg-card transition-all duration-300 cursor-pointer"
+                aria-label={social.label}
+                className="bg-[#121214] border border-white/10 rounded-full p-3.5 hover:border-[#FF5A36] hover:bg-[#FF5A36]/10 text-zinc-300 hover:text-[#FF5A36] transition-all duration-300 cursor-pointer shadow-lg group"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <social.icon
                   size={20}
-                  className="sm:w-[23px] sm:h-[23px] md:w-[25px] md:h-[25px]"
+                  className="sm:w-[22px] sm:h-[22px] text-white group-hover:text-[#FF5A36] transition-colors"
                 />
               </motion.a>
             ))}
           </div>
         </motion.div>
-        <h1 className="mt-10">© 2026 Darasimi. All rights reserved.</h1>
+        <p className="mt-10 text-zinc-500 text-sm font-normal">
+          © {new Date().getFullYear()} Darasimi Olaniran. Designed & Built with passion.
+        </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

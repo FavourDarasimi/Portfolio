@@ -58,42 +58,44 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    hidden: { opacity: 0, scale: 0.85, y: 20 },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.4 },
     },
     hover: {
-      scale: 1.08,
-      y: -10,
-      boxShadow: "0 20px 40px rgba(59, 61, 73, 0.3)",
+      scale: 1.03,
+      y: -6,
+      boxShadow: "0 15px 30px rgba(255, 90, 54, 0.2)",
       transition: { duration: 0.3 },
     },
   };
 
   return (
-    <div className="py-10 sm:py-12 md:py-16 lg:py-20" ref={servicesRef}>
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24 relative" ref={servicesRef}>
       <motion.div
-        className="px-4 sm:px-6 md:px-8"
+        className="px-4 sm:px-6 md:px-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-5">
-          My Services
+        <span className="text-[#FF5A36] text-xs sm:text-sm font-semibold tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
+          What I Offer
+        </span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 pb-4">
+          Services & Solutions
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] text-muted-foreground text-center md:pb-20 pb-8 mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%]">
-          Comprehensive web development services tailored to bring your digital
-          vision to life with modern technologies and best practices.
+        <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-zinc-400 pb-12 leading-relaxed font-normal">
+          Comprehensive web development services tailored to bring your digital vision to life with modern technologies, scalable architecture, and best practices.
         </p>
       </motion.div>
 
-      <motion.div className="px-4 sm:px-6 md:px-8">
+      <motion.div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto">
         <motion.div
-          className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mx-auto max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:mx-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -101,20 +103,19 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={cardVariants} whileHover="hover">
-              <Card className="bg-card backdrop-blur-sm border-border/50 cursor-pointer transition-all duration-300 h-full">
-                <CardContent className="text-center p-4 sm:p-5 md:p-5 lg:p-6">
-                  <motion.div
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    <service.icon className="h-7 w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 text-primary mx-auto mb-3 sm:mb-4" />
-                  </motion.div>
-                  <h4 className="font-semibold mb-2 text-xs sm:text-sm md:text-base lg:text-[18px]">
-                    {service.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
+              <Card className="bg-[#121214] border-white/10 hover:border-[#FF5A36]/50 cursor-pointer transition-all duration-300 h-full rounded-2xl group overflow-hidden">
+                <CardContent className="p-6 sm:p-7 flex flex-col justify-between h-full">
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center mb-5 group-hover:bg-[#FF5A36] transition-all duration-300">
+                      <service.icon className="h-6 w-6 text-[#FF5A36] group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <h3 className="font-bold text-white text-xl mb-3 group-hover:text-[#FF5A36] transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+                      {service.description}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

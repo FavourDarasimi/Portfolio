@@ -75,7 +75,6 @@ const NavBar = ({
 
   const NavLinks = () => (
     <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
-    
       {[
         { label: "About", ref: aboutRef, index: 0 },
         { label: "Skills", ref: skillsRef, index: 1 },
@@ -89,7 +88,7 @@ const NavBar = ({
           variants={menuOpen ? mobileLinkVariants : linkVariants}
           initial="hidden"
           animate="visible"
-          className="text-muted-foreground hover:text-white hover:border-b-2 hover:border-white cursor-pointer text-base md:text-[16px] lg:text-[18px] transition-all duration-500"
+          className="text-zinc-400 hover:text-[#FF5A36] cursor-pointer text-base md:text-[16px] lg:text-[18px] font-medium transition-colors duration-300 relative group"
           onClick={() => {
             scrollToSection(ref);
             setMenuOpen(false);
@@ -97,13 +96,14 @@ const NavBar = ({
           whileHover={{ y: -2 }}
         >
           {label}
+          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#FF5A36] transition-all duration-300 group-hover:w-full" />
         </motion.h1>
       ))}
     </div>
   );
 
   const SocialLinks = () => (
-    <div className="flex gap-5 md:gap-6 lg:gap-8">
+    <div className="flex gap-4 md:gap-5">
       {[
         {
           href: "https://github.com/FavourDarasimi",
@@ -132,14 +132,13 @@ const NavBar = ({
           initial="hidden"
           animate="visible"
           whileHover="hover"
-          className="bg-transparent hover:bg-card cursor-pointer p-2.5 md:p-2.5 lg:p-3 rounded-xl transition-all duration-300"
+          className="bg-[#121214] border border-white/10 hover:border-[#FF5A36]/50 hover:text-[#FF5A36] cursor-pointer p-2.5 rounded-xl transition-all duration-300 group"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Icon
             size={20}
-            className="md:w-[21px] md:h-[21px] lg:w-[23px] lg:h-[23px]"
-            color="white"
+            className="md:w-[20px] md:h-[20px] lg:w-[22px] lg:h-[22px] text-white group-hover:text-[#FF5A36] transition-colors"
           />
         </motion.a>
       ))}
@@ -174,18 +173,18 @@ const NavBar = ({
   return (
     <div
       ref={navRef}
-      className="flex justify-between items-center py-3 sm:py-4 md:py-6 lg:py-7 px-4 sm:px-6 md:px-10 lg:px-20 backdrop-blur-lg sticky w-full top-0 z-50"
+      className="flex justify-between items-center py-4 md:py-5 px-4 sm:px-6 md:px-10 lg:px-20 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-white/10 sticky w-full top-0 z-50 transition-all duration-300"
     >
       {/* Logo */}
       <motion.h1
-        className="cursor-pointer tracking-tight font-serif text-2xl sm:text-2xl md:text-[28px] lg:text-[34px] font-bold"
+        className="cursor-pointer tracking-tight font-serif text-2xl sm:text-2xl md:text-[28px] lg:text-[32px] font-bold text-white flex items-center gap-1"
         variants={logoVariants}
         initial="hidden"
         animate="visible"
         whileHover="hover"
         onClick={() => scrollToSection(homeRef)}
       >
-        CodeWithDara
+        CodeWithDara<span className="text-[#FF5A36] text-3xl font-sans">.</span>
       </motion.h1>
 
       {/* Desktop Menu */}
@@ -219,6 +218,7 @@ const NavBar = ({
           aria-label="Toggle menu"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          className="p-2 rounded-lg bg-[#121214] border border-white/10"
         >
           <AnimatePresence mode="wait">
             {menuOpen ? (
@@ -229,7 +229,7 @@ const NavBar = ({
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <X size={26} className="sm:w-7 sm:h-7" color="white" />
+                <X size={24} className="text-[#FF5A36]" />
               </motion.div>
             ) : (
               <motion.div
@@ -239,7 +239,7 @@ const NavBar = ({
                 exit={{ rotate: -90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <Menu size={26} className="sm:w-7 sm:h-7" color="white" />
+                <Menu size={24} className="text-white" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -254,7 +254,7 @@ const NavBar = ({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute top-[52px] sm:top-[60px] left-0 w-full bg-black/95 backdrop-blur-md flex flex-col items-center py-6 sm:py-8 space-y-6 sm:space-y-7 lg:hidden shadow-lg"
+            className="absolute top-[65px] left-0 w-full bg-[#0A0A0A]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col items-center py-8 space-y-7 lg:hidden shadow-2xl"
           >
             <NavLinks />
             <SocialLinks />

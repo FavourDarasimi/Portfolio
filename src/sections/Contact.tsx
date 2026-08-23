@@ -57,122 +57,97 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
   };
 
   return (
-    <div ref={contactRef} className="py-10 sm:py-12 md:py-16 lg:py-20">
+    <div ref={contactRef} className="py-12 sm:py-16 md:py-20 lg:py-24 relative">
       <motion.div
-        className="px-4 sm:px-6 md:px-8"
+        className="px-4 sm:px-6 md:px-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-4 sm:pb-5">
+        <span className="text-[#FF5A36] text-xs sm:text-sm font-semibold tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
+          Contact Me
+        </span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 pb-4">
           Get In Touch
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%] lg:mx-80 text-muted-foreground text-center pb-8 sm:pb-10">
-          Have a project in mind or want to collaborate? I'd love to hear from
-          you. Let's create something amazing together.
+        <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-zinc-400 pb-12 leading-relaxed font-normal">
+          Have a project in mind, a opportunity to discuss, or just want to connect? I'd love to hear from you. Let me know how I can help!
         </p>
       </motion.div>
 
-      <div className=" px-4 sm:px-6 md:px-8 flex justify-center">
+      <div className="px-4 sm:px-6 md:px-8 flex justify-center max-w-4xl mx-auto">
         <motion.div
-          className="bg-card p-4 sm:p-5 md:p-6 lg:p-6 rounded-xl w-3xl"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="bg-[#121214] border border-white/10 p-6 sm:p-8 md:p-10 rounded-2xl w-full shadow-2xl relative overflow-hidden"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-xl sm:text-2xl md:text-2xl">Send a Message</h1>
-          <p className="mt-2 text-muted-foreground text-sm sm:text-[15px] md:text-[16px] font-extralight">
-            Fill out the form below and I'll get back to you as soon as
-            possible.
+          <h2 className="text-2xl font-bold text-white mb-1">Send a Message</h2>
+          <p className="text-zinc-400 text-sm mb-6 font-normal">
+            Fill out the form below and I'll get back to you as soon as possible.
           </p>
-          <form
-            className="space-y-4 sm:space-y-5 mt-5 sm:mt-7"
-            onSubmit={handleSubmit}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5">
-              <motion.div
-                className="space-y-2 sm:space-y-3"
-                variants={itemVariants}
-              >
-                <Label
-                  htmlFor="name"
-                  className="text-sm sm:text-[14px] lg:text-[16px]"
-                >
+          
+          <form className="space-y-5" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <motion.div className="space-y-2" variants={itemVariants}>
+                <Label htmlFor="name" className="text-sm font-medium text-zinc-300">
                   Name
                 </Label>
                 <Input
-                  placeholder="your full name"
-                  className="h-10 sm:h-11"
+                  placeholder="Your full name"
+                  className="h-11 bg-[#1A1A1E] border-white/10 text-white placeholder:text-zinc-500 focus:border-[#FF5A36] focus:ring-1 focus:ring-[#FF5A36] rounded-xl transition-all"
                   name="name"
                   required
                 />
               </motion.div>
-              <motion.div
-                className="space-y-2 sm:space-y-3"
-                variants={itemVariants}
-              >
-                <Label
-                  htmlFor="email"
-                  className="text-sm sm:text-[14px] lg:text-[16px]"
-                >
+              <motion.div className="space-y-2" variants={itemVariants}>
+                <Label htmlFor="email" className="text-sm font-medium text-zinc-300">
                   Email
                 </Label>
                 <Input
-                  placeholder="your@email.com"
-                  className="h-10 sm:h-11"
+                  placeholder="your.email@example.com"
+                  className="h-11 bg-[#1A1A1E] border-white/10 text-white placeholder:text-zinc-500 focus:border-[#FF5A36] focus:ring-1 focus:ring-[#FF5A36] rounded-xl transition-all"
                   name="email"
+                  type="email"
                   required
                 />
               </motion.div>
             </div>
-            <motion.div
-              className="space-y-2 sm:space-y-3"
-              variants={itemVariants}
-            >
-              <Label
-                htmlFor="title"
-                className="text-sm sm:text-[14px] lg:text-[16px]"
-              >
+
+            <motion.div className="space-y-2" variants={itemVariants}>
+              <Label htmlFor="title" className="text-sm font-medium text-zinc-300">
                 Subject
               </Label>
               <Input
-                placeholder="What's this about?"
-                className="h-10 sm:h-11"
+                placeholder="What's this regarding?"
+                className="h-11 bg-[#1A1A1E] border-white/10 text-white placeholder:text-zinc-500 focus:border-[#FF5A36] focus:ring-1 focus:ring-[#FF5A36] rounded-xl transition-all"
                 name="title"
                 required
               />
             </motion.div>
-            <motion.div
-              className="space-y-2 sm:space-y-3"
-              variants={itemVariants}
-            >
-              <Label
-                htmlFor="message"
-                className="text-sm sm:text-[14px] lg:text-[16px]"
-              >
+
+            <motion.div className="space-y-2" variants={itemVariants}>
+              <Label htmlFor="message" className="text-sm font-medium text-zinc-300">
                 Message
               </Label>
               <Textarea
                 name="message"
-                placeholder="Tell me about your project or idea..."
-                className="h-32 sm:h-36 resize-none"
+                placeholder="Tell me about your project, ideas, or questions..."
+                className="h-36 bg-[#1A1A1E] border-white/10 text-white placeholder:text-zinc-500 focus:border-[#FF5A36] focus:ring-1 focus:ring-[#FF5A36] rounded-xl resize-none transition-all"
                 required
               />
             </motion.div>
-            <motion.div whileTap={{ scale: 0.95 }}>
+
+            <motion.div whileTap={{ scale: 0.97 }}>
               <Button
                 disabled={isSubmitting}
-                className="group hover:scale-105 transition durationn-300 w-full sm:w-auto px-6 sm:px-8 lg:px-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold shadow-[0_0_20px_rgba(255,90,54,0.35)] transition-all duration-300 w-full sm:w-auto px-8 py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                <span>{isSubmitting ? "Sending Message..." : "Send Message"}</span>
                 {!isSubmitting && (
-                  <FaArrowRight
-                    size={12}
-                    className="sm:w-4 sm:h-4 group-hover:ml-2 group-hover:mr-0 mr-2 transition-all duration-300"
-                    color="#3b3d49"
-                  />
+                  <FaArrowRight size={13} className="text-white" />
                 )}
               </Button>
             </motion.div>

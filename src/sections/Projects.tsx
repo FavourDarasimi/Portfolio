@@ -87,21 +87,22 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
   ];
 
   return (
-    <div className=" lg:py-20 py-10" ref={projectsRef}>
+    <div className="py-12 sm:py-16 md:py-20 lg:py-24 relative" ref={projectsRef}>
       <motion.div
-        className="px-4 sm:px-6 md:px-8"
+        className="px-4 sm:px-6 md:px-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center pb-5">
+        <span className="text-[#FF5A36] text-xs sm:text-sm font-semibold tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
+          Portfolio
+        </span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 pb-4">
           Featured Projects
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-[20px] text-muted-foreground text-center md:pb-20 pb-8 mx-auto max-w-[90%] sm:max-w-[85%] md:max-w-[75%]">
-          A showcase of my recent work, demonstrating expertise in modern web
-          technologies, a variety of technical skills, and creative
-          problem-solving approaches.
+        <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-zinc-400 pb-16 leading-relaxed font-normal">
+          A showcase of my recent production applications, demonstrating technical depth across modern frontend frameworks, backend API engineering, and responsive user experiences.
         </p>
       </motion.div>
 

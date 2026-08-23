@@ -43,7 +43,7 @@ const ProjectCard = ({
       viewport={{ once: true, margin: "-100px" }}
     >
       <Card
-        className={`overflow-hidden card-gradient border-border hover:shadow-card transition-smooth  ${
+        className={`overflow-hidden bg-[#121214] border-white/10 hover:border-[#FF5A36]/40 transition-all duration-500 rounded-2xl shadow-xl hover:shadow-[0_10px_35px_rgba(255,90,54,0.15)] ${
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
@@ -53,7 +53,7 @@ const ProjectCard = ({
           }`}
         >
           <motion.div
-            className="group flex justify-center items-center relative p-4 sm:p-6 md:p-8 lg:p-2 xl:p-5 lg:w-1/2 overflow-hidden bg-neutral-800 -pl-5 lg:-my-6 -mt-6"
+            className="group flex justify-center items-center relative p-6 lg:p-4 xl:p-6 lg:w-1/2 overflow-hidden bg-[#1A1A1E]"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -66,8 +66,8 @@ const ProjectCard = ({
                     key={imgIndex}
                     src={url}
                     alt={`${title} mobile preview`}
-                    className="w-24  sm:w-32 md:w-36 lg:w-40 h-[160px] sm:h-[200px] md:h-56 lg:h-[330px] -ml-5 md:-ml-8 lg:-ml-12 transition-smooth group-hover:scale-105 duration-500"
-                    whileHover={{ scale: 1.1 }}
+                    className="w-24 sm:w-32 md:w-36 lg:w-40 h-[170px] sm:h-[210px] md:h-60 lg:h-[320px] -ml-5 md:-ml-8 lg:-ml-12 transition-transform duration-500 group-hover:scale-105 rounded-lg shadow-2xl relative z-10"
+                    whileHover={{ scale: 1.08 }}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
@@ -77,79 +77,82 @@ const ProjectCard = ({
                     key={imgIndex}
                     src={url}
                     alt={`${title} desktop preview`}
-                    className="lg:w-full h-[160px] sm:h-[180px] md:h-56 lg:h-[330px] transition-smooth group-hover:scale-105 duration-500"
-                    whileHover={{ scale: 1.1 }}
+                    className="lg:w-full h-[170px] sm:h-[190px] md:h-60 lg:h-[320px] object-cover transition-transform duration-500 group-hover:scale-105 rounded-lg shadow-xl"
+                    whileHover={{ scale: 1.05 }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
                   />
                 )
               )}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-smooth hover:duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
           </motion.div>
 
           <motion.div
-            className="lg:w-1/2 h-fit px-4 sm:px-5 md:px-6 lg:px-4 pt-5  sm:py-5 md:py-6 lg:py-3"
+            className="lg:w-1/2 h-fit p-6 sm:p-8 flex flex-col justify-between"
             initial={{ opacity: 0, x: index % 2 === 1 ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <motion.h1
-              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              {title}
-            </motion.h1>
-            <p className="text-muted-foreground mb-3 sm:mb-4 leading-relaxed text-xs sm:text-sm md:text-base lg:text-[18px]">
-              {description}
-            </p>
-
-            <motion.div
-              className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.05, delayChildren: 0.1 },
-                },
-              }}
-            >
-              {techStack.map((tech, techIndex) => (
-                <motion.div
-                  key={techIndex}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.8 },
-                    visible: { opacity: 1, scale: 1 },
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <Badge
-                    variant="outline"
-                    className="bg-secondary text-foreground hover:bg-accent/10 transition-smooth text-xs sm:text-sm md:text-[15px] lg:text-[16px] px-2 py-0.5 cursor-pointer"
-                  >
-                    {tech}
-                  </Badge>
-                </motion.div>
-              ))}
-            </motion.div>
+            <div>
+              <motion.h3
+                className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                {title}
+              </motion.h3>
+              <p className="text-zinc-400 mb-6 leading-relaxed text-sm sm:text-base font-normal">
+                {description}
+              </p>
+            </div>
 
             <div>
-              <motion.div whileTap={{ scale: 0.95 }}>
+              <motion.div
+                className="flex flex-wrap gap-2 mb-6"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
+                  },
+                }}
+              >
+                {techStack.map((tech, techIndex) => (
+                  <motion.div
+                    key={techIndex}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.8 },
+                      visible: { opacity: 1, scale: 1 },
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Badge
+                      variant="outline"
+                      className="bg-[#1C1C1F] text-[#FF5A36] border-[#FF5A36]/30 hover:bg-[#FF5A36] hover:text-white transition-colors duration-300 text-xs sm:text-sm px-3 py-1 font-medium rounded-md cursor-pointer"
+                    >
+                      {tech}
+                    </Badge>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.02 }}>
                 <a
                   href={liveUrl ? liveUrl : projectUrl}
-                  className="group flex items-center justify-center gap-2 hover:scale-105 transition duration-300  bg-white  px-3 py-2 sm:px-4 sm:py-2 lg:px-5 lg:py-2 rounded-lg text-xs sm:text-sm lg:text-[16px]  text-[#3b3d49]  cursor-pointer w-fit "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(255,90,54,0.3)] cursor-pointer"
                 >
-                  <span className="">View Project</span>
+                  <span>View Live Project</span>
                   <FaArrowRight
-                    size={12}
-                    className="sm:w-4 sm:h-4 group-hover:ml-2 group-hover:mr-0 mr-2 transition-all duration-300"
-                    color="#3b3d49"
+                    size={13}
+                    className="group-hover:translate-x-1 transition-transform duration-300"
                   />
                 </a>
               </motion.div>
