@@ -73,7 +73,7 @@ const SkillCard = ({ title, skillLogo: SkillLogo, category }: SkillCardProps) =>
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="bg-[#121214] border border-white/10 hover:border-[#FF5A36] p-4 sm:p-5 md:p-6 text-zinc-300 hover:text-white rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer relative shadow-lg hover:shadow-[0_0_25px_rgba(255,90,54,0.3)] group"
+        className="bg-[#121214] border border-white/10 hover:border-[#FF5A36] p-4 sm:p-5 md:p-6 text-zinc-300 hover:text-white rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer relative group"
         variants={containerVariants}
         whileHover="hover"
         whileTap={{ scale: 0.95 }}
@@ -101,7 +101,7 @@ const SkillCard = ({ title, skillLogo: SkillLogo, category }: SkillCardProps) =>
 
       {/* Floating Hallmark Tooltip */}
       <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#FF5A36] text-white px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap pointer-events-none z-50 shadow-[0_4px_15px_rgba(255,90,54,0.4)]"
+        className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#FF5A36] text-white px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap pointer-events-none z-50"
         variants={tooltipVariants}
         initial="hidden"
         animate={isHovered ? "visible" : "hidden"}

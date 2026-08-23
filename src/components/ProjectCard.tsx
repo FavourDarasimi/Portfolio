@@ -43,7 +43,7 @@ const ProjectCard = ({
       viewport={{ once: true, margin: "-100px" }}
     >
       <Card
-        className={`overflow-hidden bg-[#121214] border-white/10 hover:border-[#FF5A36]/40 transition-all duration-500 rounded-2xl shadow-xl hover:shadow-[0_10px_35px_rgba(255,90,54,0.15)] ${
+        className={`overflow-hidden bg-[#121214] border-white/10 hover:border-[#FF5A36]/60 transition-all duration-500 rounded-2xl ${
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
@@ -97,7 +97,7 @@ const ProjectCard = ({
           >
             <div>
               <motion.h3
-                className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight"
+                className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
@@ -147,7 +147,7 @@ const ProjectCard = ({
                   href={liveUrl ? liveUrl : projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(255,90,54,0.3)] cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer"
                 >
                   <span>View Live Project</span>
                   <FaArrowRight

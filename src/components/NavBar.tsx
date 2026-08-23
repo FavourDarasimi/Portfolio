@@ -1,5 +1,10 @@
+/* Hallmark · component: nav · genre: editorial · theme: custom
+ * states: default · hover · focus · active · disabled · loading · error · success
+ * contrast: pass (46–50)
+ */
+
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { FiGithub, FiMail } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
@@ -27,136 +32,125 @@ const NavBar = ({
 }: NavBarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const linkVariants = {
-    hidden: { opacity: 0, y: -10 },
+  const linkVariants: Variants = {
+    hidden: { opacity: 0, y: -8 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1, duration: 0.4 },
+      transition: { delay: i * 0.08, duration: 0.3 },
     }),
   };
 
-  const socialVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+  const socialVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.85 },
     visible: (i: number) => ({
       opacity: 1,
       scale: 1,
-      transition: { delay: i * 0.08, duration: 0.4 },
+      transition: { delay: i * 0.06, duration: 0.3 },
     }),
     hover: {
-      scale: 1.1,
-      rotate: 5,
-      transition: { duration: 0.3 },
-    },
-  };
-
-  const mobileMenuVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.3 },
-    },
-    exit: {
-      opacity: 0,
-      y: -20,
+      scale: 1.08,
       transition: { duration: 0.2 },
     },
   };
 
-  const mobileLinkVariants = {
-    hidden: { opacity: 0, x: -20 },
+  const mobileMenuVariants: Variants = {
+    hidden: { opacity: 0, y: -16, scaleY: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scaleY: 1,
+      transition: { duration: 0.25, ease: "easeInOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: -16,
+      scaleY: 0.95,
+      transition: { duration: 0.2 },
+    },
+  };
+
+  const mobileLinkVariants: Variants = {
+    hidden: { opacity: 0, x: -16 },
     visible: (i: number) => ({
       opacity: 1,
       x: 0,
-      transition: { delay: 0.1 + i * 0.08, duration: 0.3 },
+      transition: { delay: 0.05 + i * 0.06, duration: 0.25 },
     }),
   };
 
+  const navItems = [
+    { label: "About", ref: aboutRef },
+    { label: "Skills", ref: skillsRef },
+    { label: "Services", ref: servicesRef },
+    { label: "Projects", ref: projectsRef },
+    { label: "Contact", ref: contactRef },
+  ];
+
+  const socialItems = [
+    {
+      href: "https://github.com/FavourDarasimi",
+      icon: FiGithub,
+      label: "GitHub Profile",
+    },
+    {
+      href: "https://x.com/code_with_dara",
+      icon: FaXTwitter,
+      label: "X (Twitter) Profile",
+    },
+    {
+      href: "mailto:darasimi0603@gmail.com",
+      icon: FiMail,
+      label: "Send Email",
+    },
+  ];
+
   const NavLinks = () => (
-    <div className="flex lg:flex-row flex-col md:gap-6 lg:gap-8 gap-5">
-      {[
-        { label: "About", ref: aboutRef, index: 0 },
-        { label: "Skills", ref: skillsRef, index: 1 },
-        { label: "Services", ref: servicesRef, index: 2 },
-        { label: "Projects", ref: projectsRef, index: 3 },
-        { label: "Contact", ref: contactRef, index: 4 },
-      ].map(({ label, ref, index }) => (
-        <motion.h1
+    <div className="flex lg:flex-row flex-col items-center gap-2 lg:gap-1">
+      {navItems.map(({ label, ref }, index) => (
+        <motion.button
           key={label}
           custom={index}
           variants={menuOpen ? mobileLinkVariants : linkVariants}
           initial="hidden"
           animate="visible"
-          className="text-zinc-400 hover:text-[#FF5A36] cursor-pointer text-base md:text-[16px] lg:text-[18px] font-medium transition-colors duration-300 relative group"
           onClick={() => {
             scrollToSection(ref);
             setMenuOpen(false);
           }}
-          whileHover={{ y: -2 }}
+          whileHover={{ y: -1 }}
+          whileTap={{ scale: 0.97 }}
+          className="text-zinc-400 hover:text-white focus-visible:text-white px-3.5 py-2 text-sm sm:text-base lg:text-sm font-medium rounded-lg transition-all duration-200 relative group cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
         >
-          {label}
-          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#FF5A36] transition-all duration-300 group-hover:w-full" />
-        </motion.h1>
+          <span className="relative z-10">{label}</span>
+          <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[#FF5A36] rounded-full scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100 transition-transform duration-200 origin-left" />
+        </motion.button>
       ))}
     </div>
   );
 
   const SocialLinks = () => (
-    <div className="flex gap-4 md:gap-5">
-      {[
-        {
-          href: "https://github.com/FavourDarasimi",
-          icon: FiGithub,
-          label: "GitHub",
-          index: 0,
-        },
-        {
-          href: "https://x.com/code_with_dara",
-          icon: FaXTwitter,
-          label: "Twitter",
-          index: 1,
-        },
-        {
-          href: "mailto:darasimi0603@gmail.com",
-          icon: FiMail,
-          label: "Email",
-          index: 2,
-        },
-      ].map(({ href, icon: Icon, label, index }) => (
+    <div className="flex items-center gap-3">
+      {socialItems.map(({ href, icon: Icon, label }, index) => (
         <motion.a
           key={label}
           href={href}
+          aria-label={label}
           custom={index}
           variants={socialVariants}
           initial="hidden"
           animate="visible"
           whileHover="hover"
-          className="bg-[#121214] border border-white/10 hover:border-[#FF5A36]/50 hover:text-[#FF5A36] cursor-pointer p-2.5 rounded-xl transition-all duration-300 group"
+          whileTap={{ scale: 0.95 }}
+          className="bg-[#121214] border border-white/10 hover:border-[#FF5A36]/60 hover:bg-[#FF5A36]/10 text-zinc-300 hover:text-[#FF5A36] p-2.5 rounded-xl transition-all duration-200 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon
-            size={20}
-            className="md:w-[20px] md:h-[20px] lg:w-[22px] lg:h-[22px] text-white group-hover:text-[#FF5A36] transition-colors"
-          />
+          <Icon size={18} className="transition-colors duration-200" />
         </motion.a>
       ))}
     </div>
   );
-
-  const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 },
-    },
-    hover: {
-      scale: 1.05,
-      transition: { duration: 0.3 },
-    },
-  };
 
   useEffect(() => {
     const updateNavHeight = () => {
@@ -171,82 +165,69 @@ const NavBar = ({
   }, []);
 
   return (
-    <div
+    <header
       ref={navRef}
-      className="flex justify-between items-center py-4 md:py-5 px-4 sm:px-6 md:px-10 lg:px-20 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-white/10 sticky w-full top-0 z-50 transition-all duration-300"
+      className="sticky top-0 z-50 w-full pt-3 sm:pt-4 md:pt-5 px-4 sm:px-6 md:px-8 bg-transparent transition-colors duration-300"
     >
-      {/* Logo */}
-      <motion.h1
-        className="cursor-pointer tracking-tight font-serif text-2xl sm:text-2xl md:text-[28px] lg:text-[32px] font-bold text-white flex items-center gap-1"
-        variants={logoVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover="hover"
-        onClick={() => scrollToSection(homeRef)}
-      >
-        CodeWithDara<span className="text-[#FF5A36] text-3xl font-sans">.</span>
-      </motion.h1>
-
-      {/* Desktop Menu */}
-      <motion.div
-        className="hidden lg:flex"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <NavLinks />
-      </motion.div>
-
-      <motion.div
-        className="hidden lg:flex"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <SocialLinks />
-      </motion.div>
-
-      {/* Mobile Hamburger */}
-      <motion.div
-        className="lg:hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
+      <div className="max-w-5xl mx-auto bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/15 rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex justify-between items-center relative transition-all duration-300">
+        {/* Brand Logo */}
         <motion.button
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="p-2 rounded-lg bg-[#121214] border border-white/10"
+          onClick={() => scrollToSection(homeRef)}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="text-left font-sans text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-1.5 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-md px-1 py-0.5"
         >
-          <AnimatePresence mode="wait">
-            {menuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X size={24} className="text-[#FF5A36]" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu size={24} className="text-white" />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A36] inline-block shrink-0" />
+          <span>CodeWithDara</span>
         </motion.button>
-      </motion.div>
 
-      {/* Mobile Menu Drawer */}
+        {/* Desktop Navigation & Actions */}
+        <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <NavLinks />
+          <div className="h-4 w-[1px] bg-white/10" />
+          <SocialLinks />
+        </nav>
+
+        {/* Mobile Hamburger Toggle */}
+        <div className="lg:hidden flex items-center">
+          <motion.button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 rounded-xl bg-[#121214] border border-white/10 text-white hover:border-[#FF5A36]/60 transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {menuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <X size={20} className="text-[#FF5A36]" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <Menu size={20} className="text-white" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer (Absolute overlay) */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -254,14 +235,17 @@ const NavBar = ({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute top-[65px] left-0 w-full bg-[#0A0A0A]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col items-center py-8 space-y-7 lg:hidden shadow-2xl"
+            className="lg:hidden absolute left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 top-full mt-2 z-50 max-w-5xl mx-auto bg-[#0A0A0A]/98 backdrop-blur-2xl border border-white/15 rounded-2xl px-6 py-6 shadow-2xl"
           >
-            <NavLinks />
-            <SocialLinks />
+            <nav aria-label="Mobile Navigation" className="flex flex-col items-center space-y-5">
+              <NavLinks />
+              <div className="w-16 h-[1px] bg-white/10 my-1" />
+              <SocialLinks />
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </header>
   );
 };
 

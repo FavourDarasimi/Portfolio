@@ -68,7 +68,6 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
     hover: {
       scale: 1.03,
       y: -6,
-      boxShadow: "0 15px 30px rgba(255, 90, 54, 0.2)",
       transition: { duration: 0.3 },
     },
   };
@@ -82,13 +81,13 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <span className="text-[#FF5A36] text-xs sm:text-sm font-semibold tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
+        <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
           What I Offer
         </span>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 pb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-3">
           Services & Solutions
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-zinc-400 pb-12 leading-relaxed font-normal">
+        </h2>
+        <p className="text-sm sm:text-base max-w-2xl mx-auto text-zinc-400 pb-10 leading-relaxed font-normal">
           Comprehensive web development services tailored to bring your digital vision to life with modern technologies, scalable architecture, and best practices.
         </p>
       </motion.div>

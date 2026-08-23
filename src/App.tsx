@@ -25,31 +25,33 @@ function App() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="">
+    <div className="min-h-screen bg-[#0A0A0A] text-foreground">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Toaster position="top-center" />
         <StarsBackground />
-        <NavBar
-          navRef={navRef}
-          homeRef={homeRef}
-          aboutRef={aboutRef}
-          skillsRef={skillsRef}
-          servicesRef={servicesRef}
-          projectsRef={projectsRef}
-          contactRef={contactRef}
-          scrollToSection={scrollToSection}
-        />
-        <Home
-          homeRef={homeRef}
-          projectsRef={projectsRef}
-          scrollToSection={scrollToSection}
-        />
-        <About aboutRef={aboutRef} />
-        <Skills skillsRef={skillsRef} />
-        <Services servicesRef={servicesRef} />
-        <Projects projectsRef={projectsRef} />
-        <Contact contactRef={contactRef} />
-        <Footer />
+        <div className="max-w-[1500px] mx-auto relative w-full">
+          <NavBar
+            navRef={navRef}
+            homeRef={homeRef}
+            aboutRef={aboutRef}
+            skillsRef={skillsRef}
+            servicesRef={servicesRef}
+            projectsRef={projectsRef}
+            contactRef={contactRef}
+            scrollToSection={scrollToSection}
+          />
+          <Home
+            homeRef={homeRef}
+            projectsRef={projectsRef}
+            scrollToSection={scrollToSection}
+          />
+          <About aboutRef={aboutRef} />
+          <Skills skillsRef={skillsRef} />
+          <Services servicesRef={servicesRef} />
+          <Projects projectsRef={projectsRef} />
+          <Contact contactRef={contactRef} />
+          <Footer />
+        </div>
       </ThemeProvider>
     </div>
   );

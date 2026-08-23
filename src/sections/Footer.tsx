@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="py-12 border-t border-white/10 max-w-7xl mx-auto px-4">
+    <footer className="py-12 border-t border-white/10 max-w-[1500px] w-full mx-auto px-4 sm:px-6 md:px-8">
       <div className="text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

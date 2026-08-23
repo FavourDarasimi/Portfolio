@@ -65,26 +65,26 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <span className="text-[#FF5A36] text-xs sm:text-sm font-semibold tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
+        <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
           Contact Me
         </span>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 pb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-3">
           Get In Touch
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-zinc-400 pb-12 leading-relaxed font-normal">
-          Have a project in mind, a opportunity to discuss, or just want to connect? I'd love to hear from you. Let me know how I can help!
+        </h2>
+        <p className="text-sm sm:text-base max-w-xl mx-auto text-zinc-400 pb-10 leading-relaxed font-normal">
+          Have a project in mind, an opportunity to discuss, or just want to connect? I'd love to hear from you. Let me know how I can help!
         </p>
       </motion.div>
 
       <div className="px-4 sm:px-6 md:px-8 flex justify-center max-w-4xl mx-auto">
         <motion.div
-          className="bg-[#121214] border border-white/10 p-6 sm:p-8 md:p-10 rounded-2xl w-full shadow-2xl relative overflow-hidden"
+          className="bg-[#121214] border border-white/10 p-6 sm:p-8 rounded-2xl w-full shadow-2xl relative overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl font-bold text-white mb-1">Send a Message</h2>
+          <h3 className="text-xl sm:text-2xl font-semibold text-white mb-1">Send a Message</h3>
           <p className="text-zinc-400 text-sm mb-6 font-normal">
             Fill out the form below and I'll get back to you as soon as possible.
           </p>
@@ -143,7 +143,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
             <motion.div whileTap={{ scale: 0.97 }}>
               <Button
                 disabled={isSubmitting}
-                className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold shadow-[0_0_20px_rgba(255,90,54,0.35)] transition-all duration-300 w-full sm:w-auto px-8 py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold transition-all duration-300 w-full sm:w-auto px-8 py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span>{isSubmitting ? "Sending Message..." : "Send Message"}</span>
                 {!isSubmitting && (
