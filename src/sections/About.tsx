@@ -93,26 +93,20 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
             viewport={{ once: true }}
           >
             <div className="bg-[#121214]/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 space-y-3 shadow-2xl relative">
-              <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-lg sm:text-xl text-white flex items-center gap-2">
-                  <span>Who I Am</span>
-                  <span className="w-2 h-2 rounded-full bg-[#FF5A36]" />
-                </h3>
-                <span className="text-[#FF5A36] text-xs font-mono font-medium">01</span>
-              </div>
+              <h3 className="font-semibold text-lg sm:text-xl text-white flex items-center gap-2">
+                <span>Who I Am</span>
+                <span className="w-2 h-2 rounded-full bg-[#FF5A36]" />
+              </h3>
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
                 I'm a full-stack web developer who enjoys building applications that are practical, scalable, and user-friendly. For me, coding is more than just writing functions — it's about designing solutions that make life easier for people.
               </p>
             </div>
 
             <div className="bg-[#121214]/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 space-y-3 shadow-2xl relative">
-              <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-lg sm:text-xl text-white flex items-center gap-2">
-                  <span>My Journey</span>
-                  <span className="w-2 h-2 rounded-full bg-[#FF5A36]" />
-                </h3>
-                <span className="text-[#FF5A36] text-xs font-mono font-medium">02</span>
-              </div>
+              <h3 className="font-semibold text-lg sm:text-xl text-white flex items-center gap-2">
+                <span>My Journey</span>
+                <span className="w-2 h-2 rounded-full bg-[#FF5A36]" />
+              </h3>
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
                 I started learning software development out of curiosity about how digital products work beneath the surface. Over time, that curiosity grew into a passion for creating software of my own. Today, I work mainly with React, Next.js, and Django REST Framework, crafting projects that connect clean back-end logic with smooth front-end experiences.
               </p>
@@ -136,8 +130,8 @@ const About: React.FC<AboutProps> = ({ aboutRef }) => {
                   <Card className="bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/50 transition-all duration-300 h-full rounded-3xl group cursor-pointer overflow-hidden shadow-2xl">
                     <CardContent className="p-6 sm:p-7 flex flex-col justify-between h-full min-h-[170px]">
                       {/* Top Circular Badge */}
-                      <div className="w-10 h-10 rounded-full bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center group-hover:bg-[#FF5A36] transition-colors duration-300">
-                        <feature.icon className="h-4 sm:h-5 w-4 sm:w-5 text-[#FF5A36] group-hover:text-white transition-colors duration-300" />
+                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#FF5A36] group-hover:border-[#FF5A36] transition-colors duration-300">
+                        <feature.icon className="h-4 sm:h-5 w-4 sm:w-5 text-zinc-300 group-hover:text-white transition-colors duration-300" />
                       </div>
 
                       {/* Bottom Layout Row */}

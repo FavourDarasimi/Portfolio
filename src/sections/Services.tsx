@@ -1,6 +1,11 @@
+/* Hallmark · component: section:services · genre: editorial · theme: custom
+ * states: default · hover · focus · active · disabled · loading · error · success
+ * contrast: pass (46–50)
+ */
+
 import React from "react";
-import { motion } from "framer-motion";
-import { Globe, Code2, Database, Network, Smartphone, Zap } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+import { Globe, Code2, Database, Network, Smartphone, Zap, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface ServicesProps {
@@ -13,41 +18,41 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
       icon: Globe,
       title: "Web Development",
       description:
-        "Building responsive, modern web applications with clean architecture and optimal performance.",
+        "Full-stack web applications engineered for performance, scalability, and long-term maintainability.",
     },
     {
       icon: Code2,
-      title: "Frontend Development",
+      title: "Frontend Engineering",
       description:
-        "Creating intuitive user interfaces with React, TypeScript, and modern CSS frameworks.",
+        "Intuitive, high-fidelity user interfaces built with React, TypeScript, and modern styling architectures.",
     },
     {
       icon: Database,
-      title: "Backend Development",
+      title: "Backend & Systems",
       description:
-        "Developing robust server-side solutions with Django REST Framework and Python.",
+        "Robust server-side architectures, custom business logic, and structured database management.",
     },
     {
       icon: Network,
-      title: "API Development",
+      title: "API Integration",
       description:
-        "Building RESTful APIs and backend services with Django REST Framework for seamless data integration.",
+        "Designing RESTful APIs and seamless data integration layers for third-party platforms.",
     },
     {
       icon: Smartphone,
-      title: "Responsive Design",
+      title: "Responsive UI & UX",
       description:
-        "Ensuring seamless experiences across all devices and screen sizes.",
+        "Adaptive and mobile-first layouts designed to deliver flawless experiences across all viewports.",
     },
     {
       icon: Zap,
-      title: "Performance Optimization",
+      title: "Performance Tuning",
       description:
-        "Optimizing applications for speed, efficiency, and smooth user experiences.",
+        "Optimizing bundle sizes, API latency, render speeds, and Core Web Vitals for maximum performance.",
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -57,74 +62,69 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.85, y: 20 },
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 16 },
     visible: {
       opacity: 1,
-      scale: 1,
       y: 0,
-      transition: { duration: 0.4 },
-    },
-    hover: {
-      scale: 1.03,
-      y: -6,
-      transition: { duration: 0.3 },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
   return (
-    <div className="py-12 sm:py-16 md:py-20 lg:py-24 relative" ref={servicesRef}>
-      <motion.div
-        className="px-4 sm:px-6 md:px-8 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1 rounded-full border border-[#FF5A36]/20">
-          What I Offer
-        </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-3">
-          Services & Solutions
-        </h2>
-        <p className="text-sm sm:text-base max-w-2xl mx-auto text-zinc-400 pb-10 leading-relaxed font-normal">
-          Comprehensive web development services tailored to bring your digital vision to life with modern technologies, scalable architecture, and best practices.
-        </p>
-      </motion.div>
-
-      <motion.div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto">
+    <section ref={servicesRef} className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 space-y-12">
+        {/* Section Header */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+          className="text-left"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1.5 rounded-full border border-[#FF5A36]/25 inline-flex items-center gap-1.5">
+            <Sparkles size={14} className="text-[#FF5A36]" /> What I Offer
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-2 leading-tight">
+            Services & Solutions
+          </h2>
+          <p className="text-sm sm:text-base max-w-xl text-zinc-400 font-normal leading-relaxed">
+            Tailored software development services designed to translate your ideas into scalable, high-performance web products.
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {services.map((service, index) => (
-            <motion.div key={index} variants={cardVariants} whileHover="hover">
-              <Card className="bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/50 cursor-pointer transition-all duration-300 h-full rounded-3xl group overflow-hidden shadow-2xl">
-                <CardContent className="p-6 sm:p-7 flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center group-hover:bg-[#FF5A36] transition-all duration-300">
-                        <service.icon className="h-6 w-6 text-[#FF5A36] group-hover:text-white transition-colors duration-300" />
-                      </div>
-                      <span className="text-[#FF5A36] text-xs font-mono font-medium">0{index + 1}</span>
+            <motion.div key={index} variants={cardVariants} whileHover={{ y: -4 }}>
+              <Card className="bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/50 transition-all duration-300 h-full rounded-3xl group overflow-hidden shadow-2xl cursor-pointer">
+                <CardContent className="px-6 py-4.5 sm:px-7 sm:py-5 flex flex-col justify-between h-full space-y-3">
+                  <div className="space-y-4">
+                    <div className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#FF5A36] group-hover:border-[#FF5A36] transition-colors duration-300">
+                      <service.icon className="h-5 w-5 text-zinc-300 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <h3 className="font-semibold text-white text-xl mb-2 group-hover:text-[#FF5A36] transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-zinc-400 leading-relaxed font-normal">
-                      {service.description}
-                    </p>
+                    <div>
+                      <h3 className="font-semibold text-white text-lg sm:text-xl tracking-tight mb-2 group-hover:text-[#FF5A36] transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 

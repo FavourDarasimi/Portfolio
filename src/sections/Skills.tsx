@@ -110,15 +110,19 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
               key={idx}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className="bg-[#121214]/60 backdrop-blur-xl border border-white/10 hover:border-[#FF5A36]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 group cursor-pointer shadow-2xl"
+              className="bg-[#0D0D0F]/90 backdrop-blur-xl border border-white/12 hover:border-[#FF5A36]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 group cursor-pointer relative overflow-hidden"
             >
-              <div className="space-y-4">
+              {/* Header with Title Left & Orange Index Right */}
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#FF5A36] group-hover:border-[#FF5A36] transition-colors duration-300">
-                    <category.icon className="h-5 w-5 text-zinc-300 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-10 h-10 rounded-full bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center group-hover:bg-[#FF5A36] transition-colors duration-300">
+                    <category.icon className="h-5 w-5 text-[#FF5A36] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="text-[#FF5A36] text-xs font-mono font-medium">0{idx + 1}</span>
+                  <span className="text-[#FF5A36] font-mono text-sm font-semibold tracking-wider">
+                    0{idx + 1}
+                  </span>
                 </div>
+
                 <div>
                   <h3 className="font-semibold text-white text-lg sm:text-xl tracking-tight">
                     {category.title}
@@ -129,12 +133,12 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
                 </div>
               </div>
 
-              {/* Skill Items Grid (Pill Chips) */}
-              <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+              {/* Skill Pill Badges */}
+              <div className="flex flex-wrap gap-2.5 pt-4 border-t border-white/10">
                 {category.skills.map((skill, sIdx) => (
                   <div
                     key={sIdx}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-zinc-200 text-xs sm:text-sm font-medium hover:border-[#FF5A36]/50 hover:bg-[#FF5A36]/10 hover:text-white transition-all duration-200"
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/15 text-zinc-300 text-xs sm:text-sm font-medium hover:border-[#FF5A36]/60 hover:text-white hover:bg-[#FF5A36]/10 transition-all duration-200"
                   >
                     <skill.logo className="text-zinc-400 group-hover:text-white text-sm shrink-0 transition-colors duration-200" />
                     <span>{skill.name}</span>
