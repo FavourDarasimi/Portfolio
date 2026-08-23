@@ -43,7 +43,7 @@ const ProjectCard = ({
       viewport={{ once: true, margin: "-100px" }}
     >
       <Card
-        className={`overflow-hidden bg-[#121214] border-white/10 hover:border-[#FF5A36]/60 transition-all duration-500 rounded-2xl ${
+        className={`overflow-hidden bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/60 transition-all duration-500 rounded-3xl shadow-2xl ${
           index % 2 === 1 ? "lg:flex-row-reverse" : ""
         }`}
       >
@@ -53,7 +53,7 @@ const ProjectCard = ({
           }`}
         >
           <motion.div
-            className="group flex justify-center items-center relative p-6 lg:p-4 xl:p-6 lg:w-1/2 overflow-hidden bg-[#1A1A1E]"
+            className="group flex justify-center items-center relative p-6 lg:p-4 xl:p-6 lg:w-1/2 overflow-hidden bg-[#1A1A1E]/80 backdrop-blur-md"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -134,7 +134,7 @@ const ProjectCard = ({
                   >
                     <Badge
                       variant="outline"
-                      className="bg-[#1C1C1F] text-[#FF5A36] border-[#FF5A36]/30 hover:bg-[#FF5A36] hover:text-white transition-colors duration-300 text-xs sm:text-sm px-3 py-1 font-medium rounded-md cursor-pointer"
+                      className="bg-white/5 text-zinc-200 border-white/10 hover:border-[#FF5A36]/50 hover:bg-[#FF5A36]/10 hover:text-white transition-all duration-300 text-xs sm:text-sm px-3.5 py-1 font-medium rounded-full cursor-pointer"
                     >
                       {tech}
                     </Badge>

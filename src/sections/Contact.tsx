@@ -78,7 +78,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
 
       <div className="px-4 sm:px-6 md:px-8 flex justify-center max-w-4xl mx-auto">
         <motion.div
-          className="bg-[#121214] border border-white/10 p-6 sm:p-8 rounded-2xl w-full shadow-2xl relative overflow-hidden"
+          className="bg-[#121214]/80 backdrop-blur-xl border border-white/10 p-6 sm:p-8 md:p-10 rounded-3xl w-full relative overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

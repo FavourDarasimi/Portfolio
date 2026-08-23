@@ -169,7 +169,7 @@ const NavBar = ({
       ref={navRef}
       className="sticky top-0 z-50 w-full pt-3 sm:pt-4 md:pt-5 px-4 sm:px-6 md:px-8 bg-transparent transition-colors duration-300"
     >
-      <div className="max-w-5xl mx-auto bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/15 rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex justify-between items-center relative transition-all duration-300">
+      <div className="max-w-5xl mx-auto bg-[#0A0A0A]/75 backdrop-blur-2xl border border-white/15 rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex justify-between items-center relative transition-all duration-300">
         {/* Brand Logo */}
         <motion.button
           onClick={() => scrollToSection(homeRef)}
@@ -198,7 +198,7 @@ const NavBar = ({
             aria-expanded={menuOpen}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="p-2 rounded-xl bg-[#121214] border border-white/10 text-white hover:border-[#FF5A36]/60 transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+            className="p-2 rounded-xl bg-[#121214]/80 backdrop-blur-xl border border-white/15 text-white hover:border-[#FF5A36]/60 transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
           >
             <AnimatePresence mode="wait" initial={false}>
               {menuOpen ? (
@@ -235,7 +235,7 @@ const NavBar = ({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="lg:hidden absolute left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 top-full mt-2 z-50 max-w-5xl mx-auto bg-[#0A0A0A]/98 backdrop-blur-2xl border border-white/15 rounded-2xl px-6 py-6 shadow-2xl"
+            className="lg:hidden absolute left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 top-full mt-2 z-50 max-w-5xl mx-auto bg-[#0A0A0A]/85 backdrop-blur-2xl border border-white/15 rounded-2xl px-6 py-6 shadow-2xl"
           >
             <nav aria-label="Mobile Navigation" className="flex flex-col items-center space-y-5">
               <NavLinks />

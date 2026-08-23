@@ -102,13 +102,16 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={cardVariants} whileHover="hover">
-              <Card className="bg-[#121214] border-white/10 hover:border-[#FF5A36]/50 cursor-pointer transition-all duration-300 h-full rounded-2xl group overflow-hidden">
+              <Card className="bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/50 cursor-pointer transition-all duration-300 h-full rounded-3xl group overflow-hidden shadow-2xl">
                 <CardContent className="p-6 sm:p-7 flex flex-col justify-between h-full">
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center mb-5 group-hover:bg-[#FF5A36] transition-all duration-300">
-                      <service.icon className="h-6 w-6 text-[#FF5A36] group-hover:text-white transition-colors duration-300" />
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center group-hover:bg-[#FF5A36] transition-all duration-300">
+                        <service.icon className="h-6 w-6 text-[#FF5A36] group-hover:text-white transition-colors duration-300" />
+                      </div>
+                      <span className="text-[#FF5A36] text-xs font-mono font-medium">0{index + 1}</span>
                     </div>
-                    <h3 className="font-bold text-white text-xl mb-3 group-hover:text-[#FF5A36] transition-colors duration-300">
+                    <h3 className="font-semibold text-white text-xl mb-2 group-hover:text-[#FF5A36] transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-sm text-zinc-400 leading-relaxed font-normal">
