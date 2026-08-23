@@ -78,10 +78,10 @@ const Home: React.FC<HomeProps> = ({
         >
           {/* Status Badge */}
           <motion.div variants={itemVariants}>
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-[#FF5A36]/10 border border-[#FF5A36]/30 text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wide">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-[#121214] border border-white/10 text-zinc-300 text-xs sm:text-sm font-medium tracking-wide">
               <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF5A36] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-[#FF5A36]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-emerald-500"></span>
               </span>
               <span>Available for work & projects</span>
             </div>
@@ -93,7 +93,7 @@ const Home: React.FC<HomeProps> = ({
               I build web products that solve problems and{" "}
               <span className="text-[#FF5A36] font-semibold">deliver real impact.</span>
             </h1>
-            <p className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase">
+            <p className="text-zinc-400 text-xs sm:text-sm font-medium tracking-wider uppercase">
               Darasimi Olaniran · Full-Stack Developer
             </p>
             <p className="text-xs sm:text-sm md:text-base text-zinc-400 max-w-xl font-normal leading-relaxed">

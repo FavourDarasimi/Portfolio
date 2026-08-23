@@ -25,11 +25,11 @@ function App() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-foreground">
+    <div className="min-h-screen bg-[#0A0A0A] text-foreground relative isolate">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Toaster position="top-center" />
         <StarsBackground />
-        <div className="max-w-[1500px] mx-auto relative w-full">
+        <div className="max-w-[1500px] mx-auto relative z-10 w-full">
           <NavBar
             navRef={navRef}
             homeRef={homeRef}

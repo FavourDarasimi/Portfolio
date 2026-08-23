@@ -110,6 +110,11 @@
   --sidebar-ring: #FF5A36;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

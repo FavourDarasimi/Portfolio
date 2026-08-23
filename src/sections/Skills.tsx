@@ -8,7 +8,7 @@ import { motion, type Variants } from "framer-motion";
 import { Cpu, Layout, Server, Wrench } from "lucide-react";
 import { FaHtml5, FaReact, FaPython, FaGithub, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
-import { SiTypescript, SiDjango, SiGit, SiTailwindcss, SiVercel, SiPostman, SiFramer } from "react-icons/si";
+import { SiTypescript, SiDjango, SiGit, SiTailwindcss, SiVercel, SiPostman, SiFramer, SiSupabase } from "react-icons/si";
 import { RiNextjsLine } from "react-icons/ri";
 
 interface SkillsProps {
@@ -39,6 +39,7 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
         { name: "Django", logo: SiDjango },
         { name: "Django REST Framework", logo: SiDjango },
         { name: "Python", logo: FaPython },
+        { name: "Supabase", logo: SiSupabase },
         { name: "Postman", logo: SiPostman },
         { name: "REST APIs", logo: Server },
       ],
