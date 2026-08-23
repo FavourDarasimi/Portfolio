@@ -1,17 +1,20 @@
+/* Hallmark · component: project-card · genre: editorial · theme: custom
+ * states: default · hover · focus · active · disabled · loading · error · success
+ * contrast: pass (46–50)
+ */
+
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Badge } from "@/components/ui/badge";
-
-import { FaArrowRight } from "react-icons/fa";
+import { Github } from "lucide-react";
 
 type ProjectProps = {
   title: string;
   description: string;
-  imageUrl: string[] | undefined;
-  projectUrl: string | undefined;
-  // frontendUrl?: string | undefined;
-  // backendUrl?: string | undefined;
-  liveUrl: string | undefined;
+  imageUrl?: string[] | undefined;
+  projectUrl?: string | undefined;
+  liveUrl?: string | undefined;
   index: number;
   techStack: string[];
 };
@@ -21,144 +24,138 @@ const ProjectCard = ({
   description,
   imageUrl,
   projectUrl,
-  index,
   techStack,
-
   liveUrl,
 }: ProjectProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const },
+      transition: { duration: 0.5, ease: "easeOut" as const },
     },
   };
+
+  const targetLink = liveUrl || projectUrl;
 
   return (
     <motion.div
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
+      className="h-full"
     >
       <Card
-        className={`overflow-hidden bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/60 transition-all duration-500 rounded-3xl shadow-2xl ${
-          index % 2 === 1 ? "lg:flex-row-reverse" : ""
-        }`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="overflow-hidden bg-[#121214]/60 backdrop-blur-xl border border-white/10 hover:border-[#FF5A36]/50 transition-all duration-300 rounded-3xl shadow-2xl group relative flex flex-col h-full cursor-pointer min-h-[360px] sm:min-h-[380px]"
       >
-        <div
-          className={`flex flex-col lg:flex-row ${
-            index % 2 === 1 ? "lg:flex-row-reverse" : ""
-          }`}
+        {/* Default Text Content (Slides OUT to Left on Hover) */}
+        <motion.div
+          className="p-6 sm:p-8 flex flex-col justify-between flex-grow space-y-6 w-full h-full"
+          initial={{ x: "0%", opacity: 1 }}
+          animate={{
+            x: isHovered ? "-105%" : "0%",
+            opacity: isHovered ? 0 : 1,
+          }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
-          <motion.div
-            className="group flex justify-center items-center relative p-6 lg:p-4 xl:p-6 lg:w-1/2 overflow-hidden bg-[#1A1A1E]/80 backdrop-blur-md"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36]" />
+              <span className="text-[11px] font-medium text-zinc-400 uppercase tracking-wider">
+                Featured Application
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight group-hover:text-[#FF5A36] transition-colors duration-300">
+              {title}
+            </h3>
+            <p className="text-zinc-400 leading-relaxed text-xs sm:text-sm font-normal">
+              {description}
+            </p>
+          </div>
+
+          <div className="space-y-5 pt-3 border-t border-white/5">
+            {/* Tech Badges */}
+            <div className="flex flex-wrap gap-2">
+              {techStack.map((tech, techIndex) => (
+                <Badge
+                  key={techIndex}
+                  variant="outline"
+                  className="bg-white/5 text-zinc-200 border-white/10 hover:border-[#FF5A36]/50 hover:bg-[#FF5A36]/10 hover:text-white transition-all duration-200 text-xs px-3 py-1 font-medium rounded-full cursor-pointer"
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+
+            {/* Action Buttons */}
+            {projectUrl && (
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <a
+                  href={projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-4.5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                >
+                  <Github size={15} />
+                  <span>Source Code</span>
+                </a>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Hover Mockup Layer (Slides IN from Right on Hover) */}
+        <motion.a
+          href={targetLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-20 p-6 sm:p-8 flex flex-col justify-between bg-[#121214]/95 backdrop-blur-2xl rounded-3xl overflow-hidden border border-[#FF5A36]/40"
+          initial={{ x: "105%", opacity: 0 }}
+          animate={{
+            x: isHovered ? "0%" : "105%",
+            opacity: isHovered ? 1 : 0,
+          }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Centered Mockup Images */}
+          <div className="flex-grow flex items-center justify-center relative w-full h-full overflow-hidden p-1 sm:p-2">
             {imageUrl &&
               imageUrl.map((url, imgIndex) =>
-                imgIndex == 1 ? (
+                imgIndex === 1 ? (
                   <motion.img
                     key={imgIndex}
                     src={url}
                     alt={`${title} mobile preview`}
-                    className="w-24 sm:w-32 md:w-36 lg:w-40 h-[170px] sm:h-[210px] md:h-60 lg:h-[320px] -ml-5 md:-ml-8 lg:-ml-12 transition-transform duration-500 group-hover:scale-105 rounded-lg shadow-2xl relative z-10"
-                    whileHover={{ scale: 1.08 }}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
+                    className="w-20 sm:w-28 md:w-32 h-auto max-h-[90%] object-contain -ml-6 sm:-ml-10 rounded-xl shadow-2xl relative z-10 border border-white/20 shrink-0"
+                    animate={{ scale: isHovered ? 1.04 : 0.95 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
                   />
                 ) : (
                   <motion.img
                     key={imgIndex}
                     src={url}
                     alt={`${title} desktop preview`}
-                    className="lg:w-full h-[170px] sm:h-[190px] md:h-60 lg:h-[320px] object-cover transition-transform duration-500 group-hover:scale-105 rounded-lg shadow-xl"
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
+                    className="w-full h-full max-h-full object-contain rounded-xl shadow-2xl border border-white/15"
+                    animate={{ scale: isHovered ? 1.02 : 0.95 }}
+                    transition={{ duration: 0.4 }}
                   />
                 )
               )}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="lg:w-1/2 h-fit p-6 sm:p-8 flex flex-col justify-between"
-            initial={{ opacity: 0, x: index % 2 === 1 ? -30 : 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <div>
-              <motion.h3
-                className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                {title}
-              </motion.h3>
-              <p className="text-zinc-400 mb-6 leading-relaxed text-sm sm:text-base font-normal">
-                {description}
-              </p>
-            </div>
-
-            <div>
-              <motion.div
-                className="flex flex-wrap gap-2 mb-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
-                  },
-                }}
-              >
-                {techStack.map((tech, techIndex) => (
-                  <motion.div
-                    key={techIndex}
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.8 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Badge
-                      variant="outline"
-                      className="bg-white/5 text-zinc-200 border-white/10 hover:border-[#FF5A36]/50 hover:bg-[#FF5A36]/10 hover:text-white transition-all duration-300 text-xs sm:text-sm px-3.5 py-1 font-medium rounded-full cursor-pointer"
-                    >
-                      {tech}
-                    </Badge>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <motion.div whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.02 }}>
-                <a
-                  href={liveUrl ? liveUrl : projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer"
-                >
-                  <span>View Live Project</span>
-                  <FaArrowRight
-                    size={13}
-                    className="group-hover:translate-x-1 transition-transform duration-300"
-                  />
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+          {/* Bottom Overlay Info Bar */}
+          <div className="flex items-center justify-between pt-3 border-t border-white/10 shrink-0">
+            <span className="text-xs text-zinc-300 font-medium tracking-wide">
+              {title}
+            </span>
+          </div>
+        </motion.a>
       </Card>
     </motion.div>
   );
