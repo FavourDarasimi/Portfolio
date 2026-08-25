@@ -100,6 +100,7 @@ const ProjectCard = ({
             {(liveUrl || projectUrl || frontendUrl || backendUrl) && (
               <div className="flex flex-wrap items-center gap-2.5 pt-1">
                 {liveUrl ? (
+                  <a
                     href={liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -110,6 +111,45 @@ const ProjectCard = ({
                     <span>Live Demo</span>
                   </a>
                 ) : (
+                  <>
+                    {projectUrl && (
+                      <a
+                        href={projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-3.5 py-2 rounded-full font-medium text-xs transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                      >
+                        <Github size={14} />
+                        <span>GitHub</span>
+                      </a>
+                    )}
+                    {frontendUrl && (
+                      <a
+                        href={frontendUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-3.5 py-2 rounded-full font-medium text-xs transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                      >
+                        <Github size={14} />
+                        <span>Frontend GitHub</span>
+                      </a>
+                    )}
+                    {backendUrl && (
+                      <a
+                        href={backendUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-3.5 py-2 rounded-full font-medium text-xs transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                      >
+                        <Github size={14} />
+                        <span>Backend GitHub</span>
+                      </a>
+                    )}
+                  </>
+                )}
               </div>
             )}
           </div>
