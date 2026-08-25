@@ -8,18 +8,18 @@ import { motion } from "framer-motion";
 import { FolderKanban } from "lucide-react";
 import ProjectCard from "../components/ProjectCard";
 
-import gemmacodeLaptop from "../assets/gemmacode laptop.png";
-import gemmacodeMobile from "../assets/gemmacode mobile.png";
-import plantleyLaptop from "../assets/plantley laptop.png";
-import plantleyMobile from "../assets/plantley mobile.png";
-import veyloraLaptop from "../assets/veylora laptop.png";
-import veyloraMobile from "../assets/veylora mobile.png";
-import steelgrooveLaptop from "../assets/steelgroove laptop.png";
-import steelgrooveMobile from "../assets/steelgroove mobile.png";
-import aurabydassyLaptop from "../assets/aurabydassy laptop.png";
-import aurabydassyMobile from "../assets/aurabydassy mobile.png";
-import nexusLaptop from "../assets/nexusevent laptop.png";
-import nexusMobile from "../assets/nexusevents mobile.png";
+import gemmacodeLaptop from "../assets/gemmacode laptop.webp";
+import gemmacodeMobile from "../assets/gemmacode mobile.webp";
+import plantleyLaptop from "../assets/plantley laptop.webp";
+import plantleyMobile from "../assets/plantley mobile.webp";
+import veyloraLaptop from "../assets/veylora laptop.webp";
+import veyloraMobile from "../assets/veylora mobile.webp";
+import steelgrooveLaptop from "../assets/steelgroove laptop.webp";
+import steelgrooveMobile from "../assets/steelgroove mobile.webp";
+import aurabydassyLaptop from "../assets/aurabydassy laptop.webp";
+import aurabydassyMobile from "../assets/aurabydassy mobile.webp";
+import nexusLaptop from "../assets/nexusevent laptop.webp";
+import nexusMobile from "../assets/nexusevents mobile.webp";
 
 interface ProjectProps {
   projectsRef: React.RefObject<HTMLDivElement | null>;
