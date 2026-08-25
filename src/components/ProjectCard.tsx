@@ -212,7 +212,7 @@ const ProjectCard = ({
             href={targetLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute inset-0 z-20 p-6 sm:p-8 flex flex-col justify-between bg-[#121214]/95 backdrop-blur-2xl rounded-3xl overflow-hidden"
+            className="absolute inset-0 z-20 p-4 sm:p-6 md:p-8 flex flex-col justify-between bg-[#121214]/95 backdrop-blur-2xl rounded-3xl overflow-hidden"
             initial={{ x: "105%", opacity: 0 }}
             animate={{
               x: isHovered ? "0%" : "105%",
@@ -220,34 +220,38 @@ const ProjectCard = ({
             }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Centered Mockup Images */}
-            <div className="flex-grow flex items-center justify-center relative w-full h-full overflow-hidden p-1 sm:p-2">
-              {imageUrl &&
-                imageUrl.map((url, imgIndex) =>
-                  imgIndex === 1 ? (
-                    <motion.img
-                      key={imgIndex}
-                      src={url}
-                      alt={`${title} mobile preview`}
-                      className="w-20 sm:w-28 md:w-32 h-auto max-h-[90%] object-contain -ml-6 sm:-ml-10 rounded-xl relative z-10 shrink-0"
-                      animate={{ scale: isHovered ? 1.04 : 0.95 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
-                    />
-                  ) : (
-                    <motion.img
-                      key={imgIndex}
-                      src={url}
-                      alt={`${title} desktop preview`}
-                      className="w-full h-full max-h-full object-contain rounded-xl"
-                      animate={{ scale: isHovered ? 1.02 : 0.95 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                  )
-                )}
+            {/* Centered Mockup Images Container */}
+            <div className="flex-grow flex items-center justify-center relative w-full h-full p-2 sm:p-4 overflow-hidden min-h-0">
+              <div className="relative w-full h-full flex items-center justify-center">
+                {imageUrl &&
+                  imageUrl.map((url, imgIndex) =>
+                    imgIndex === 1 ? (
+                      /* Mobile Phone Preview Overlay */
+                      <motion.img
+                        key={imgIndex}
+                        src={url}
+                        alt={`${title} mobile preview`}
+                        className="absolute bottom-20 md:bottom-4 right-1 sm:right-3 w-22 sm:w-22 md:w-28   max-h-[70%] sm:max-h-[85%] lg:mx-h-[100%] object-contain rounded-xl z-10 drop-shadow-2xl"
+                        animate={{ scale: isHovered ? 1.04 : 0.95 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                      />
+                    ) : (
+                      /* Main Desktop Preview */
+                      <motion.img
+                        key={imgIndex}
+                        src={url}
+                        alt={`${title} desktop preview`}
+                        className="max-w-full max-h-full w-auto h-auto object-contain rounded-xl drop-shadow-lg"
+                        animate={{ scale: isHovered ? 1.02 : 0.95 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                    )
+                  )}
+              </div>
             </div>
 
             {/* Bottom Overlay Info Bar */}
-            <div className="flex items-center justify-between pt-3 border-t border-white/10 shrink-0">
+            <div className="flex items-center justify-between pt-2.5 sm:pt-3 border-t border-white/10 shrink-0">
               <span className="text-xs text-zinc-300 font-medium tracking-wide">
                 {title}
               </span>
