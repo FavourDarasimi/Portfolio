@@ -48,7 +48,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-normal">
-              Full-Stack & Backend Engineer specializing in scalable web architecture, API engineering, ML integrations, and modern frontend experiences.
+              Full-Stack Developer specializing in scalable web architecture, API engineering, ML integrations, and modern frontend experiences.
             </p>
           </div>
 
@@ -78,7 +78,7 @@ const Footer = () => {
         {/* Bottom Metadata & Back to Top Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-xs text-zinc-500 font-normal">
           <p>
-            © {new Date().getFullYear()} Darasimi Olaniran. Designed & Built with precision.
+            © {new Date().getFullYear()} Darasimi Olaniran.
           </p>
 
           {/* Back to top button */}

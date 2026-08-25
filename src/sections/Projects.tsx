@@ -7,18 +7,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FolderKanban } from "lucide-react";
 import ProjectCard from "../components/ProjectCard";
-import eduverse from "../assets/School Website Desktop.png";
-import eduversemobile from "../assets/School Website Mobile.png";
-import blogmobile from "../assets/Blogify Mobile.png";
-import blog from "../assets/Blogify Desktop.png";
-import animehubdesktop from "../assets/anime hub laptop.png";
-import animehubmobile from "../assets/anime hub mobile.png";
-import technovadesktop from "../assets/tech nova laptop.png";
-import technovamobile from "../assets/tech nova mobile.png";
-import serenityspadesktop from "../assets/serenity spa laptop.png";
-import serenityspamobile from "../assets/serenity spa mobile.png";
-import makodesktop from "../assets/mako laptop.png";
-import makomobile from "../assets/mako mobile.png";
+
+import gemmacodeLaptop from "../assets/gemmacode laptop.png";
+import gemmacodeMobile from "../assets/gemmacode mobile.png";
+import plantleyLaptop from "../assets/plantley laptop.png";
+import plantleyMobile from "../assets/plantley mobile.png";
+import veyloraLaptop from "../assets/veylora laptop.png";
+import veyloraMobile from "../assets/veylora mobile.png";
+import steelgrooveLaptop from "../assets/steelgroove laptop.png";
+import steelgrooveMobile from "../assets/steelgroove mobile.png";
+import aurabydassyLaptop from "../assets/aurabydassy laptop.png";
+import aurabydassyMobile from "../assets/aurabydassy mobile.png";
+import nexusLaptop from "../assets/nexusevent laptop.png";
+import nexusMobile from "../assets/nexusevents mobile.png";
 
 interface ProjectProps {
   projectsRef: React.RefObject<HTMLDivElement | null>;
@@ -30,7 +31,13 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Auth System",
       description:
         "Designed a security-hardened authentication system that closes common account-takeover gaps: TOTP MFA with backup codes, refresh-token rotation with reuse detection, brute-force lockouts, and full login audit trails — built as a reusable drop-in module for other projects.",
-      imageUrl: [blog, blogmobile],
+      hasMockup: false,
+      highlights: [
+        "TOTP MFA & Backup Code Generation",
+        "Refresh Token Rotation & Reuse Detection",
+        "Brute-Force Lockout & Rate Limiting",
+        "Full Security Login Audit Trails",
+      ],
       projectUrl: "https://github.com/FavourDarasimi/Auth-System.git",
       techStack: ["Python", "Django", "Django REST Framework"],
       featured: true,
@@ -39,7 +46,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "GemmaCode",
       description:
         "Built a full-stack AI coding assistant end to end — from secure login (JWT + GitHub/Google OAuth) to real-time streaming chat with persistent history — demonstrating the ability to ship a complete, production-style LLM-powered product solo.",
-      imageUrl: [technovadesktop, technovamobile],
+      imageUrl: [gemmacodeLaptop, gemmacodeMobile],
       liveUrl: "https://gemma-code-frontend.vercel.app/",
       frontendUrl: "https://github.com/FavourDarasimi/Gemma-Code-Frontend.git",
       backendUrl: "https://github.com/FavourDarasimi/Gemma-Code-Backend.git",
@@ -50,7 +57,13 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Notification System",
       description:
         "Built a real-time notification microservice that guarantees reliable delivery at scale — automatic retries with backoff, idempotency keys to prevent duplicate sends, and full delivery audit logs — plus scheduled digest emails and automated data cleanup to keep the system self-maintaining.",
-      imageUrl: [animehubdesktop, animehubmobile],
+      hasMockup: false,
+      highlights: [
+        "Celery & Redis Distributed Task Queue",
+        "Exponential Backoff & Automatic Retries",
+        "Idempotency Keys (Prevent Duplicate Delivery)",
+        "Pusher Websockets & Scheduled Digest Mail",
+      ],
       projectUrl: "https://github.com/FavourDarasimi/Auth-System.git",
       techStack: ["Python", "Django", "Django REST Framework", "Celery", "Redis", "Pusher"],
       featured: true,
@@ -59,7 +72,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Plantley",
       description:
         "Built an ML-powered app that gives instant tomato disease diagnosis from a photo, enabling early intervention without needing an agricultural expert on hand — paired a camera-capture frontend with a Django API serving a Keras CNN model.",
-      imageUrl: [serenityspadesktop, serenityspamobile],
+      imageUrl: [plantleyLaptop, plantleyMobile],
       liveUrl: "http://plantley.vercel.app/",
       frontendUrl: "https://github.com/FavourDarasimi/Plantley.git",
       backendUrl: "https://github.com/FavourDarasimi/Plantley-Backend.git",
@@ -70,7 +83,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Veylora Interiors",
       description:
         "Built an interactive portfolio site that helps an interior design studio showcase past work convincingly — including a before/after comparison slider that lets prospective clients see transformation quality at a glance.",
-      imageUrl: [makodesktop, makomobile],
+      imageUrl: [veyloraLaptop, veyloraMobile],
       liveUrl: "https://veylora-interiors.vercel.app/",
       projectUrl: "https://github.com/FavourDarasimi/Veylora-Interiors.git",
       techStack: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -80,7 +93,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Steel Groove Construction",
       description:
         "Built a multi-page marketing site that communicates a construction firm's process and credibility to prospective clients, using animated process breakdowns and a dedicated project showcase to build trust before first contact.",
-      imageUrl: [eduverse, eduversemobile],
+      imageUrl: [steelgrooveLaptop, steelgrooveMobile],
       liveUrl: "http://steel-groove-construction.vercel.app/",
       projectUrl: "https://github.com/FavourDarasimi/Steel-Groove-Construction",
       techStack: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -90,8 +103,8 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "Nexus Events",
       description:
         "Designed and built a 5-page luxury brand site from scratch, translating a premium positioning (dark/gold theme, custom animations) into a cohesive multi-page experience with an interactive filterable gallery.",
-      imageUrl: [animehubdesktop, animehubmobile],
-      liveUrl: "https://veylora-interiors.vercel.app/",
+      imageUrl: [nexusLaptop, nexusMobile],
+      liveUrl: "https://nexus-events.pxxl.run/",
       projectUrl: "https://github.com/FavourDarasimi/Blogify-Space-v2.git",
       techStack: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
       featured: true,
@@ -100,7 +113,7 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
       title: "AuraByDassy",
       description:
         "Built a full-stack e-commerce platform that lets a Nigerian fashion brand sell directly online — replacing manual/social-media order-taking with a self-service storefront and a custom admin dashboard for inventory and order tracking.",
-      imageUrl: [blog, blogmobile],
+      imageUrl: [aurabydassyLaptop, aurabydassyMobile],
       liveUrl: "http://aurabydassy.shop/",
       projectUrl: "https://github.com/FavourDarasimi/AuraByDassy",
       techStack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
@@ -146,6 +159,8 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                   backendUrl={project.backendUrl}
                   liveUrl={project.liveUrl}
                   techStack={project.techStack}
+                  hasMockup={project.hasMockup}
+                  highlights={project.highlights}
                 />
               )
           )}

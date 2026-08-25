@@ -7,7 +7,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, ShieldCheck } from "lucide-react";
 
 type ProjectProps = {
   title: string;
@@ -19,6 +19,8 @@ type ProjectProps = {
   liveUrl?: string | undefined;
   index: number;
   techStack: string[];
+  hasMockup?: boolean;
+  highlights?: string[];
 };
 
 const ProjectCard = ({
@@ -30,6 +32,8 @@ const ProjectCard = ({
   backendUrl,
   techStack,
   liveUrl,
+  hasMockup = true,
+  highlights,
 }: ProjectProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -71,7 +75,7 @@ const ProjectCard = ({
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36]" />
               <span className="text-[11px] font-medium text-zinc-400 uppercase tracking-wider">
-                Featured Application
+                {hasMockup ? "Featured Application" : "Backend Architecture"}
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight group-hover:text-[#FF5A36] transition-colors duration-300">
@@ -155,52 +159,101 @@ const ProjectCard = ({
           </div>
         </motion.div>
 
-        {/* Hover Mockup Layer (Slides IN from Right on Hover) */}
-        <motion.a
-          href={targetLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute inset-0 z-20 p-6 sm:p-8 flex flex-col justify-between bg-[#121214]/95 backdrop-blur-2xl rounded-3xl overflow-hidden border border-[#FF5A36]/40"
-          initial={{ x: "105%", opacity: 0 }}
-          animate={{
-            x: isHovered ? "0%" : "105%",
-            opacity: isHovered ? 1 : 0,
-          }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* Centered Mockup Images */}
-          <div className="flex-grow flex items-center justify-center relative w-full h-full overflow-hidden p-1 sm:p-2">
-            {imageUrl &&
-              imageUrl.map((url, imgIndex) =>
-                imgIndex === 1 ? (
-                  <motion.img
-                    key={imgIndex}
-                    src={url}
-                    alt={`${title} mobile preview`}
-                    className="w-20 sm:w-28 md:w-32 h-auto max-h-[90%] object-contain -ml-6 sm:-ml-10 rounded-xl shadow-2xl relative z-10 border border-white/20 shrink-0"
-                    animate={{ scale: isHovered ? 1.04 : 0.95 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  />
-                ) : (
-                  <motion.img
-                    key={imgIndex}
-                    src={url}
-                    alt={`${title} desktop preview`}
-                    className="w-full h-full max-h-full object-contain rounded-xl shadow-2xl border border-white/15"
-                    animate={{ scale: isHovered ? 1.02 : 0.95 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                )
+        {/* Hover Layer */}
+        {!hasMockup ? (
+          /* Architecture Specs Hover Layer for Backend Projects */
+          <motion.a
+            href={targetLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-20 p-6 sm:p-8 flex flex-col justify-between bg-[#121214]/98 backdrop-blur-2xl rounded-3xl overflow-hidden border border-[#FF5A36]/40"
+            initial={{ x: "105%", opacity: 0 }}
+            animate={{
+              x: isHovered ? "0%" : "105%",
+              opacity: isHovered ? 1 : 0,
+            }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={15} className="text-[#FF5A36]" />
+                <span className="text-[11px] font-medium text-[#FF5A36] uppercase tracking-wider">
+                  System Architecture Specs
+                </span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
+                {title}
+              </h3>
+              {highlights && (
+                <div className="grid grid-cols-1 gap-2.5 pt-2">
+                  {highlights.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-2xl px-3.5 py-2.5 text-xs font-medium text-zinc-200"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               )}
-          </div>
+            </div>
 
-          {/* Bottom Overlay Info Bar */}
-          <div className="flex items-center justify-between pt-3 border-t border-white/10 shrink-0">
-            <span className="text-xs text-zinc-300 font-medium tracking-wide">
-              {title}
-            </span>
-          </div>
-        </motion.a>
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span className="inline-flex items-center gap-2 bg-[#FF5A36] text-white px-4.5 py-2.5 rounded-full font-semibold text-xs shadow-md">
+                <Github size={15} />
+                <span>View Source Code</span>
+              </span>
+            </div>
+          </motion.a>
+        ) : (
+          /* Mockup Images Hover Layer for Frontend & Fullstack Web Apps */
+          <motion.a
+            href={targetLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-20 p-6 sm:p-8 flex flex-col justify-between bg-[#121214]/95 backdrop-blur-2xl rounded-3xl overflow-hidden"
+            initial={{ x: "105%", opacity: 0 }}
+            animate={{
+              x: isHovered ? "0%" : "105%",
+              opacity: isHovered ? 1 : 0,
+            }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Centered Mockup Images */}
+            <div className="flex-grow flex items-center justify-center relative w-full h-full overflow-hidden p-1 sm:p-2">
+              {imageUrl &&
+                imageUrl.map((url, imgIndex) =>
+                  imgIndex === 1 ? (
+                    <motion.img
+                      key={imgIndex}
+                      src={url}
+                      alt={`${title} mobile preview`}
+                      className="w-20 sm:w-28 md:w-32 h-auto max-h-[90%] object-contain -ml-6 sm:-ml-10 rounded-xl relative z-10 shrink-0"
+                      animate={{ scale: isHovered ? 1.04 : 0.95 }}
+                      transition={{ duration: 0.4, delay: 0.1 }}
+                    />
+                  ) : (
+                    <motion.img
+                      key={imgIndex}
+                      src={url}
+                      alt={`${title} desktop preview`}
+                      className="w-full h-full max-h-full object-contain rounded-xl"
+                      animate={{ scale: isHovered ? 1.02 : 0.95 }}
+                      transition={{ duration: 0.4 }}
+                    />
+                  )
+                )}
+            </div>
+
+            {/* Bottom Overlay Info Bar */}
+            <div className="flex items-center justify-between pt-3 border-t border-white/10 shrink-0">
+              <span className="text-xs text-zinc-300 font-medium tracking-wide">
+                {title}
+              </span>
+            </div>
+          </motion.a>
+        )}
       </Card>
     </motion.div>
   );
