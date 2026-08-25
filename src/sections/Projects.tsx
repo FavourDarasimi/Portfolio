@@ -27,64 +27,83 @@ interface ProjectProps {
 const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
   const projectData = [
     {
-      title: "EduVerse - Educational Institution Platform",
+      title: "Auth System",
       description:
-        "A responsive multi-page school website designed to streamline admissions and communication. Features include a structured curriculum layout (Nursery to Secondary), a step-by-step enrollment guide, dynamic tabbed components for student activities, and filtered contact forms.",
-      imageUrl: [eduverse, eduversemobile],
-      liveUrl: "http://eduverse.pxxl.click",
-      techStack: ["HTML", "CSS", "JavaScript"],
-      featured: true,
-    },
-    {
-      title: "Anime Hub - Anime Discovery Platform",
-      description:
-        "A responsive anime discovery platform featuring a clean UI and a smooth browsing experience. Key capabilities include real-time search, advanced filtering for precise discovery, and infinite scroll for seamless navigation.",
-      imageUrl: [animehubdesktop, animehubmobile],
-      liveUrl: "https://anime-hub.pxxl.click/",
-      techStack: ["TypeScript", "React", "Tailwind CSS", "Jikan API"],
-      featured: true,
-    },
-    {
-      title: "Serenity Spa - Business Landing Page",
-      description:
-        "A fully responsive web application for a wellness business, designed with a focus on aesthetics and conversion. Key features include an elegant service showcase with pricing, a mobile-optimized layout, a client testimonial section, and an intuitive booking system.",
-      imageUrl: [serenityspadesktop, serenityspamobile],
-      liveUrl: "https://serenity-spa-phi.vercel.app/",
-      techStack: ["TypeScript", "React", "Tailwind CSS"],
-      featured: true,
-    },
-    {
-      title: "Tech Nova - Premium Gadget Storefront",
-      description:
-        "Tech Nova is a concept e-commerce application designed to showcase modern web development practices. It features a fully responsive product grid, 'Deal of the Day' spotlights, and integrated customer testimonials. The interface prioritizes a clean UI/UX with consistent color theory and intuitive navigation.",
-      imageUrl: [technovadesktop, technovamobile],
-      liveUrl: "https://tech-nova-tau.vercel.app/",
-      techStack: ["TypeScript", "Next.js", "Tailwind CSS"],
-      featured: true,
-    },
-    {
-      title: "Mako - Restaurant Digital Experience",
-      description:
-        "A responsive web application for a high-end dining establishment, prioritizing visual storytelling and accessibility. Key features include a dynamic menu grid with dietary tags, a brand 'Story' section with chef bios, a verified review system, and clear operational details.",
-      imageUrl: [makodesktop, makomobile],
-      liveUrl: "https://mako-nine.vercel.app/",
-      techStack: ["TypeScript", "Next.js", "Tailwind CSS"],
-      featured: true,
-    },
-    {
-      title: "Blogify Space - Full-Stack Blog Platform",
-      description:
-        "A modern blogging platform with a clean UI, seamless content management, and user-friendly design. Built with JavaScript and Python, featuring a structured frontend and backend for scalability and flexibility.",
+        "Designed a security-hardened authentication system that closes common account-takeover gaps: TOTP MFA with backup codes, refresh-token rotation with reuse detection, brute-force lockouts, and full login audit trails — built as a reusable drop-in module for other projects.",
       imageUrl: [blog, blogmobile],
-      projectUrl: "https://github.com/FavourDarasimi/Blogify-Space-v2.git",
-      techStack: [
-        "JavaScript",
-        "React",
-        "Tailwind CSS",
-        "Python",
-        "Django",
-        "Django REST Framework",
-      ],
+      projectUrl: "https://github.com/FavourDarasimi",
+      techStack: ["Python", "Django", "Django REST Framework"],
+      featured: true,
+    },
+    {
+      title: "GemmaCode",
+      description:
+        "Built a full-stack AI coding assistant end to end — from secure login (JWT + GitHub/Google OAuth) to real-time streaming chat with persistent history — demonstrating the ability to ship a complete, production-style LLM-powered product solo.",
+      imageUrl: [technovadesktop, technovamobile],
+      liveUrl: "https://github.com/FavourDarasimi",
+      frontendUrl: "https://github.com/FavourDarasimi",
+      backendUrl: "https://github.com/FavourDarasimi",
+      techStack: ["Next.js", "TypeScript", "Django REST Framework", "Google Gemma"],
+      featured: true,
+    },
+    {
+      title: "Notification System",
+      description:
+        "Built a real-time notification microservice that guarantees reliable delivery at scale — automatic retries with backoff, idempotency keys to prevent duplicate sends, and full delivery audit logs — plus scheduled digest emails and automated data cleanup to keep the system self-maintaining.",
+      imageUrl: [animehubdesktop, animehubmobile],
+      projectUrl: "https://github.com/FavourDarasimi",
+      techStack: ["Python", "Django", "Django REST Framework", "Celery", "Redis", "Pusher"],
+      featured: true,
+    },
+    {
+      title: "Plantley",
+      description:
+        "Built an ML-powered app that gives instant tomato disease diagnosis from a photo, enabling early intervention without needing an agricultural expert on hand — paired a camera-capture frontend with a Django API serving a Keras CNN model.",
+      imageUrl: [serenityspadesktop, serenityspamobile],
+      liveUrl: "https://github.com/FavourDarasimi",
+      frontendUrl: "https://github.com/FavourDarasimi",
+      backendUrl: "https://github.com/FavourDarasimi",
+      techStack: ["Next.js", "TypeScript", "Django REST Framework", "TensorFlow/Keras"],
+      featured: true,
+    },
+    {
+      title: "Veylora Interiors",
+      description:
+        "Built an interactive portfolio site that helps an interior design studio showcase past work convincingly — including a before/after comparison slider that lets prospective clients see transformation quality at a glance.",
+      imageUrl: [makodesktop, makomobile],
+      liveUrl: "https://github.com/FavourDarasimi",
+      projectUrl: "https://github.com/FavourDarasimi",
+      techStack: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+      featured: true,
+    },
+    {
+      title: "Steel Groove Construction",
+      description:
+        "Built a multi-page marketing site that communicates a construction firm's process and credibility to prospective clients, using animated process breakdowns and a dedicated project showcase to build trust before first contact.",
+      imageUrl: [eduverse, eduversemobile],
+      liveUrl: "https://github.com/FavourDarasimi",
+      projectUrl: "https://github.com/FavourDarasimi",
+      techStack: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+      featured: true,
+    },
+    {
+      title: "Nexus Events",
+      description:
+        "Designed and built a 5-page luxury brand site from scratch, translating a premium positioning (dark/gold theme, custom animations) into a cohesive multi-page experience with an interactive filterable gallery.",
+      imageUrl: [animehubdesktop, animehubmobile],
+      liveUrl: "https://github.com/FavourDarasimi",
+      projectUrl: "https://github.com/FavourDarasimi",
+      techStack: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+      featured: true,
+    },
+    {
+      title: "AuraByDassy",
+      description:
+        "Built a full-stack e-commerce platform that lets a Nigerian fashion brand sell directly online — replacing manual/social-media order-taking with a self-service storefront and a custom admin dashboard for inventory and order tracking.",
+      imageUrl: [blog, blogmobile],
+      liveUrl: "https://github.com/FavourDarasimi",
+      projectUrl: "https://github.com/FavourDarasimi",
+      techStack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
       featured: true,
     },
   ];
@@ -123,6 +142,8 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                   description={project.description}
                   imageUrl={project.imageUrl}
                   projectUrl={project.projectUrl}
+                  frontendUrl={project.frontendUrl}
+                  backendUrl={project.backendUrl}
                   liveUrl={project.liveUrl}
                   techStack={project.techStack}
                 />

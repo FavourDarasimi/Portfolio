@@ -7,13 +7,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Github } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 
 type ProjectProps = {
   title: string;
   description: string;
   imageUrl?: string[] | undefined;
   projectUrl?: string | undefined;
+  frontendUrl?: string | undefined;
+  backendUrl?: string | undefined;
   liveUrl?: string | undefined;
   index: number;
   techStack: string[];
@@ -24,6 +26,8 @@ const ProjectCard = ({
   description,
   imageUrl,
   projectUrl,
+  frontendUrl,
+  backendUrl,
   techStack,
   liveUrl,
 }: ProjectProps) => {
@@ -38,7 +42,7 @@ const ProjectCard = ({
     },
   };
 
-  const targetLink = liveUrl || projectUrl;
+  const targetLink = liveUrl || projectUrl || frontendUrl || backendUrl;
 
   return (
     <motion.div
@@ -93,18 +97,56 @@ const ProjectCard = ({
             </div>
 
             {/* Action Buttons */}
-            {projectUrl && (
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <a
-                  href={projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-4.5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
-                >
-                  <Github size={15} />
-                  <span>Source Code</span>
-                </a>
+            {(liveUrl || projectUrl || frontendUrl || backendUrl) && (
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                {liveUrl && (
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center justify-center gap-1.5 bg-[#FF5A36] hover:bg-[#E04826] active:scale-95 text-white px-4 py-2 rounded-full font-semibold text-xs transition-all duration-300 cursor-pointer shadow-md outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  >
+                    <ArrowUpRight size={14} />
+                    <span>Live Demo</span>
+                  </a>
+                )}
+                {projectUrl && (
+                  <a
+                    href={projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-3.5 py-2 rounded-full font-medium text-xs transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  >
+                    <Github size={14} />
+                    <span>GitHub</span>
+                  </a>
+                )}
+                {frontendUrl && (
+                  <a
+                    href={frontendUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-3.5 py-2 rounded-full font-medium text-xs transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  >
+                    <Github size={14} />
+                    <span>Frontend GitHub</span>
+                  </a>
+                )}
+                {backendUrl && (
+                  <a
+                    href={backendUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-zinc-300 hover:text-white px-3.5 py-2 rounded-full font-medium text-xs transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  >
+                    <Github size={14} />
+                    <span>Backend GitHub</span>
+                  </a>
+                )}
               </div>
             )}
           </div>
