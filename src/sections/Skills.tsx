@@ -90,10 +90,10 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
           <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1.5 rounded-full border border-[#FF5A36]/25 inline-flex items-center gap-1.5">
             <Cpu size={14} className="text-[#FF5A36]" /> Technical Capabilities
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-2 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white mt-3 pb-2 leading-tight">
             Skills & Stack Proficiency
           </h2>
-          <p className="text-sm sm:text-base max-w-xl text-zinc-400 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base max-w-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
             A battle-tested set of languages, frameworks, and developer tools I use to turn ideas into production-ready web products.
           </p>
         </motion.div>
@@ -111,7 +111,7 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
               key={idx}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className="bg-[#0D0D0F]/90 backdrop-blur-xl border border-white/12 hover:border-[#FF5A36]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+              className="bg-white/90 dark:bg-[#0D0D0F]/90 backdrop-blur-xl border border-zinc-900/12 dark:border-white/12 hover:border-[#FF5A36]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 group cursor-pointer relative overflow-hidden"
             >
               {/* Header with Title Left & Orange Index Right */}
               <div className="space-y-3">
@@ -125,23 +125,23 @@ const Skills: React.FC<SkillsProps> = ({ skillsRef }) => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-white text-lg sm:text-xl tracking-tight">
+                  <h3 className="font-semibold text-zinc-900 dark:text-white text-lg sm:text-xl tracking-tight">
                     {category.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal mt-1">
+                  <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-normal mt-1">
                     {category.description}
                   </p>
                 </div>
               </div>
 
               {/* Skill Pill Badges */}
-              <div className="flex flex-wrap gap-2.5 pt-4 border-t border-white/10">
+              <div className="flex flex-wrap gap-2.5 pt-4 border-t border-zinc-900/10 dark:border-white/10">
                 {category.skills.map((skill, sIdx) => (
                   <div
                     key={sIdx}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/15 text-zinc-300 text-xs sm:text-sm font-medium hover:border-[#FF5A36]/60 hover:text-white hover:bg-[#FF5A36]/10 transition-all duration-200"
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/[0.04] dark:bg-white/[0.04] backdrop-blur-md border border-zinc-900/15 dark:border-white/15 text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm font-medium hover:border-[#FF5A36]/60 hover:text-zinc-900 dark:hover:text-white hover:bg-[#FF5A36]/10 transition-all duration-200"
                   >
-                    <skill.logo className="text-zinc-400 group-hover:text-white text-sm shrink-0 transition-colors duration-200" />
+                    <skill.logo className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white text-sm shrink-0 transition-colors duration-200" />
                     <span>{skill.name}</span>
                   </div>
                 ))}

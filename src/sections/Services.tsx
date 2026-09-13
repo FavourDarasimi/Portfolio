@@ -85,10 +85,10 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
           <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1.5 rounded-full border border-[#FF5A36]/25 inline-flex items-center gap-1.5">
             <Sparkles size={14} className="text-[#FF5A36]" /> What I Offer
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-2 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white mt-3 pb-2 leading-tight">
             Services & Solutions
           </h2>
-          <p className="text-sm sm:text-base max-w-xl text-zinc-400 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base max-w-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
             Tailored software development services designed to translate your ideas into scalable, high-performance web products.
           </p>
         </motion.div>
@@ -103,17 +103,17 @@ const Services: React.FC<ServicesProps> = ({ servicesRef }) => {
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={cardVariants} whileHover={{ y: -4 }}>
-              <Card className="bg-[#121214]/60 backdrop-blur-xl border-white/10 hover:border-[#FF5A36]/50 transition-all duration-300 h-full rounded-3xl group overflow-hidden shadow-2xl cursor-pointer">
+              <Card className="bg-white/70 dark:bg-[#121214]/60 backdrop-blur-xl border-zinc-900/10 dark:border-white/10 hover:border-[#FF5A36]/50 transition-all duration-300 h-full rounded-3xl group overflow-hidden shadow-2xl cursor-pointer">
                 <CardContent className="px-6 py-4.5 sm:px-7 sm:py-5 flex flex-col justify-between h-full space-y-3">
                   <div className="space-y-4">
-                    <div className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#FF5A36] group-hover:border-[#FF5A36] transition-colors duration-300">
-                      <service.icon className="h-5 w-5 text-zinc-300 group-hover:text-white transition-colors duration-300" />
+                    <div className="w-11 h-11 rounded-full bg-zinc-900/5 dark:bg-white/5 border border-zinc-900/10 dark:border-white/10 flex items-center justify-center group-hover:bg-[#FF5A36] group-hover:border-[#FF5A36] transition-colors duration-300">
+                      <service.icon className="h-5 w-5 text-zinc-600 dark:text-zinc-300 group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white text-lg sm:text-xl tracking-tight mb-2 group-hover:text-[#FF5A36] transition-colors duration-300">
+                      <h3 className="font-semibold text-zinc-900 dark:text-white text-lg sm:text-xl tracking-tight mb-2 group-hover:text-[#FF5A36] transition-colors duration-300">
                         {service.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-normal">
                         {service.description}
                       </p>
                     </div>

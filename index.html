@@ -13,6 +13,22 @@
       rel="stylesheet"
     />
     <link rel="icon" href="/photo.webp" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("vite-ui-theme") || "dark";
+          if (t === "system") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          document.documentElement.classList.add(t);
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <title>CodeWithDara</title>
   </head>
   <body>

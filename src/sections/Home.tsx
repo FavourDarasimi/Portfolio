@@ -4,9 +4,17 @@
  */
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Button } from "../components/ui/button";
-import { Download, ArrowRight, Code2 } from "lucide-react";
+import {
+  Download,
+  ArrowRight,
+  Code2,
+  Database,
+  Network,
+  Smartphone,
+  ChevronDown,
+} from "lucide-react";
 import photo from "../assets/photo.webp";
 import photo_mobile from "../assets/photo_mobile.webp";
 import photo_tablet from "../assets/photo_tablet.webp";
@@ -63,6 +71,15 @@ const Home: React.FC<HomeProps> = ({
 
   const techBadges = ["Next.js", "Django REST Framework", "Tailwind CSS"];
 
+  const floatingPills = [
+    { icon: Code2, label: "Frontend Engineering" },
+    { icon: Database, label: "Backend & Systems" },
+    { icon: Network, label: "API Integration" },
+    { icon: Smartphone, label: "Responsive UI & UX" },
+  ];
+
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       ref={homeRef}
@@ -76,9 +93,32 @@ const Home: React.FC<HomeProps> = ({
           initial="hidden"
           animate="visible"
         >
+          {/* Floating Role Pills */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-start gap-2 sm:gap-2.5">
+            {floatingPills.map((pill, i) => (
+              <motion.span
+                key={pill.label}
+                initial={{ opacity: 0, y: 12 }}
+                animate={
+                  reduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -6, 0] }
+                }
+                transition={{
+                  opacity: { duration: 0.4, delay: 0.1 + i * 0.1 },
+                  y: reduceMotion
+                    ? { duration: 0 }
+                    : { duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 },
+                }}
+                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-[#121214]/80 backdrop-blur-md border border-zinc-900/10 dark:border-white/10 text-zinc-600 dark:text-zinc-300 text-[11px] sm:text-xs font-medium hover:border-[#FF5A36]/50 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-default shadow-lg"
+              >
+                <pill.icon size={13} className="text-[#FF5A36] shrink-0" />
+                {pill.label}
+              </motion.span>
+            ))}
+          </motion.div>
+
           {/* Status Badge */}
           <motion.div variants={itemVariants}>
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-[#121214] border border-white/10 text-zinc-300 text-xs sm:text-sm font-medium tracking-wide">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white dark:bg-[#121214] border border-zinc-900/10 dark:border-white/10 text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm font-medium tracking-wide">
               <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-emerald-500"></span>
@@ -89,14 +129,14 @@ const Home: React.FC<HomeProps> = ({
 
           {/* Typography Header Group */}
           <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-[1.2]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-zinc-900 dark:text-white leading-[1.08]">
               I build web products that solve problems and{" "}
               <span className="text-[#FF5A36] font-semibold">deliver real impact.</span>
             </h1>
-            <p className="text-zinc-400 text-xs sm:text-sm font-medium tracking-wider uppercase">
+            <p className="text-zinc-500 dark:text-zinc-400 text-xs sm:text-sm font-medium tracking-wider uppercase">
               Darasimi Olaniran · Full-Stack Developer
             </p>
-            <p className="text-xs sm:text-sm md:text-base text-zinc-400 max-w-xl font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-xl font-normal leading-relaxed">
               I design modern user interfaces, engineer robust backend systems, and ship scalable full-stack web applications using Next.js, Django REST Framework, and Tailwind CSS.
             </p>
           </motion.div>
@@ -109,7 +149,7 @@ const Home: React.FC<HomeProps> = ({
             {techBadges.map((tech) => (
               <span
                 key={tech}
-                className="text-xs sm:text-sm px-3 py-1 rounded-lg bg-[#121214] border border-white/10 text-zinc-300 font-medium hover:border-[#FF5A36]/40 transition-colors"
+                className="text-xs sm:text-sm px-3 py-1 rounded-lg bg-white dark:bg-[#121214] border border-zinc-900/10 dark:border-white/10 text-zinc-600 dark:text-zinc-300 font-medium hover:border-[#FF5A36]/40 transition-colors"
               >
                 {tech}
               </span>
@@ -124,7 +164,7 @@ const Home: React.FC<HomeProps> = ({
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1 sm:flex-none">
               <Button
                 onClick={() => scrollToSection(projectsRef)}
-                className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-medium text-xs sm:text-sm md:text-base px-3.5 sm:px-7 py-3 sm:py-5 rounded-xl w-full flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] group"
+                className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold text-sm sm:text-sm md:text-base px-5 sm:px-8 py-3 sm:py-5 rounded-xl w-full flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer transition-colors duration-200 shadow-lg shadow-[#FF5A36]/20 outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A] group"
               >
                 <span>View Projects</span>
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
@@ -134,7 +174,7 @@ const Home: React.FC<HomeProps> = ({
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1 sm:flex-none">
               <Button
                 onClick={handleDownload}
-                className="bg-[#121214] border border-white/15 hover:border-[#FF5A36]/60 hover:bg-[#FF5A36]/10 text-white font-medium text-xs sm:text-sm md:text-base px-3.5 sm:px-7 py-3 sm:py-5 rounded-xl w-full flex items-center justify-center gap-1.5 sm:gap-2.5 cursor-pointer transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] group"
+                className="bg-white dark:bg-[#121214] border border-zinc-900/15 dark:border-white/15 hover:border-[#FF5A36]/60 hover:bg-[#FF5A36]/10 text-zinc-900 dark:text-white font-medium text-xs sm:text-sm md:text-base px-3.5 sm:px-7 py-3 sm:py-5 rounded-xl w-full flex items-center justify-center gap-1.5 sm:gap-2.5 cursor-pointer transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A] group"
               >
                 <Download size={15} className="text-[#FF5A36] group-hover:-translate-y-0.5 transition-transform duration-200 shrink-0" />
                 <span>Download CV</span>
@@ -153,7 +193,12 @@ const Home: React.FC<HomeProps> = ({
           <div className="relative group p-2">
             {/* Outer Decorative Accent Border */}
             <div className="absolute inset-0 rounded-2xl sm:rounded-3xl border border-dashed border-[#FF5A36]/30 group-hover:border-[#FF5A36]/60 transition-colors duration-300 scale-[1.03]" />
-            
+            {/* Layered Offset Frame for depth */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-2 rounded-2xl sm:rounded-3xl border border-zinc-900/10 dark:border-white/10 translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"
+            />
+
             {/* Main Rectangular Portrait Frame */}
             <picture className="relative block">
               <source media="(max-width: 480px)" srcSet={photo_mobile} />
@@ -161,19 +206,28 @@ const Home: React.FC<HomeProps> = ({
               <img
                 src={photo}
                 alt="Portrait of Darasimi Olaniran"
-                className="w-[270px] h-[330px] sm:w-[320px] sm:h-[390px] md:w-[350px] md:h-[420px] lg:w-[370px] lg:h-[440px] xl:w-[390px] xl:h-[460px] object-cover rounded-2xl sm:rounded-3xl border-2 border-white/15 group-hover:border-[#FF5A36]/50 transition-all duration-300 relative z-10"
+                className="w-[270px] h-[330px] sm:w-[320px] sm:h-[390px] md:w-[350px] md:h-[420px] lg:w-[370px] lg:h-[440px] xl:w-[390px] xl:h-[460px] object-cover rounded-2xl sm:rounded-3xl border-2 border-zinc-900/15 dark:border-white/15 group-hover:border-[#FF5A36]/50 transition-all duration-300 relative z-10 shadow-2xl"
               />
             </picture>
 
             {/* Float Experience Badge */}
-            <div className="absolute -bottom-3 -right-2 sm:bottom-4 sm:right-2 z-20 bg-[#121214]/95 backdrop-blur-md border border-white/15 px-4 py-2.5 rounded-xl text-left shadow-xl hidden sm:block">
-              <p className="text-[11px] text-zinc-400 font-medium uppercase tracking-wider">Role Focus</p>
-              <p className="text-xs font-bold text-white flex items-center gap-1.5 mt-0.5">
+            <div className="absolute -bottom-3 -right-2 sm:bottom-4 sm:right-2 z-20 bg-white/95 dark:bg-[#121214]/95 backdrop-blur-md border border-zinc-900/15 dark:border-white/15 px-4 py-2.5 rounded-xl text-left shadow-xl hidden sm:block">
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium uppercase tracking-wider">Role Focus</p>
+              <p className="text-xs font-bold text-zinc-900 dark:text-white flex items-center gap-1.5 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36]" /> Full-Stack Engineering
               </p>
             </div>
           </div>
         </motion.div>
+      </div>
+
+      {/* Scroll cue — hints at content below */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-zinc-600 pointer-events-none"
+      >
+        <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Scroll</span>
+        <ChevronDown size={16} className="animate-bounce motion-reduce:animate-none" />
       </div>
     </section>
   );

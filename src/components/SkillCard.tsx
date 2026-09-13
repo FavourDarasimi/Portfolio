@@ -73,7 +73,7 @@ const SkillCard = ({ title, skillLogo: SkillLogo, category }: SkillCardProps) =>
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="bg-[#121214] border border-white/10 hover:border-[#FF5A36] p-4 sm:p-5 md:p-6 text-zinc-300 hover:text-white rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer relative group"
+        className="bg-white dark:bg-[#121214] border border-zinc-900/10 dark:border-white/10 hover:border-[#FF5A36] p-4 sm:p-5 md:p-6 text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer relative group"
         variants={containerVariants}
         whileHover="hover"
         whileTap={{ scale: 0.95 }}
@@ -85,10 +85,10 @@ const SkillCard = ({ title, skillLogo: SkillLogo, category }: SkillCardProps) =>
           whileHover="hover"
           className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center pb-2 transition-transform duration-300"
         >
-          <SkillLogo className="w-full h-full text-white group-hover:text-[#FF5A36] transition-colors duration-300" />
+          <SkillLogo className="w-full h-full text-zinc-900 dark:text-white group-hover:text-[#FF5A36] transition-colors duration-300" />
         </motion.div>
 
-        <motion.h3 className="text-center text-xs sm:text-sm font-semibold tracking-wide text-white group-hover:text-[#FF5A36] transition-colors duration-300">
+        <motion.h3 className="text-center text-xs sm:text-sm font-semibold tracking-wide text-zinc-900 dark:text-white group-hover:text-[#FF5A36] transition-colors duration-300">
           {title}
         </motion.h3>
 

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import NavBar from "./components/NavBar";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider, useTheme } from "./components/theme-provider";
 import Home from "./sections/Home";
 import About from "./sections/About";
 import StarsBackground from "./components/StarsBackground";
@@ -11,6 +11,11 @@ import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import { Toaster } from "sonner";
+
+function ThemedToaster() {
+  const { theme } = useTheme();
+  return <Toaster position="top-center" theme={theme} />;
+}
 
 function App() {
   const navRef = useRef<HTMLDivElement>(null);
@@ -25,9 +30,9 @@ function App() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-foreground relative isolate">
+    <div className="min-h-screen bg-zinc-100 dark:bg-[#0A0A0A] text-foreground relative isolate">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Toaster position="top-center" />
+        <ThemedToaster />
         <StarsBackground />
         <div className="max-w-[1500px] mx-auto relative z-10 w-full">
           <NavBar

@@ -121,6 +121,39 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
     },
   ];
 
+  const otherProjects = [
+    {
+      title: "Velion",
+      description:
+        "Built a modern dealership site for Velion Motors — hand-picked cars with transparent pricing, filterable collection, showroom with detail dialogs, financing calculator, trade-in estimator, and test-drive booking in a responsive dark/light experience.",
+      hasMockup: false,
+      highlights: [
+        "Filterable Collection by Body Type",
+        "Showroom with Car Detail Dialogs",
+        "Financing Calculator & Trade-In Estimator",
+        "Dark/Light Mode + GSAP Scroll Animations",
+      ],
+      liveUrl: "https://velion-dun.vercel.app/",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP"],
+      tag: "Other Project",
+    },
+    {
+      title: "MockDrop",
+      description:
+        "Built a zero-friction developer tool that turns pasted JSON into a live, CORS-enabled REST endpoint in seconds — with status-code simulation, Redis-backed 24-hour expiry, rate limiting, and one-click copy.",
+      hasMockup: false,
+      highlights: [
+        "Paste JSON → Live GET Endpoint",
+        "Status-Code Simulation (200 / 404 / 500)",
+        "Redis TTL Expiry (24h) + Rate Limiting",
+        "CORS-Enabled + One-Click Copy",
+      ],
+      liveUrl: "https://mockdrop.pxxl.click/",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Redis", "nanoid"],
+      tag: "Other Project",
+    },
+  ];
+
   return (
     <section ref={projectsRef} className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 space-y-12">
@@ -135,10 +168,10 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
           <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1.5 rounded-full border border-[#FF5A36]/25 inline-flex items-center gap-1.5">
             <FolderKanban size={14} className="text-[#FF5A36]" /> Selected Work
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mt-3 pb-2 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white mt-3 pb-2 leading-tight">
             Featured Projects
           </h2>
-          <p className="text-sm sm:text-base max-w-xl text-zinc-400 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base max-w-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
             A showcase of my recent production applications, demonstrating technical depth across modern frontend frameworks, backend API engineering, and responsive user experiences.
           </p>
         </motion.div>
@@ -164,6 +197,40 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
                 />
               )
           )}
+        </div>
+
+        {/* Other Projects */}
+        <div className="space-y-8 pt-4">
+          <motion.div
+            className="text-left"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-tight">
+              Other Projects
+            </h3>
+            <p className="text-sm sm:text-base max-w-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed mt-1">
+              Additional builds and experiments, shipped live without full case-study mockups.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {otherProjects.map((project, index) => (
+              <ProjectCard
+                key={`other-${index}`}
+                index={index}
+                title={project.title}
+                description={project.description}
+                liveUrl={project.liveUrl}
+                techStack={project.techStack}
+                hasMockup={project.hasMockup}
+                highlights={project.highlights}
+                tag={project.tag}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
