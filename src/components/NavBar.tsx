@@ -150,7 +150,7 @@ const NavBar = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="lg:hidden border-t border-rule bg-background px-4 sm:px-6 py-6"
+            className="absolute inset-x-0 top-full lg:hidden border-b border-rule bg-background px-4 sm:px-6 py-6"
           >
             <div className="flex flex-col items-start gap-5">
               <NavLinks />
