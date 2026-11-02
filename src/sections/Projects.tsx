@@ -1,11 +1,11 @@
-/* Hallmark · component: section:projects · genre: editorial · theme: custom
+/* Hallmark · component: section:projects · genre: editorial · theme: monochrome
  * states: default · hover · focus · active · disabled · loading · error · success
  * contrast: pass (46–50)
  */
 
 import React from "react";
-import { motion } from "framer-motion";
-import { FolderKanban } from "lucide-react";
+import SectionHeader from "../components/SectionHeader";
+import Reveal from "../components/Reveal";
 import ProjectCard from "../components/ProjectCard";
 
 import gemmacodeLaptop from "../assets/gemmacode laptop.webp";
@@ -155,82 +155,67 @@ const Projects: React.FC<ProjectProps> = ({ projectsRef }) => {
   ];
 
   return (
-    <section ref={projectsRef} className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 space-y-12">
-        {/* Section Header */}
-        <motion.div
-          className="text-left"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1.5 rounded-full border border-[#FF5A36]/25 inline-flex items-center gap-1.5">
-            <FolderKanban size={14} className="text-[#FF5A36]" /> Selected Work
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white mt-3 pb-2 leading-tight">
-            Featured Projects
-          </h2>
-          <p className="text-sm sm:text-base max-w-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
-            A showcase of my recent production applications, demonstrating technical depth across modern frontend frameworks, backend API engineering, and responsive user experiences.
-          </p>
-        </motion.div>
+    <section ref={projectsRef} className="py-16 sm:py-24 px-4 sm:px-6 md:px-8">
+      <SectionHeader
+        index="04"
+        label="Selected Work"
+        title="Featured Projects"
+        deck="A showcase of my recent production applications, demonstrating technical depth across modern frontend frameworks, backend API engineering, and responsive user experiences."
+      />
 
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {projectData.map(
-            (project, index) =>
-              project.featured && (
-                <ProjectCard
-                  key={index}
-                  index={index}
-                  title={project.title}
-                  description={project.description}
-                  imageUrl={project.imageUrl}
-                  projectUrl={project.projectUrl}
-                  frontendUrl={project.frontendUrl}
-                  backendUrl={project.backendUrl}
-                  liveUrl={project.liveUrl}
-                  techStack={project.techStack}
-                  hasMockup={project.hasMockup}
-                  highlights={project.highlights}
-                />
-              )
-          )}
-        </div>
-
-        {/* Other Projects */}
-        <div className="space-y-8 pt-4">
-          <motion.div
-            className="text-left"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-tight">
-              Other Projects
-            </h3>
-            <p className="text-sm sm:text-base max-w-xl text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed mt-1">
-              Additional builds and experiments, shipped live without full case-study mockups.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {otherProjects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 sm:mt-14">
+        {projectData.map(
+          (project, index) =>
+            project.featured && (
               <ProjectCard
-                key={`other-${index}`}
-                index={index}
+                key={index}
+                number={`4.${index + 1}`}
                 title={project.title}
                 description={project.description}
+                imageUrl={project.imageUrl}
+                projectUrl={project.projectUrl}
+                frontendUrl={project.frontendUrl}
+                backendUrl={project.backendUrl}
                 liveUrl={project.liveUrl}
                 techStack={project.techStack}
                 hasMockup={project.hasMockup}
                 highlights={project.highlights}
-                tag={project.tag}
               />
-            ))}
+            )
+        )}
+      </div>
+
+      <div className="mt-16 sm:mt-20">
+        <Reveal>
+          <div className="flex items-baseline gap-4 border-b border-rule pb-3">
+            <span className="font-mono text-xs text-ink-soft">05</span>
+            <span className="text-[11px] uppercase tracking-[0.18em] text-ink-soft font-medium">
+              More Builds
+            </span>
           </div>
+          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight mt-6">
+            Other Projects
+          </h3>
+          <p className="text-sm leading-relaxed text-ink-soft max-w-[58ch] mt-3">
+            Additional builds and experiments, shipped live without full
+            case-study mockups.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          {otherProjects.map((project, index) => (
+            <ProjectCard
+              key={`other-${index}`}
+              number={`5.${index + 1}`}
+              title={project.title}
+              description={project.description}
+              liveUrl={project.liveUrl}
+              techStack={project.techStack}
+              hasMockup={project.hasMockup}
+              highlights={project.highlights}
+              tag={project.tag}
+            />
+          ))}
         </div>
       </div>
     </section>

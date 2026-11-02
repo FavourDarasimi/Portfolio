@@ -1,14 +1,6 @@
-/* Hallmark · component: nav · genre: editorial · theme: custom
- * states: default · hover · focus · active · disabled · loading · error · success
- * contrast: pass (46–50)
- */
-
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { FiGithub, FiMail } from "react-icons/fi";
-import { FaXTwitter } from "react-icons/fa6";
-import { useTheme } from "./theme-provider";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 type NavBarProps = {
   navRef: React.RefObject<HTMLDivElement | null>;
@@ -33,53 +25,6 @@ const NavBar = ({
 }: NavBarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const linkVariants: Variants = {
-    hidden: { opacity: 0, y: -8 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.08, duration: 0.3 },
-    }),
-  };
-
-  const socialVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.85 },
-    visible: (i: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: { delay: i * 0.06, duration: 0.3 },
-    }),
-    hover: {
-      scale: 1.08,
-      transition: { duration: 0.2 },
-    },
-  };
-
-  const mobileMenuVariants: Variants = {
-    hidden: { opacity: 0, y: -16, scaleY: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scaleY: 1,
-      transition: { duration: 0.25, ease: "easeInOut" },
-    },
-    exit: {
-      opacity: 0,
-      y: -16,
-      scaleY: 0.95,
-      transition: { duration: 0.2 },
-    },
-  };
-
-  const mobileLinkVariants: Variants = {
-    hidden: { opacity: 0, x: -16 },
-    visible: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: { delay: 0.05 + i * 0.06, duration: 0.25 },
-    }),
-  };
-
   const navItems = [
     { label: "About", ref: aboutRef },
     { label: "Skills", ref: skillsRef },
@@ -89,82 +34,43 @@ const NavBar = ({
   ];
 
   const socialItems = [
-    {
-      href: "https://github.com/FavourDarasimi",
-      icon: FiGithub,
-      label: "GitHub Profile",
-    },
-    {
-      href: "https://x.com/code_with_dara",
-      icon: FaXTwitter,
-      label: "X (Twitter) Profile",
-    },
-    {
-      href: "mailto:darasimi0603@gmail.com",
-      icon: FiMail,
-      label: "Send Email",
-    },
+    { label: "GitHub", href: "https://github.com/FavourDarasimi" },
+    { label: "X", href: "https://x.com/code_with_dara" },
+    { label: "Email", href: "mailto:darasimi0603@gmail.com" },
   ];
 
-  const ThemeToggle = () => {
-    const { theme, setTheme } = useTheme();
-    const isDark = theme !== "light";
-    return (
-      <motion.button
-        onClick={() => setTheme(isDark ? "light" : "dark")}
-        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
-        className="bg-white dark:bg-[#121214] border border-zinc-900/10 dark:border-white/10 hover:border-[#FF5A36]/60 hover:bg-[#FF5A36]/10 text-zinc-600 dark:text-zinc-300 hover:text-[#FF5A36] p-2.5 rounded-xl transition-all duration-200 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A]"
-      >
-        {isDark ? <Sun size={18} /> : <Moon size={18} />}
-      </motion.button>
-    );
-  };
+  const linkClass =
+    "whitespace-nowrap text-sm text-ink-soft hover:text-ink hover:underline underline-offset-4 decoration-1 focus-visible:text-ink focus-visible:underline transition-colors duration-150";
 
   const NavLinks = () => (
-    <div className="flex lg:flex-row flex-col items-center gap-2 lg:gap-1">
-      {navItems.map(({ label, ref }, index) => (
-        <motion.button
+    <div className="flex lg:flex-row flex-col items-start lg:items-center gap-4 lg:gap-7">
+      {navItems.map(({ label, ref }) => (
+        <button
           key={label}
-          custom={index}
-          variants={menuOpen ? mobileLinkVariants : linkVariants}
-          initial="hidden"
-          animate="visible"
           onClick={() => {
             scrollToSection(ref);
             setMenuOpen(false);
           }}
-          whileHover={{ y: -1 }}
-          whileTap={{ scale: 0.97 }}
-          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white focus-visible:text-zinc-900 dark:focus-visible:text-white px-3.5 py-2 text-sm sm:text-base lg:text-sm font-medium rounded-lg transition-all duration-200 relative group cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A]"
+          className={linkClass}
         >
-          <span className="relative z-10">{label}</span>
-          <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[#FF5A36] rounded-full scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100 transition-transform duration-200 origin-left" />
-        </motion.button>
+          {label}
+        </button>
       ))}
     </div>
   );
 
   const SocialLinks = () => (
-    <div className="flex items-center gap-3">
-      {socialItems.map(({ href, icon: Icon, label }, index) => (
-        <motion.a
+    <div className="flex items-center gap-5">
+      {socialItems.map(({ label, href }) => (
+        <a
           key={label}
           href={href}
-          aria-label={label}
-          custom={index}
-          variants={socialVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap={{ scale: 0.95 }}
-          className="bg-white dark:bg-[#121214] border border-zinc-900/10 dark:border-white/10 hover:border-[#FF5A36]/60 hover:bg-[#FF5A36]/10 text-zinc-600 dark:text-zinc-300 hover:text-[#FF5A36] p-2.5 rounded-xl transition-all duration-200 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A]"
           target="_blank"
           rel="noopener noreferrer"
+          className="whitespace-nowrap text-[11px] uppercase tracking-[0.14em] font-medium text-ink-soft hover:text-ink hover:underline underline-offset-4 decoration-1 transition-colors duration-150"
         >
-          <Icon size={18} className="transition-colors duration-200" />
-        </motion.a>
+          {label}
+        </a>
       ))}
     </div>
   );
@@ -184,84 +90,49 @@ const NavBar = ({
   return (
     <header
       ref={navRef}
-      className="sticky top-0 z-50 w-full pt-3 sm:pt-4 md:pt-5 px-4 sm:px-6 md:px-8 bg-transparent transition-colors duration-300"
+      className="sticky top-0 z-50 w-full bg-background border-b border-rule"
     >
-      <div className="max-w-5xl mx-auto bg-white/75 dark:bg-[#0A0A0A]/75 backdrop-blur-2xl border border-zinc-900/15 dark:border-white/15 rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex justify-between items-center relative transition-all duration-300">
-        {/* Brand Logo */}
-        <motion.button
+      <div className="flex h-[68px] items-center justify-between gap-6 px-4 sm:px-6 md:px-8">
+        <button
           onClick={() => scrollToSection(homeRef)}
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="text-left font-sans text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white flex items-center gap-1.5 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A] rounded-md px-1 py-0.5"
+          className="text-lg font-semibold tracking-tight whitespace-nowrap hover:underline underline-offset-4 decoration-1"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A36] inline-block shrink-0" />
-          <span>CodeWithDara</span>
-        </motion.button>
+          CodeWithDara
+        </button>
 
-        {/* Desktop Navigation & Actions */}
-        <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav
+          aria-label="Main Navigation"
+          className="hidden lg:flex items-center gap-10"
+        >
           <NavLinks />
-          <div className="h-4 w-[1px] bg-zinc-900/10 dark:bg-white/10" />
           <SocialLinks />
-          <div className="h-4 w-[1px] bg-zinc-900/10 dark:bg-white/10" />
-          <ThemeToggle />
         </nav>
 
-        {/* Mobile Hamburger Toggle */}
-        <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <motion.button
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-2 rounded-xl bg-white/80 dark:bg-[#121214]/80 backdrop-blur-xl border border-zinc-900/15 dark:border-white/15 text-zinc-900 dark:text-white hover:border-[#FF5A36]/60 transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A36] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0A0A0A]"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {menuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <X size={20} className="text-[#FF5A36]" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Menu size={20} className="text-zinc-900 dark:text-white" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        </div>
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          className="lg:hidden p-2 -ml-2 text-ink"
+        >
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
-      {/* Mobile Drawer (Absolute overlay) */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {menuOpen && (
           <motion.div
-            variants={mobileMenuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="lg:hidden absolute left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 top-full mt-2 z-50 max-w-5xl mx-auto bg-white/85 dark:bg-[#0A0A0A]/85 backdrop-blur-2xl border border-zinc-900/15 dark:border-white/15 rounded-2xl px-6 py-6 shadow-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="lg:hidden border-t border-rule bg-background px-4 sm:px-6 py-6"
           >
-            <nav aria-label="Mobile Navigation" className="flex flex-col items-center space-y-5">
+            <div className="flex flex-col items-start gap-5">
               <NavLinks />
-              <div className="w-16 h-[1px] bg-zinc-900/10 dark:bg-white/10 my-1" />
-              <SocialLinks />
-            </nav>
+              <div className="pt-2">
+                <SocialLinks />
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

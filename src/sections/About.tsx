@@ -1,160 +1,99 @@
-/* Hallmark · component: section:about · genre: editorial · theme: custom
+/* Hallmark · component: section:about · genre: editorial · theme: monochrome
  * states: default · hover · focus · active · disabled · loading · error · success
  * contrast: pass (46–50)
  */
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
-import { Code, Palette, Zap, Users, Compass } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import SectionHeader from "../components/SectionHeader";
+import Reveal from "../components/Reveal";
 
 interface AboutProps {
   aboutRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const About: React.FC<AboutProps> = ({ aboutRef }) => {
-  const features = [
+  const focus = [
     {
-      icon: Code,
       category: "Architecture",
       title: "Clean Code",
       description: "Maintainable, modular, and well-structured codebases.",
-      stat: "100%",
     },
     {
-      icon: Palette,
       category: "Interfaces",
       title: "Intuitive Design",
       description: "Fluid layouts with high attention to user experience.",
-      stat: "60fps",
     },
     {
-      icon: Zap,
       category: "Performance",
       title: "Speed & Scale",
       description: "Optimizing render speeds, bundles, and API latency.",
-      stat: "99.9%",
     },
     {
-      icon: Users,
       category: "Engineering",
       title: "Collaboration",
-      description: "Effective communication and solution-focused teamwork.",
-      stat: "Active",
+      description:
+        "Effective communication and solution-focused teamwork.",
     },
   ];
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+  const story = [
+    {
+      label: "Who I Am",
+      body: "I'm a full-stack web developer who enjoys building applications that are practical, scalable, and user-friendly. For me, coding is more than just writing functions — it's about designing solutions that make life easier for people.",
     },
-  };
-
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
+    {
+      label: "My Journey",
+      body: "I started learning software development out of curiosity about how digital products work beneath the surface. Over time, that curiosity grew into a passion for creating software of my own. Today, I work mainly with React, Next.js, and Django REST Framework, crafting projects that connect clean back-end logic with smooth front-end experiences.",
     },
-  };
+  ];
 
   return (
-    <section ref={aboutRef} className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 space-y-12 sm:space-y-16">
-        {/* Section Header Pill */}
-        <motion.div
-          className="text-left"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="text-[#FF5A36] text-xs sm:text-sm font-medium tracking-wider uppercase bg-[#FF5A36]/10 px-3.5 py-1.5 rounded-full border border-[#FF5A36]/25 inline-flex items-center gap-1.5">
-            <Compass size={14} className="text-[#FF5A36]" /> About Me
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white mt-3 leading-tight">
-            Engineering software with purpose & precision.
-          </h2>
-        </motion.div>
+    <section ref={aboutRef} className="py-16 sm:py-24 px-4 sm:px-6 md:px-8">
+      <SectionHeader
+        index="01"
+        label="About"
+        title="Engineering software with purpose & precision."
+      />
 
-        {/* Editorial Asymmetric Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Column: Story & Journey */}
-          <motion.div
-            className="lg:col-span-5 space-y-6"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white/70 dark:bg-[#121214]/60 backdrop-blur-xl border border-zinc-900/10 dark:border-white/10 rounded-3xl p-6 sm:p-8 space-y-3 shadow-2xl relative">
-              <h3 className="font-semibold text-lg sm:text-xl text-zinc-900 dark:text-white flex items-center gap-2">
-                <span>Who I Am</span>
-                <span className="w-2 h-2 rounded-full bg-[#FF5A36]" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-10 mt-10 sm:mt-14 lg:gap-y-14">
+        <Reveal className="space-y-10">
+          {story.map((item) => (
+            <div key={item.label}>
+              <h3 className="text-[11px] uppercase tracking-[0.18em] font-medium text-ink-soft">
+                {item.label}
               </h3>
-              <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed font-normal">
-                I'm a full-stack web developer who enjoys building applications that are practical, scalable, and user-friendly. For me, coding is more than just writing functions — it's about designing solutions that make life easier for people.
+              <p className="text-sm sm:text-base leading-relaxed mt-3 max-w-[62ch]">
+                {item.body}
               </p>
             </div>
+          ))}
+        </Reveal>
 
-            <div className="bg-white/70 dark:bg-[#121214]/60 backdrop-blur-xl border border-zinc-900/10 dark:border-white/10 rounded-3xl p-6 sm:p-8 space-y-3 shadow-2xl relative">
-              <h3 className="font-semibold text-lg sm:text-xl text-zinc-900 dark:text-white flex items-center gap-2">
-                <span>My Journey</span>
-                <span className="w-2 h-2 rounded-full bg-[#FF5A36]" />
-              </h3>
-              <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed font-normal">
-                I started learning software development out of curiosity about how digital products work beneath the surface. Over time, that curiosity grew into a passion for creating software of my own. Today, I work mainly with React, Next.js, and Django REST Framework, crafting projects that connect clean back-end logic with smooth front-end experiences.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right Column: Reference-Style Cards */}
-          <motion.div
-            className="lg:col-span-7 space-y-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <h3 className="font-semibold text-xl sm:text-2xl text-zinc-900 dark:text-white pb-1">
-              What I Focus On
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {features.map((feature, index) => (
-                <motion.div key={index} variants={cardVariants} whileHover={{ y: -4 }}>
-                  <Card className="bg-white/70 dark:bg-[#121214]/60 backdrop-blur-xl border-zinc-900/10 dark:border-white/10 hover:border-[#FF5A36]/50 transition-all duration-300 h-full rounded-3xl group cursor-pointer overflow-hidden shadow-2xl">
-                    <CardContent className="p-6 sm:p-7 flex flex-col justify-between h-full min-h-[170px]">
-                      {/* Top Circular Badge */}
-                      <div className="w-10 h-10 rounded-full bg-zinc-900/5 dark:bg-white/5 border border-zinc-900/10 dark:border-white/10 flex items-center justify-center group-hover:bg-[#FF5A36] group-hover:border-[#FF5A36] transition-colors duration-300">
-                        <feature.icon className="h-4 sm:h-5 w-4 sm:w-5 text-zinc-600 dark:text-zinc-300 group-hover:text-white transition-colors duration-300" />
-                      </div>
-
-                      {/* Bottom Layout Row */}
-                      <div className="pt-8">
-                        <p className="text-[11px] font-medium text-zinc-500 uppercase tracking-wider mb-0.5">
-                          {feature.category}
-                        </p>
-                        <div className="flex items-baseline justify-between gap-3">
-                          <h4 className="font-semibold text-zinc-900 dark:text-white text-lg sm:text-xl tracking-tight">
-                            {feature.title}
-                          </h4>
-                          <span className="text-base sm:text-lg font-medium text-zinc-500 dark:text-zinc-400 group-hover:text-[#FF5A36] transition-colors duration-300 shrink-0 font-mono">
-                            {feature.stat}
-                          </span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+        <Reveal>
+          <h3 className="text-[11px] uppercase tracking-[0.18em] font-medium text-ink-soft">
+            What I Focus On
+          </h3>
+          <ul className="mt-4 border-b border-rule">
+            {focus.map((item) => (
+              <li
+                key={item.title}
+                className="border-t border-rule py-5 grid grid-cols-1 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] gap-x-8 gap-y-1.5 items-baseline"
+              >
+                <h4 className="text-base sm:text-lg font-semibold tracking-tight">
+                  {item.title}
+                </h4>
+                <div>
+                  <p className="text-sm leading-relaxed text-ink-soft">
+                    {item.description}
+                  </p>
+                  <p className="text-[11px] uppercase tracking-[0.14em] text-ink-soft mt-1.5">
+                    {item.category}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );
