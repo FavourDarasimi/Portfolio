@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  Cancel01Icon,
+  Github01Icon,
+  Mail01Icon,
+  Menu01Icon,
+  NewTwitterIcon,
+} from "@hugeicons/core-free-icons";
 
 type NavBarProps = {
   navRef: React.RefObject<HTMLDivElement | null>;
@@ -34,9 +41,21 @@ const NavBar = ({
   ];
 
   const socialItems = [
-    { label: "GitHub", href: "https://github.com/FavourDarasimi" },
-    { label: "X", href: "https://x.com/code_with_dara" },
-    { label: "Email", href: "mailto:darasimi0603@gmail.com" },
+    {
+      label: "GitHub",
+      href: "https://github.com/FavourDarasimi",
+      icon: Github01Icon,
+    },
+    {
+      label: "X",
+      href: "https://x.com/code_with_dara",
+      icon: NewTwitterIcon,
+    },
+    {
+      label: "Email",
+      href: "mailto:darasimi0603@gmail.com",
+      icon: Mail01Icon,
+    },
   ];
 
   const linkClass =
@@ -60,16 +79,18 @@ const NavBar = ({
   );
 
   const SocialLinks = () => (
-    <div className="flex items-center gap-5">
-      {socialItems.map(({ label, href }) => (
+    <div className="flex items-center gap-1">
+      {socialItems.map(({ label, href, icon }) => (
         <a
           key={label}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="whitespace-nowrap text-[11px] uppercase tracking-[0.14em] font-medium text-ink-soft hover:text-ink hover:underline underline-offset-4 decoration-1 transition-colors duration-150"
+          aria-label={label}
+          title={label}
+          className="inline-flex h-8 w-8 items-center justify-center text-ink-soft hover:text-ink focus-visible:text-ink transition-colors duration-150"
         >
-          {label}
+          <HugeiconsIcon icon={icon} size={17} />
         </a>
       ))}
     </div>
@@ -114,7 +135,11 @@ const NavBar = ({
           aria-expanded={menuOpen}
           className="lg:hidden p-2 -ml-2 text-ink"
         >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          {menuOpen ? (
+            <HugeiconsIcon icon={Cancel01Icon} size={22} />
+          ) : (
+            <HugeiconsIcon icon={Menu01Icon} size={22} />
+          )}
         </button>
       </div>
 

@@ -3,7 +3,14 @@
  * contrast: pass (46–50)
  */
 
-import { ArrowUp } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  ArrowUp02Icon,
+  Github01Icon,
+  Linkedin01Icon,
+  Mail01Icon,
+  NewTwitterIcon,
+} from "@hugeicons/core-free-icons";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -11,14 +18,22 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { href: "https://github.com/FavourDarasimi", label: "GitHub" },
-    { href: "https://x.com/code_with_dara", label: "X" },
-    { href: "https://linkedin.com", label: "LinkedIn" },
-    { href: "mailto:favourdarasimi6@gmail.com", label: "Email" },
+    {
+      href: "https://github.com/FavourDarasimi",
+      label: "GitHub",
+      icon: Github01Icon,
+    },
+    { href: "https://x.com/code_with_dara", label: "X", icon: NewTwitterIcon },
+    { href: "https://linkedin.com", label: "LinkedIn", icon: Linkedin01Icon },
+    {
+      href: "mailto:favourdarasimi6@gmail.com",
+      label: "Email",
+      icon: Mail01Icon,
+    },
   ];
 
   const linkClass =
-    "whitespace-nowrap text-sm underline underline-offset-4 decoration-1 hover:decoration-2 transition-all duration-150";
+    "inline-flex h-10 w-10 items-center justify-center text-ink-soft hover:text-ink focus-visible:text-ink transition-colors duration-150";
 
   return (
     <footer className="border-t border-rule py-16 sm:py-20 px-4 sm:px-6 md:px-8">
@@ -33,24 +48,21 @@ const Footer = () => {
           </p>
         </div>
 
-        <nav aria-label="Social links" className="flex flex-wrap gap-x-6 gap-y-3">
-          {socialLinks.map((social) =>
-            social.href.startsWith("mailto:") ? (
-              <a key={social.label} href={social.href} className={linkClass}>
-                {social.label}
-              </a>
-            ) : (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClass}
-              >
-                {social.label}
-              </a>
-            )
-          )}
+        <nav aria-label="Social links" className="flex flex-wrap gap-1">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              aria-label={social.label}
+              title={social.label}
+              {...(social.href.startsWith("mailto:")
+                ? {}
+                : { target: "_blank", rel: "noopener noreferrer" })}
+              className={linkClass}
+            >
+              <HugeiconsIcon icon={social.icon} size={20} />
+            </a>
+          ))}
         </nav>
       </div>
 
@@ -60,10 +72,12 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Scroll back to top"
-          className="inline-flex items-center gap-1.5 whitespace-nowrap underline underline-offset-4 decoration-1 hover:decoration-2 transition-all duration-150"
+          className="group inline-flex items-center gap-1.5 whitespace-nowrap"
         >
-          <span>Back to top</span>
-          <ArrowUp size={13} />
+          <span className="underline underline-offset-4 decoration-1 group-hover:decoration-2">
+            Back to top
+          </span>
+          <HugeiconsIcon icon={ArrowUp02Icon} size={13} />
         </button>
       </div>
     </footer>

@@ -52,7 +52,7 @@ const Contact: React.FC<ContactProps> = ({ contactRef }) => {
     },
     {
       label: "Primary Location",
-      value: "Sagamu, Ogun State",
+      value: "Iwo, Osun State, Nigeria",
       href: undefined,
     },
   ];

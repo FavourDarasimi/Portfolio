@@ -4,7 +4,8 @@
  */
 
 import { Card } from "./ui/card";
-import { ArrowUpRight, Github } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowUpRight01Icon, Github01Icon } from "@hugeicons/core-free-icons";
 import Reveal from "./Reveal";
 
 type ProjectProps = {
@@ -77,7 +78,7 @@ const ProjectCard = ({
               width={1600}
               height={975}
               loading="lazy"
-              className="grayscale w-full min-w-0 h-auto border border-rule"
+              className="w-full min-w-0 h-auto border border-rule"
             />
             {phoneMockup && (
               <img
@@ -86,7 +87,7 @@ const ProjectCard = ({
                 width={1020}
                 height={2160}
                 loading="lazy"
-                className="grayscale hidden sm:block w-[18%] min-w-[56px] max-w-[88px] h-auto shrink-0 border border-rule"
+                className="hidden sm:block w-[18%] min-w-[56px] max-w-[88px] h-auto shrink-0 border border-rule"
               />
             )}
           </div>
@@ -104,7 +105,7 @@ const ProjectCard = ({
               rel="noopener noreferrer"
               className={linkClass}
             >
-              <ArrowUpRight size={14} />
+              <HugeiconsIcon icon={ArrowUpRight01Icon} size={14} />
               <span>Live Demo</span>
             </a>
           ) : (
@@ -115,7 +116,7 @@ const ProjectCard = ({
                 rel="noopener noreferrer"
                 className={linkClass}
               >
-                <Github size={14} />
+                <HugeiconsIcon icon={Github01Icon} size={14} />
                 <span>GitHub</span>
               </a>
             )
@@ -128,7 +129,7 @@ const ProjectCard = ({
               rel="noopener noreferrer"
               className={linkClass}
             >
-              <Github size={14} />
+              <HugeiconsIcon icon={Github01Icon} size={14} />
               <span>Frontend</span>
             </a>
           )}
@@ -140,7 +141,7 @@ const ProjectCard = ({
               rel="noopener noreferrer"
               className={linkClass}
             >
-              <Github size={14} />
+              <HugeiconsIcon icon={Github01Icon} size={14} />
               <span>Backend</span>
             </a>
           )}
